@@ -1,0 +1,166 @@
+\makeatletter
+\newbox\@xrat
+\renewcommand*{\xrightarrow}[2][-cm to]{%
+  \setbox\@xrat=\hbox{\ensuremath{\scriptstyle #2}}
+  \pgfmathsetlengthmacro{\@xratlen}{max(1.6em,\wd\@xrat+.6em)}
+  \pgfmathsetlengthmacro{\@xratinnersep}{.5ex-\dp\@xrat}
+  \mathrel{\tikz [#1,baseline=-.6ex]
+    \draw (0,0) -- node[auto,inner sep=\@xratinnersep] {\box\@xrat} (\@xratlen,0) ;}}
+\renewcommand*{\xleftarrow}[2][cm to-]{%
+  \setbox\@xrat=\hbox{\ensuremath{\scriptstyle #2}}
+  \pgfmathsetlengthmacro{\@xratlen}{max(1.6em,\wd\@xrat+.6em)}
+  \pgfmathsetlengthmacro{\@xratinnersep}{.5ex-\dp\@xrat}
+  \mathrel{\tikz [#1,baseline=-.6ex]
+    \draw (0,0) -- node[auto,inner sep=\@xratinnersep] {\box\@xrat} (\@xratlen,0) ;}}
+\newcommand*{\xrightarrowb}[2][-cm to]{%
+  \setbox\@xrat=\hbox{\ensuremath{\scriptstyle #2}}
+  \pgfmathsetlengthmacro{\@xratlen}{max(1.6em,\wd\@xrat+.6em)}
+  \pgfmathsetlengthmacro{\@xratinnersep}{.5ex}
+  \mathrel{\tikz [#1,baseline=-.6ex]
+    \draw (0,0) -- node[auto,inner sep=\@xratinnersep] {\box\@xrat} (\@xratlen,0) ;}}
+\newcommand*{\xleftarrowb}[2][cm to-]{%
+  \setbox\@xrat=\hbox{\ensuremath{\scriptstyle #2}}
+  \pgfmathsetlengthmacro{\@xratlen}{max(1.6em,\wd\@xrat+.6em)}
+  \pgfmathsetlengthmacro{\@xratinnersep}{.5ex}
+  \mathrel{\tikz [#1,baseline=-.6ex]
+    \draw (0,0) -- node[auto,inner sep=\@xratinnersep] {\box\@xrat} (\@xratlen,0) ;}}
+
+\pgfarrowsdeclare{my right hook}{my right hook}
+{
+\arrowsize=0.2pt
+\advance\arrowsize by .5\pgflinewidth
+\pgfarrowsleftextend{-.5\pgflinewidth}
+\pgfarrowsrightextend{3.5\arrowsize+.5\pgflinewidth}
+}
+{
+\arrowsize=0.2pt
+\advance\arrowsize by .5\pgflinewidth
+\pgfsetdash{}{0pt} % do not dash
+\pgfsetroundjoin % fix join
+\pgfsetroundcap % fix cap
+\pgfpathmoveto{\pgfpoint{0\arrowsize}{-7\arrowsize}}
+\pgfpatharc{-90}{90}{3.5\arrowsize}
+\pgfusepathqstroke
+}
+
+\tikzset{%
+  iso/.style={above,sloped,inner sep=0},
+  iso'/.style={below,sloped,inner sep=0},
+  to/.style={-cm to},
+  from/.style={cm to-},
+  onto/.style={-cm double to},
+  into/.style={my right hook-cm to},
+  mapsto/.style={|-cm to},
+  clim/.style={decoration={markings,
+                           mark=at position#1 with {\draw[-] (0,-3\pgflinewidth) -- (0,3\pgflinewidth);}},
+               postaction=decorate},
+  clim/.default=0.5,
+  opim/.style={decoration={markings,
+                           mark=at position#1 with {\draw[-] circle(3\pgflinewidth);}},
+               postaction=decorate},
+  opim/.default=0.5
+}
+
+\newcommand*\@tikzto[2]{\begin{tikzpicture}[baseline]%
+      \draw[to,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (1.6em,.55ex);%
+    \end{tikzpicture}}
+
+\newcommand*\@tikzfrom[2]{\begin{tikzpicture}[baseline]%
+      \draw[from,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (1.6em,.55ex);%
+    \end{tikzpicture}}
+
+\newcommand*\@tikzcto[2]{\mathrel{\begin{tikzpicture}[baseline]%
+      \draw[to,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (0.8em,.55ex);%
+    \end{tikzpicture}}}
+
+\newcommand*\@tikzonto[2]{\mathrel{\begin{tikzpicture}[baseline]%
+      \draw[onto,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (1.6em,.55ex);%
+    \end{tikzpicture}}}
+
+\newcommand*\@tikzinto[2]{\mathrel{\begin{tikzpicture}[baseline]%
+      \draw[into,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (1.6em,.55ex);%
+    \end{tikzpicture}}}
+
+\newcommand*\@tikzclim[2]{\mathrel{\begin{tikzpicture}[baseline]%
+      \draw[into,clim,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (1.6em,.55ex);%
+    \end{tikzpicture}}}
+
+\newcommand*\@tikzopim[2]{\mathrel{\begin{tikzpicture}[baseline]%
+      \draw[into,opim,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (1.6em,.55ex);%
+    \end{tikzpicture}}}
+
+\newcommand*\@tikzmapsto[2]{\begin{tikzpicture}[baseline]%
+      \draw[mapsto,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (1.6em,.55ex);%
+    \end{tikzpicture}}
+
+\newcommand*\@tikziso[4]{\mathrel{\begin{tikzpicture}[baseline]%
+      \draw[to,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- node[iso,pos=0.47,inner sep=#4]{$#3\sim$} (1.6em,.55ex);%
+    \end{tikzpicture}}}
+
+\newcommand*\@tikzadjunction[2]{\begin{tikzpicture}[baseline]%
+    \draw[to,line width={#2\pgflinewidth},scale=#1](0,1.7ex) -- node[pos=.5,below,inner sep=.3ex]{\rotatebox[origin=c]{90}{$\vdash$}} (1.6em,1.7ex);
+    \draw[to,line width={#2\pgflinewidth},scale=#1](1.6em,-.3ex) -- (0,-.3ex);
+  \end{tikzpicture}}
+
+\newsavebox{\@todisplay}
+\newsavebox{\@totext}
+\newsavebox{\@toscript}
+\newsavebox{\@toscriptscript}
+\newsavebox{\@mapstodisplay}
+\newsavebox{\@mapstotext}
+\newsavebox{\@mapstoscript}
+\newsavebox{\@mapstoscriptscript}
+\newsavebox{\@tikzadjunctiondisplay}
+\newcommand*{\@saveboxes}{%
+  \savebox{\@todisplay}{\@tikzto{1.0}{1}}%
+  \savebox{\@totext}{\@tikzto{1.0}{1}}%
+  \savebox{\@toscript}{\@tikzto{0.8}{0.9}}%
+  \savebox{\@toscriptscript}{\@tikzto{0.8}{0.75}}%
+  \savebox{\@mapstodisplay}{\@tikzmapsto{1.0}{1}}%
+  \savebox{\@mapstotext}{\@tikzmapsto{1.0}{1}}%
+  \savebox{\@mapstoscript}{\@tikzmapsto{0.8}{0.9}}%
+  \savebox{\@mapstoscriptscript}{\@tikzmapsto{0.8}{0.75}}%
+  \savebox{\@tikzadjunctiondisplay}{\@tikzadjunction{1.0}{1}}%
+}
+\@saveboxes
+
+\newcommand*\tikzto{\mathrel{\mathchoice{\usebox{\@todisplay}}%
+  {\usebox{\@totext}}%
+  {\usebox{\@toscript}}%
+  {\usebox{\@toscriptscript}}}}
+
+\newcommand*\tikzmapsto{\mathrel{\mathchoice{\usebox{\@mapstodisplay}}%
+  {\usebox{\@mapstotext}}%
+  {\usebox{\@mapstoscript}}%
+  {\usebox{\@mapstoscriptscript}}}}
+
+\newcommand*{\tikzadjunction}{\mathrel{\usebox{\@tikzadjunctiondisplay}}}
+
+\newcommand*\tikzfrom{\mathrel{\mathchoice{\@tikzfrom{1.0}{1}}{\@tikzfrom{1.0}{1}}{\@tikzfrom{0.8}{0.9}}{\@tikzfrom{0.6}{0.75}}}}
+\newcommand*\tikzcto{\mathchoice{\@tikzcto{1.0}{1}}{\@tikzcto{1.0}{1}}{\@tikzcto{0.8}{0.9}}{\@tikzcto{0.6}{0.75}}}
+\newcommand*\tikzonto{\mathchoice{\@tikzonto{1.0}{1}}{\@tikzonto{1.0}{1}}{\@tikzonto{0.8}{0.9}}{\@tikzonto{0.6}{0.75}}}
+\newcommand*\tikzinto{\mathchoice{\@tikzinto{1.0}{1}}{\@tikzinto{1.0}{1}}{\@tikzinto{0.8}{0.9}}{\@tikzinto{0.6}{0.75}}}
+\newcommand*\tikzclim{\mathchoice{\@tikzclim{1.0}{1}}{\@tikzclim{1.0}{1}}{\@tikzclim{0.8}{0.9}}{\@tikzclim{0.6}{0.75}}}
+\newcommand*\tikzopim{\mathchoice{\@tikzopim{1.0}{1}}{\@tikzopim{1.0}{1}}{\@tikzopim{0.8}{0.9}}{\@tikzopim{0.6}{0.75}}}
+\newcommand*\tikziso{\mathchoice{\@tikziso{1.0}{1}{\displaystyle}{0pt}}%
+  {\@tikziso{1.0}{1}{\textstyle}{0pt}}%
+  {\@tikziso{0.8}{0.9}{\scriptstyle}{0pt}}%
+  {\@tikziso{0.67}{0.8}{\scriptscriptstyle}{0.15ex}}}
+
+\let\@color\color
+\renewcommand*{\color}[1]{\@color{#1}\@saveboxes}
+\makeatother
+
+\renewcommand*{\to}[1][]{\ifthenelse{\isempty{#1}}{\tikzto}{\xrightarrowb{#1}}}
+\newcommand*{\from}[1][]{\ifthenelse{\isempty{#1}}{\tikzfrom}{\xleftarrowb{#1}}}
+\newcommand*{\cto}{\ensuremath{\tikzcto}}
+\newcommand*{\into}[1][]{\ifthenelse{\isempty{#1}}{\tikzinto}{\xrightarrowb[into]{#1}}}
+\newcommand*{\onto}[1][]{\ifthenelse{\isempty{#1}}{\tikzonto}{\xrightarrowb[onto]{#1}}}
+\newcommand*{\clim}{\tikzclim}
+\newcommand*{\opim}{\tikzopim}
+
+\newcommand*{\iso}{\tikziso}
+
+\renewcommand*{\mapsto}{\tikzmapsto}
+
+\newcommand*{\adjunction}[4]{#1 : #2 \tikzadjunction #3 : #4}

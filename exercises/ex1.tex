@@ -1,0 +1,61 @@
+\input{tex/preamble.tex}
+
+\setcounter{Sheet}{1}
+
+\title{Übungsblatt \theSheet}
+\subtitle{Topologie}
+\author{Viktor Kleen\footnote{viktor.kleen@uni-due.de} \and Sabrina Pauli\footnote{sabrinap@math.uio.no}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{exercise}
+Für welche der folgenden Mengen \(X\) und \(\cal T\) ist \((X,\cal T)\)
+ein topologischer Raum?
+\begin{enumerate}
+\item \(X = \QQ\) und \(\cal T = \{U\subset\QQ : 0\in U\}\cup\{\emptyset\}\)
+\item \(X = \RR\) und \(\cal T = \{(x,\infty) : x\in\RR\}\cup\{\emptyset,\RR\}\)
+\item \(X = \RR^2\) und \(\cal T = \{V : \textnormal{\(V\) ist ein Untervektorraum von
+    \(\RR^2\)}\}\)
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Für eine zwei- bzw. dreielementige Menge \(X\), wie viele verschiedene
+Topologien gibt es jeweils auf \(X\)?
+\end{exercise}
+
+\begin{exercise}
+Sei \(X\) eine Menge mit der diskreten Topologie. Zeigen Sie, dass \(X\)
+\emph{metrisierbar} ist, \ddh~es gibt eine Metrik \(d\colon X\times
+X\to\RR\), so dass die von \(d\) erzeugte metrische Topologie auf \(X\)
+gleich der diskreten Topologie ist.
+\end{exercise}
+
+\begin{exercise}
+Sei \(p\in \ZZ\) prim. Für \(0\neq x\in\ZZ\) sei eine Primfaktorisierung
+\(x = \pm p_1^{k_1}\cdots p_n^{k_n}\) mit verschiedenen Primzahlen
+\(p_1,\dots,p_n\) und \(k_1,\dots,k_n\in\NN\) gegeben. Wir definieren
+eine Funktion \(v_p\colon\ZZ\to\ZZ\cup\{\infty\}\) durch \(v_p(0) =
+\infty\) und
+\[
+v_p(x) = \begin{cases}
+k_i,& \textnormal{falls \(p = p_i\) für ein \(i\)} \\
+0, &\textnormal{sonst.}
+\end{cases}
+\]
+Wir erweitern diese Funktion zu einer Funktion auf \(\QQ\) durch die
+Vorschrift
+\[
+v_p(x) = v_p(a) - v_p(b),
+\]
+wobei \(x = \tfrac{a}{b}\in\QQ\) rationale Zahl ist und \(a,b\in\ZZ\)
+teilerfremde ganze Zahlen sind. Zeigen Sie, dass durch
+\[
+d_p(x,y) = p^{-v_p(x-y)}
+\]
+mit der Konvention \(p^{-\infty} = 0\) eine Metrik auf \(\QQ\) definiert
+wird. Man nennt sie die \emph{\(p\)-adische Metrik} und die zugehörige
+metrische Topologie heißt \emph{\(p\)-adische Topologie} auf \(\QQ\).
+\end{exercise}
+\end{document}

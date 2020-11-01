@@ -1,0 +1,191 @@
+\documentclass[11pt,DIV=11,paper=a4]{scrartcl}
+\usepackage[colorlinks=true,pdfencoding=auto,psdextra]{hyperref}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{xspace, xifthen, enumitem}
+
+\usepackage{amssymb, amsmath, amsthm, thmtools, nth}
+
+\usepackage{graphicx}
+
+\usepackage{etoolbox}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.markings,chains,calc,matrix,cd}
+\tikzset{>=cm to}
+
+\usetikzlibrary{external}
+% \tikzexternalize[prefix=tikz/,mode=list and make]
+
+%\url{http://tex.stackexchange.com/q/171931/86}
+\usepackage{environ}
+\makeatletter
+\def\tikzcd@[#1]{%
+  \begin{tikzpicture}[/tikz/commutative diagrams/.cd,every diagram,#1]%
+  \ifx\arrow\tikzcd@arrow%
+    \pgfutil@packageerror{tikz-cd}{Diagrams cannot be nested}{}%
+  \fi%
+  \let\arrow\tikzcd@arrow%
+  \let\ar\tikzcd@arrow%
+  \def\rar{\tikzcd@xar{r}}%
+  \def\lar{\tikzcd@xar{l}}%
+  \def\dar{\tikzcd@xar{d}}%
+  \def\uar{\tikzcd@xar{u}}%
+  \def\urar{\tikzcd@xar{ur}}%
+  \def\ular{\tikzcd@xar{ul}}%
+  \def\drar{\tikzcd@xar{dr}}%
+  \def\dlar{\tikzcd@xar{dl}}%
+  \global\let\tikzcd@savedpaths\pgfutil@empty%
+  \matrix[%
+    /tikz/matrix of \iftikzcd@mathmode math \fi nodes,%
+    /tikz/every cell/.append code={\tikzcdset{every cell}},%
+    /tikz/commutative diagrams/.cd,every matrix]%
+  \bgroup}
+
+\def\endtikzcd{%
+  \pgfmatrixendrow\egroup%
+  \pgfextra{\global\let\tikzcdmatrixname\tikzlastnode};%
+  \tikzcdset{\the\pgfmatrixcurrentrow-row diagram/.try}%
+  \begingroup%
+    \pgfkeys{% `quotes' library support
+      /handlers/first char syntax/the character "/.initial=\tikzcd@forward@quotes,%
+      /tikz/edge quotes mean={%
+        edge node={node [execute at begin node=\iftikzcd@mathmode$\fi,%$
+                         execute at end node=\iftikzcd@mathmode$\fi,%$
+                         /tikz/commutative diagrams/.cd,every label,##2]{##1}}}}%
+    \let\tikzcd@errmessage\errmessage% improve error messages
+    \def\errmessage##1{\tikzcd@errmessage{##1^^J...^^Jl.\tikzcd@lineno\space%
+        I think the culprit is a tikzcd arrow in cell \tikzcd@currentrow-\tikzcd@currentcolumn}}%
+    \tikzcd@before@paths@hook%
+    \tikzcd@savedpaths%
+  \endgroup%
+  \end{tikzpicture}%
+  \ifnum0=`{}\fi}
+
+\NewEnviron{mytikzcd}[1][]{%
+  \def\@temp{\tikzcd@[#1]\BODY}%
+  \expandafter\@temp\endtikzcd
+}
+\makeatother
+
+\def\temp{&} \catcode`&=\active \let&=\temp
+
+\usepackage[lining]{libertine}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[varqu,varl]{inconsolata}
+%\usepackage[italic, basic, eulergreek, defaultmathsizes]{mathastext}
+\usepackage[libertine]{newtxmath}
+%\usepackage{libertinust1math}
+\usepackage{bm}
+\usepackage{mathtools}
+\mathtoolsset{mathic}
+
+\usepackage[cal=boondoxo]{mathalfa}
+\usepackage{mathrsfs}
+\newcommand{\mathcalls}[1]{{\textls*[-150]{\usefont{U}{BOONDOX-calo}{m}{n} #1}}}
+
+\usepackage[all]{hypcap}
+
+\usepackage{csquotes}
+\usepackage[german]{babel}
+\usepackage[nodayofweek]{datetime}
+
+\usepackage[protrusion=true]{microtype}
+
+% \usepackage[bibencoding=utf8,style=alphabetic,citestyle=alphabetic,backref=true,hyperref=true,giveninits=true,doi=true]{biblatex}
+% \addbibresource{../all.bib}
+% \renewcommand*{\bibfont}{\normalfont\footnotesize}
+% \renewbibmacro{in:}{%
+%   \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+% \renewrobustcmd*{\bibinitdelim}{\,}
+% \AtEveryBibitem{%
+%   \clearfield{pagetotal}%
+% }
+
+\usepackage{pdfpages}
+
+\declaretheoremstyle[spaceabove=\topsep,spacebelow=\topsep,headfont=\normalfont\scshape,notefont=\normalfont\mdseries,notebraces={(}{)},bodyfont=\normalfont,postheadspace=5pt plus 1pt minus 1pt]{scdef}
+\declaretheoremstyle[spaceabove=\topsep,spacebelow=\topsep,headfont=\normalfont\scshape,notefont=\normalfont\mdseries,notebraces={(}{)},bodyfont=\itshape,postheadspace=5pt plus 1pt minus 1pt]{scthm}
+
+\declaretheorem[style=scdef,numberwithin=section,   name=Definition,refname={Definition,Definitions},Refname={Definition,Definitions}]{definition}
+\declaretheorem[style=scdef,sharenumber=definition, name=Remark,refname={Remark,Remarks},Refname={Remark,Remarks}]{remark}
+\declaretheorem[style=scdef,sharenumber=definition, name=Example,refname={Example,Examples},Refname={Example,Examples}]{example}
+
+\newcounter{Sheet}
+\declaretheorem[style=scdef,numberwithin=Sheet,name=Aufgabe,refname={Aufgabe,Aufgaben},Refname={Aufgabe,Aufgaben}]{exercise}
+
+\declaretheorem[style=scthm,sharenumber=definition, name=Theorem,refname={Theorem,Theorems},Refname={Theorem,Theorems}]{theorem}
+\declaretheorem[style=scthm,numbered=no, name=Theorem,refname={Theorem,Theorems},Refname={Theorem,Theorems}]{theorem*}
+\declaretheorem[style=scthm,sharenumber=definition, name=Lemma,refname={Lemma,Lemmas},Refname={Lemma,Lemmas}]{lemma}
+\declaretheorem[style=scthm,sharenumber=definition, name=Corollary,refname={Corollary,Corollaries},Refname={Corollary,Corollaries}]{corollary}
+\declaretheorem[style=scthm,sharenumber=definition, name=Proposition,refname={Proposition,Propositions},Refname={Proposition,Propositions}]{proposition}
+
+\undef\Re
+\undef\Im
+
+\newcommand*{\normal}{\lhd}
+\newcommand*{\isom}{\cong}
+\newcommand*{\homot}{\sim}
+\newcommand*{\wequiv}{\simeq}
+
+\makeatletter
+\let\@oldsubset=\subset
+\def\@subsethelper#1#2{\mathrel{\raisebox{.5pt}{$#1\@oldsubset$}}\xspace}
+\DeclareRobustCommand*{\subset}{\mathpalette\@subsethelper\relax}
+
+\let\@oldotimes=\otimes
+\def\@otimeshelper#1#2{\mathrel{\raisebox{.5pt}{$#1\@oldotimes$}}\xspace}
+\DeclareRobustCommand*{\otimes}{\mathpalette\@otimeshelper\relax}
+\makeatother
+
+\tikzset{/tikz/commutative diagrams/arrows={thin}}
+
+\newcommand*{\ca}[1]{\ensuremath{\mathscr{#1}}\xspace}
+\renewcommand*{\cal}[1]{\ensuremath{\mathcal{#1}}\xspace}
+\newcommand*{\f}[1]{\ensuremath{\mathfrak{#1}}\xspace}
+
+\newcommand{\cl}[2][0]{{}\mkern#1mu\overline{\mkern-#1mu#2}}
+\newcommand*{\Int}[1]{\ensuremath{#1^\circ}\xspace}
+
+\newcommand*{\ddh}{d.\,h.}
+\newcommand*{\ie}{i.\,e.}
+\newcommand*{\eg}{e.\,g.}
+\newcommand*{\Ie}{I.\,e.}
+\newcommand*{\Eg}{E.\,g.}
+
+\undef\lrcorner
+\newcommand{\lrcorner}{\mathord{\vrule height 0.1ex depth 0pt width 1ex\vrule height 1.3ex depth 0pt width
+0.1ex}}
+
+\def\<#1>{\left\langle #1 \right\rangle}
+
+\undef\AA
+\undef\SS
+\renewcommand*{\do}[1]{\expandafter\def\csname#1#1\endcsname{\ensuremath{\mathbb{#1}}\xspace}}
+\docsvlist{A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}
+
+\setlist[enumerate]{label={\normalfont \rmfamily(\roman*)}, nosep}
+\setlist[itemize]{nosep}
+
+\overfullrule=1mm
+
+\usepackage{todonotes}
+\newcommand{\aravind}[1]{\todo[color=red!40]{#1}} %notes by Aravind
+\newcommand{\marc}[1]{\todo[color=blue!40]{#1}} %notes by Marc
+\newcommand{\matthias}[1]{\todo[color=cyan!40]{#1}} %notes by Matthias
+\newcommand{\brad}[1]{\todo[color=magenta!40]{#1}} %notes by Brad
+\newcommand{\viktor}[1]{\todo[color=yellow!40]{#1}} %notes by Viktor
+
+\ifdefined\RedeclareSectionCommand
+\RedeclareSectionCommand[counterwithin=section,font={\normalsize\normalfont\scshape}]{paragraph}
+\fi
+
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\chapterautorefname}{Chapter}
+
+\renewcommand*\titlepagestyle{empty}
+
+\input{tex/operators.tex}
+\input{tex/tikzarrows.tex}
