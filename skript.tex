@@ -1,0 +1,186 @@
+\input {./tex/preamble.tex}
+
+\title{Topologie}
+\author{Viktor Kleen\footnote{viktor.kleen@uni-due.de} \and Sabrina Pauli\footnote{sabrinp@math.uio.no}}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Topologische Räume und stetige Funktionen}
+Zuerst wollen wir Begriffe aus der Analysis wiederholen um später die Definition von topologischen Räumen zu motivien. Die ersten metrischen Räume, die man typischerweise antrifft, sind die Vektorräume $\RR^n$, die mit verschiedenen Normen ausgestattet werden können. Zum Beispiel definiert man die \emph{Supremumsnorm}
+\[
+ \|(x_1,\dots,x_n)\|_\infty = \max\{|x_1|,\dots,|x_n|\}
+\]
+oder für $1\leq p<\infty$ die $\ell^p$-Norm
+\[
+  \|(x_1,\dots,x_n)\|_p = (|x_1|^p + \dots + |x_n|^p)^{1/p}.
+\]
+\begin{definition}
+Eine Abbildung $f\colon \RR^n\to\RR$ ist \emph{stetig} bezüglich einer Norm
+$\|\_\|$ falls es zu jedem $x\in\RR^n$ und $\varepsilon > 0$ ein $\delta>0$
+gibt, so dass $|f(x) - f(x')| < \varepsilon$ für alle $x'\in\RR^n$ mit $\|x-x'\|
+< \delta$ gilt.
+\end{definition}
+\begin{theorem}
+Je zwei Normen $\|_\|$ und $\|\_\|'$ auf $\RR^n$ sind \emph{äquivalent}, \ddh~es
+gibt Konstanten $c,C>0$, so dass
+\[
+c\|x\| < \|x\|' < C\|x\|
+\]
+für alle $x\in \RR$.
+\end{theorem}
+\begin{corollary}
+Der Stetigkeitsbegriff für Funktionen $f\colon \RR^n\to\RR$ hängt nicht von der
+gewählten Norm auf $\RR^n$ oder $\RR$ ab.
+\end{corollary}
+Dieses Korollar motiviert sofort die Frage, ob es einen Begriff von Stetigkeit
+gibt, der von der Wahl einer Norm losgelöst ist? Die Antwort auf diese Frage ist
+natürlich ja, aber wir werden dafür zuerst den Begriff einer \emph{Metrik} unter
+suchen.
+
+\begin{definition}
+Eine \emph{Metrik} auf einer Menge $X$ ist eine Abbildung $d\colon X\times
+X\to\RR$, so dass für $x,y,z\in X$ gilt:
+\begin{enumerate}
+\item $d(x,y)\geq 0$ und $d(x,y) = 0$ genau dann, wenn $x=y$.
+\item $d(x,y) = d(y,x)$.
+\item $d(x,z) \leq d(x,y) + d(y,z)$.
+\end{enumerate}
+Ein \emph{metrischer Raum} ist eine Menge $X$ zusammen mit einer Metrik $d$ auf
+$X$.
+\end{definition}
+
+Zum Beispiel liefert jede Norm $\|\_\|$ auf einem Vektorraum $V$ eine Metrik
+durch
+\[
+d(x,y) \coloneqq \|x-y\|.
+\]
+\begin{definition}
+Seien $(X,d_X)$ und $(Y,d_Y)$ metrische Räume. Eine Abbildung $f\colon X\to Y$
+heißt \emph{stetig}, falls es für jedes $x\in X$ und $\varepsilon>0$ ein
+$\delta>0$ gibt, so dass $d_Y(f(x), f(x')) < \varepsilon$ für alle $x'\in X$ mit
+$d_X(x,x')<\delta$ gilt.
+\end{definition}
+Diese Definition sieht erstmal nicht besonders hilfreich aus für unser Ziel
+einen allgemeineren Begriff der Stetigkeit zu finden. Aber mit ihr können wir
+beginnen eine Definition zu finden, die die Metrik nicht mehr explizit erwähnt.
+\begin{definition}
+Sei $(X,d)$ ein metrische Raum. Der \emph{offene Ball} um $x\in X$ mit Radius
+$r>0$ ist
+\[
+B_r(x)\coloneqq \{y\in X : d(x,y) < r\}.
+\]
+Eine Teilmenge $U\subset X$ heißt \emph{offen}, falls für jedes $x\in U$ ein
+$\varepsilon>0$ existiert, so dass $B_\varepsilon(x)\subset U$.
+\end{definition}
+Beispielsweise können wir $X=\RR$ mit der Metrik $d\colon X\times X\to\RR$,
+$d(x,y) = |x-y|$ betrachten. Dann ist
+\begin{itemize}
+\item das offene Intervall $(a,b) = \{x\in\RR : a < x < b\}$ offen.
+\item die Vereinigung zweier offener Intervalle $(a,b) \cup (c,d)$ offen.
+\item das abgeschlossene Intervall $[a,b] = \{x\in\RR : a\leq x \leq b\}$
+\emph{nicht} offen.
+\end{itemize}
+\begin{theorem}
+Seien $(X,d_X)$ und $(Y,d_Y)$ metrische Räume und $f\colon X\to Y$ eine
+Abbildung. Die folgenden Aussagen sind äquivalent:
+\begin{enumerate}
+\item $f$ ist stetig.
+\item Für jede offene Teilmenge $U\subset Y$ ist $f^{-1}(U) = \{x\in X :
+f(x)\in U\}$ offen.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Sei zuerst $f$ stetig und $U\subset Y$ offen. Wir wollen zeigen, dass
+$f^{-1}(U)$ offen ist, also dass für jedes $x\in f^{-1}(U)$ ein $\delta>0$
+existiert, so dass $B_\delta(x)\subset f^{-1}(U)$. Aber $U$ ist offen, also
+existiert ein $\varepsilon>0$, so dass $B_\varepsilon(f(x))\subset U$. Da $f$
+stetig ist, gibt es tatsächlich ein $\delta > 0$, so dass $d(f(x),f(x')) <
+\varepsilon$ für alle $x'\in X$ mit $d(x,x')<\delta$ gilt. Das bedeutet, dass $f(B_\delta(x))\subset B_\varepsilon(f(x))\subset U$,
+oder anders gesagt, $B_\delta(x)\subset f^{-1}(B_\varepsilon(f(x)))\subset
+f^{-1}(U)$.
+
+Sei umgekehrt $x\in X$ und $\varepsilon>0$. Der offene Ball
+$B_\varepsilon(f(x))$ ist offen (Übungsaufgabe!) und nach der Annahme an $f$ ist
+damit auch $f^{-1}(B_\varepsilon(f(x)))$ offen und $x\in
+f^{-1}(B_\varepsilon(f(x)))$. Also gibt es ein $\delta>0$, so dass
+$B_\delta(x)\subset f^{-1}(B_\varepsilon(f(x)))$. Oder anders gesagt, für jedes
+$x'\in B_\delta(x)$, \ddh~$d(x,x')<\delta$, ist $f(x')\in B_\varepsilon(f(x))$,
+\ddh~$d(f(x),f(x')) < \varepsilon$.
+\end{proof}
+Mit diesem Satz haben wir einen vielversprechenden Kandidaten für einen
+Stetigkeitsbegriff, denn Bedingung (ii) braucht nicht mehr explizit eine Metrik,
+sondern nur noch den Begriff einer \emph{offenen Teilmenge}.
+\subsection{Grundbegriffe}
+\begin{definition}
+Sei $X$ eine Menge. Eine \emph{Topologie} auf $X$ ist eine Menge $\cal T$ von
+Teilmengen von $X$ mit
+\begin{enumerate}
+\item $\emptyset, X\in\cal T$
+\item Für $U,V\in\cal T$ gilt $U\cap V\in\cal T$.
+\item Für eine beliebige Teilmenge $M\subset\cal T$ gilt $\bigcup_{U\in M}
+U\subset \cal T$.
+\end{enumerate}
+Die Elemente von $\cal T$ heißen \emph{offene Teilmengen} von $X$ und die
+Elemente von $X$ heißen \emph{Punkte}. Ein \emph{topologischer Raum} ist ein
+Paar $(X,\cal T)$ aus einer Menge $X$ und einer Topologie $\cal T$ auf $X$.
+\end{definition}
+\begin{definition}
+Seien $(X,\cal T_X)$ und $(Y,\cal T_Y)$ topologische Räume. Eine Abbildung
+$f\colon X\to Y$ heißt \emph{stetig}, wenn für jedes $U\in\cal T_Y$ das Urbild
+$f^{-1}(U)\subset X$ offen ist, \ddh~$f^{-1}(U)\in\cal T_X$.
+\end{definition}
+
+Unsere Beispiele von metrischen Räumen liefern sofort Beispiel von topologischen
+Räumen. Wir betrachten zuerst $\RR$. Eine Teilmenge $U\subset\RR$ heißt dann
+offen, wenn für jedes $x\in U$ ein $\varepsilon > 0$ existiert, so dass
+$B_\varepsilon(x) = (x-\varepsilon,x+\varepsilon)\subset U$. Die Axiome sind
+erfüllt:
+\begin{enumerate}
+\item Für $\emptyset$ gibt es nichts zu zeigen. Für jedes $x\in \RR$ ist
+natürlich $(x-\varepsilon,x+\varepsilon)\subset \RR$ für jedes beliebige
+$\varepsilon>0$.
+\item Sind $U\subset\RR$ und $V\subset\RR$ offen, und $x\in U\cap V$, so gibt
+es ein $\varepsilon_U>0$ mit $(x-\varepsilon_U,x+\varepsilon_U)\subset U$ und ein $\varepsilon_V
+> 0$ mit $(x-\varepsilon_V,x+\varepsilon_V)\subset V$. Aber dann ist
+\[
+B_{\min{\varepsilon_U,\varepsilon_V}}(x)\subset
+(x-\varepsilon_U,x+\varepsilon_U)\cap (x-\varepsilon_V,x+\varepsilon_V)\subset U\cap V.
+\]
+\item Ist $\{U_i : i\in I\}$ eine Familie von offenen Teilmengen in $\RR$ und
+$x\in \bigcup_{i\in I} U_i$, so gibt es ein $j\in I$ mit $x\in U_j$. Aber $U_j$
+ist offen, also gibt es ein $\varepsilon>0$ mit
+$(x-\varepsilon,x+\varepsilon)\subset U_j$. Also ist dann auch
+\[
+B_\varepsilon(x) = (x-\varepsilon,x+\varepsilon)\subset U_j\subset
+\bigcup_{i\in I} U_i.
+\]
+\end{enumerate}
+Ganz ähnlich zeigt man, dass $\RR^n$ mit der von einer Norm induzierten Metrik
+einen topologischen Raum definiert. Wieder heißt nämlich eine Teilmenge
+$U\subset\RR^n$ offen, wenn für jedes $x\in U$ ein $\varepsilon>0$ exisitiert,
+so dass $B_\varepsilon(x) = \{x'\in\RR^n : \|x-x'\|<\varepsilon\}\subset U$.
+
+Allgemeiner definiert jede Metrik $d$ auf einer Menge $X$ eine Topologie. Sie
+heißt die von $d$ induzierte \emph{metrische Topologie} auf $X$: Eine Teilmen
+$U\subset X$ heißt offen, wenn für jedes $x\in U$ ein $\varepsilon>0$ existiert
+mit $B_\varepsilon(x)\subset U$. Wieder sind die Axiome erfüllt:
+\begin{enumerate}
+\item Für $\emptyset$ gibt es nichts zu zeigen. Für jedes $x\in X$ ist natürlich
+$B_\varepsilon(x)\subset X$ für jedes beliebige $\varepsilon>0$.
+\item Sind $U\subset X$ und $V\subset X$ offen und $x\in U\cap V$, so gibt es
+$\varepsilon_U>0$ und $\varepsilon_V>0$ mit $B_{\varepsilon_U}(x)\subset U$ und
+$B_{\varepsilon_V}(x)\subset V$. Aber dann ist
+\[
+B_{\min\{\varepsilon_U,\varepsilon_V\}}(x)\subset B_{\varepsilon_U}(x)\cap
+B_{\varepsilon_V}(x)\subset U\cap V.
+\]
+\item Ist $\{U_i : i\in I\}$ eine Familie von offenen Teilmengen von $X$ und
+$x\in \bigcup_{i\in I} U_i$, so gibt es ein $j\in I$ mit $x\in U_j$. Da $U_j$
+offen ist, gibt es ein $\varepsilon>0$ mit $B_{\varepsilon}(x)\subset U_j$ und
+damit
+\[
+B_\varepsilon(x)\subset U_j\subset\bigcup_{i\in I} U_i.
+\]
+\end{enumerate}
+\end{document}
