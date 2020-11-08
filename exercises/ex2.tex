@@ -1,0 +1,55 @@
+\input{preamble.tex}
+
+\setcounter{Sheet}{2}
+
+\title{Übungsblatt \theSheet}
+\subtitle{Topologie}
+\author{Viktor Kleen\footnote{viktor.kleen@uni-due.de} \and Sabrina Pauli\footnote{sabrinp@math.uio.no}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{exercise}
+Sei $X$ eine Menge. Wir definieren die \emph{kofinite Topologie} auf $X$,
+indem wir eine Teilmenge $U\subset X$ genau dann offen nennen, wenn das
+Komplement $\compl{U} = X\setminus U$ endlich ist.
+\begin{enumerate}
+\item Zeigen Sie, dass, wenn $X$ selbst endlich ist, die kofinite
+    Topologie genau die diskrete Topologie auf $X$ ist.
+\item Für eine beliebige Menge $X$ und $A\subset X$, geben Sie eine
+    Beschreibung der Mengen $\cl{A}$, $\Int{A}$ und $\Bdry{A}$ in der kofiniten
+    Topologie.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Sei $(Y,d_Y)$ ein metrischer Raum und $X\subset Y$. Die Menge $X$ wird mit
+der eingeschränkten Metrik $d_X(a,b) = d_Y(a,b)$ für $a,b\in X$ selbst
+ein metrischer Raum. Zeigen Sie, dass die metrische Topologie $\tau_{d_X}$
+auf $X$ mit der von $Y$ induzierten Teilraumtopologie $\tau_Y|_X$ auf $X$
+übereinstimmt.
+\end{exercise}
+
+\begin{exercise}
+Wir betrachten $\RR$ mit der euklidischen Topologie. Zeigen Sie, dass die
+Teilraumtopologie auf $\ZZ\subset\RR$ genau die diskrete Topologie auf
+$\ZZ$ ist.
+\end{exercise}
+
+\begin{exercise}
+Sei $I$ eine beliebige Indexmenge und $X_i$ ein topologischer Raum für
+jedes $i\in I$. Zeigen Sie, dass die Familie
+\[
+\left\{ \prod_{i\in I} U_i : \textnormal{$U_i\subset X_i$ ist offen} \right\}
+\]
+eine Basis für eine Topologie auf $X = \prod_{i\in I} X_i$ ist. Die erzeugte
+Topologie heißt \emph{Boxtopologie} auf $X$. Zeigen Sie weiter, dass die
+Funktion
+\[
+f\colon \RR \to \prod_{i\in\NN} \RR,\quad f(x) = (x,x,x,\dots)
+\]
+bezüglich der Boxtopologie auf $\prod_{i\in\NN}\RR$ nicht stetig
+ist\footnote{Ein Hinweis: Die Menge $\prod_{n\in\NN} (-1/n, 1/n)$ ist offen.}.
+\end{exercise}
+
+\end{document}

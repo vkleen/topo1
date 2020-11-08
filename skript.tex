@@ -144,7 +144,7 @@ $\varepsilon>0$.
 es ein $\varepsilon_U>0$ mit $(x-\varepsilon_U,x+\varepsilon_U)\subset U$ und ein $\varepsilon_V
 > 0$ mit $(x-\varepsilon_V,x+\varepsilon_V)\subset V$. Aber dann ist
 \[
-B_{\min{\varepsilon_U,\varepsilon_V}}(x)\subset
+B_{\min\{\varepsilon_U,\varepsilon_V\}}(x)\subset
 (x-\varepsilon_U,x+\varepsilon_U)\cap (x-\varepsilon_V,x+\varepsilon_V)\subset U\cap V.
 \]
 \item Ist $\{U_i : i\in I\}$ eine Familie von offenen Teilmengen in $\RR$ und
@@ -158,12 +158,12 @@ B_\varepsilon(x) = (x-\varepsilon,x+\varepsilon)\subset U_j\subset
 \end{enumerate}
 Ganz ähnlich zeigt man, dass $\RR^n$ mit der von einer Norm induzierten Metrik
 einen topologischen Raum definiert. Wieder heißt nämlich eine Teilmenge
-$U\subset\RR^n$ offen, wenn für jedes $x\in U$ ein $\varepsilon>0$ exisitiert,
+$U\subset\RR^n$ offen, wenn für jedes $x\in U$ ein $\varepsilon>0$ existiert,
 so dass $B_\varepsilon(x) = \{x'\in\RR^n : \|x-x'\|<\varepsilon\}\subset U$.
 
 Allgemeiner definiert jede Metrik $d$ auf einer Menge $X$ eine Topologie. Sie
-heißt die von $d$ induzierte \emph{metrische Topologie} auf $X$: Eine Teilmen
-$U\subset X$ heißt offen, wenn für jedes $x\in U$ ein $\varepsilon>0$ existiert
+heißt die von $d$ induzierte \emph{metrische Topologie} auf $X$: Eine Teilmenge
+$U\subset X$ ist offen, wenn für jedes $x\in U$ ein $\varepsilon>0$ existiert
 mit $B_\varepsilon(x)\subset U$. Wieder sind die Axiome erfüllt:
 \begin{enumerate}
 \item Für $\emptyset$ gibt es nichts zu zeigen. Für jedes $x\in X$ ist natürlich
