@@ -1,2 +1,3 @@
 **/build/*
 !**/build/build/*.pdf
+texput.log

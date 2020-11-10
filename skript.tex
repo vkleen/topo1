@@ -265,6 +265,25 @@ Erfüllt $\cal B$ nur die erste Bedingung, so ist $\cal B$ eine \emph{Subbasis
 für eine Topologie} auf $X$.
 \end{definition}
 
+\begin{theorem}\label{thm:subbase-base}
+Sei $\cal S$ eine Subbasis für eine Topologie auf $X$. Dann bildet die Menge
+\[
+\cal B = \{S_1\cap\dots\cap S_n : \textnormal{$n\in N$ und $S_1,\dots,S_n\in\cal S$}\}
+\]
+aller endlichen Schnitte von Mengen in $\cal S$ eine Basis für eine Topologie
+auf $X$.
+\end{theorem}
+\begin{proof}
+Nachdem $\bigcup \cal S = X$, überdeckt natürlich auch $\cal B$ ganz $X$. Seien
+weiter $B = S_1 \cap \dots \cap S_n$ und $B' = S'_1 \cap\dots\cap S'_n$ Elemente
+von $\cal B$. Dann ist
+\[
+B\cap B' = S_1\cap \dots\cap S_n\cap S'_1\cap\dots\cap S'_n\in\cal B.
+\]
+Insbesondere gibt es für jedes $x\in B\cap B'$ ein $B''\in\cal B$ mit $x\in
+B''\subset B\cap B'$, nämlich etwa $B'' = B\cap B'$.
+\end{proof}
+
 \begin{definition}
 Gegeben eine Basis oder Subbasis $\cal B$ für eine Topologie auf $X$ ist die von $\cal B$
 \emph{erzeugte Topologie} $\cal T_{\cal B}$ die kleinste Topologie auf $X$, die alle Mengen in
@@ -527,9 +546,9 @@ stetig.
 \begin{proof}
 Wenn $U\subset Z$ offen ist, dann auch
 \[
-(g\circ f)^{-1}(U) = g^{-1}(f^{-1}(U))
+(g\circ f)^{-1}(U) = f^{-1}(g^{-1}(U))
 \]
-also Urbild der offenen Menge $f^{-1}(U)$ unter $g$.
+also Urbild der offenen Menge $g^{-1}(U)$ unter $f$.
 \end{proof}
 \begin{definition}
 Sei $(X,\cal T)$ ein topologischer Raum und $Y\subset X$ eine beliebige
@@ -600,7 +619,7 @@ Funktion $\atanh\colon (-1,1)\to\RR$, die ebenso stetig ist. Man sagt, $\tanh$
 ist ein Homöomorphismus zwischen $\RR$ und $(-1,1)$.
 \begin{definition}
 Eine stetige Abbildung $f\colon X\to Y$ heißt \emph{Homöomorphismus}, wenn eine
-weiter stetige Abbildung $g\colon Y\to X$ existiert mit $g\circ f = \id_X$ und
+weitere stetige Abbildung $g\colon Y\to X$ existiert mit $g\circ f = \id_X$ und
 $f\circ g = \id_Y$.
 \end{definition}
 Das Thema dieses Kurses wird sein, Methoden kennenzulernen, mit denen man
@@ -619,4 +638,272 @@ Wir werden später sehen, dass nicht nur $e^{i\_}$ kein Homöomorphismus zwische
 $[0,2\pi)$ und $S^1$ ist, sondern dass es überhaupt keinen solchen Homöomorphismus
 geben kann.
 
+\subsection{Konstruktionen von topologischen Räumen}
+
+Wir haben bisher die euklidische Topologie auf $\RR^2 = \RR\times\RR$ gesehen.
+Ihre offenen Teilmengen können als beliebige Vereinigungen
+\[
+\bigcup_{i\in I} (a_i, b_i)\times (a'_i,b'_i)
+\]
+geschrieben werden, \ddh~Mengen der Form $(a,b)\times (a',b')$ bilden eine Basis
+für die euklidische Topologie auf $\RR^2$. Können wir analog eine Topologie
+auf einem Produktraum $X\times Y$ für beliebige topologische Räume $X$ und $Y$
+definieren?
+
+Sei $X = \prod_{i\in I} X_i$ ein Produkt beliebiger topologischer Räume $X_i$
+und sei $\pi_j\colon X\to X_j$ die Projektion auf den $j$-ten Faktor. Dann ist
+\[
+\cal S = \{ \pi_j^{-1}(U) : \textnormal{$j\in I$ und $U\subset X_j$ offen} \}
+\]
+eine Subbasis für eine Topologie auf $X$.
+\begin{definition}
+Die von $\cal S$ erzeugte Topologie auf $\prod_{i\in I} X_i$ heißt
+\emph{Produkttopologie}.
+\end{definition}
+Man sieht leicht, dass die nach \autoref{thm:subbase-base} zu $\cal S$ gehörige
+Basis aus den Mengen der Form $\prod_{i\in I} U_i$ besteht mit $U_i\subset X_i$ offen,
+aber mit nur endlich vielen der $U_i$ verschieden von $X_i$. Man kann auch eine
+größere Topologie auf $\prod_{i\in I} X_i$ definieren, wenn man diese letzte
+Bedingung vernachlässigt. Sie heißt \emph{Boxtopologie}, erfüllt aber viele der
+guten Eigenschaften der Produkttopologie nicht.
+
+\begin{lemma}\label{lem:products}
+Sei $X = \prod_{i\in I} X_i$ ein Produkt topologischer Räume $X_i$ versehen mit
+der Produkttopologie. Dann:
+\begin{enumerate}
+\item Die Projektionen $\pi_i\colon X\to X_i$ sind stetig.
+\item Die Produkttopologie ist die kleinste Topologie auf $X$ für die alle
+Projektionen $\pi_i\colon X\to X_i$ stetig sind, \ddh~ist $\cal T$ eine andere
+Topologie für die alle $\pi_i$ stetig sind, so ist jede in der Produkttopologie
+offene Menge $U$ bereits in $\cal T$ enthalten.
+\item Sei $Y$ ein topologischer Raum und für jedes $i\in I$ sei $f_i\colon Y\to
+X_i$ stetig. Dann existiert genau eine stetige Funktion $g\colon Y\to X$ mit
+$\pi_i\circ g = f_i$ für alle $i\in I$.
+\[
+\begin{tikzcd}
+Y \arrow[rd, "f_i"'] \arrow[r, "g", dashed] & X \mathrlap{{}= \prod_{i\in I} X_i} \arrow[d, "\pi_i"] \\
+{} & X_i
+\end{tikzcd}
+\]
+\end{enumerate}
+\end{lemma}
+\begin{proof}\leavevmode
+\begin{enumerate}
+\item Sei $U\subset X_i$ offen. Dann ist $\pi_i^{-1}(U)$ enthalten in der
+Subbasis, die die Produkttopologie auf $X$ definiert. Insbesondere ist damit
+$\pi_i^{-1}(U)$ natürlich offen.
+\item Sei $\cal T$ eine Topologie auf $X$, bezüglich der alle $\pi_i\colon X\to X_i$
+stetig sind, und sei $U\subset X_i$ offen. Dann ist $\pi_i^{-1}(U_i)$ offen
+bezüglich der Produkttopologie und auch bezüglich $\cal T$. Das heißt, dass die
+Subbasis $\cal S$, die die Produkttopologie erzeugt, in $\cal T$ enthalten ist.
+Das bedeutet dann aber, dass auch die von $\cal S$ erzeugte Topologie in $\cal
+T$ enthalten ist, was zu zeigen war.
+\item Die Abbildung $g\colon Y\to X$ ist definiert durch $g(y) = (f_i(y))_{i\in
+I}$ und durch die Bedingung $\pi_i\circ g = f_i$ für alle $i\in I$ eindeutig
+bestimmt. Es bleibt zu sehen, dass $g$ stetig ist. Dafür genügt es zu zeigen,
+dass die Urbilder der Elemente der Subbasis $\cal S$ in $Y$ offen sind. Sei
+dafür $i\in I$ und $U\subset X_i$ offen, so dass $\pi_i^{-1}(U)\in\cal S$. Dann
+ist
+\[
+g^{-1}(\pi_i^{-1}(U)) = (\pi_i\circ g)^{-1}(U) = f_i^{-1}(U)
+\]
+offen in $Y$, denn $f_i\colon Y\to X_i$ war als stetig angenommen.\qedhere
+\end{enumerate}
+\end{proof}
+
+Eigenschaft (iii) \autoref{lem:products} nennt man auch die \emph{universelle Eigenschaft} der
+Produkttopologie. Ein erstes Beispiel für die Produkttopologie haben wir schon
+mit der euklidischen Topologie auf $\RR^n = \RR\times\dots\times \RR$ gesehen.
+Man sieht leicht, dass sie tatsächlich mit der Produkttopologie übereinstimmt.
+Einfache Beispiele stetiger Funktionen bezüglich der Produkttopologie sind etwa
+die Addition $+\colon\RR\times\RR\to\RR$ und die Multiplikation
+$\cdot\colon\RR\times\RR\to\RR$.
+
+Genauso trägt die Menge $\Mat_m(\RR)$ von $m\times m$-Matrizen die
+Produkttopololgie, wir fassen sie als $\RR^{m^2}$ auf. Hier gibt es ebenso
+stetige Funktion $+\colon \Mat_m(\RR)\times\Mat_m(\RR)\to\Mat_m(\RR)$ und
+$\cdot\colon \Mat_m(\RR)\times\Mat_m(\RR)\to\Mat_m(\RR)$. In den beiden letzten
+Beispielen gibt es zusätzlich stetige Abbildungen
+$(\_)^{-1}\colon\RR\setminus\{0\}\times\RR\setminus\{0\}\to\RR\setminus\{0\}$
+und $(\_)^{-1}\colon\GL_m(\RR)\times\GL_m(\RR)\to\GL_m(\RR)$. Damit haben wir
+auch Beispiele der folgenden Definition.
+\begin{definition}
+Eine \emph{topologische Gruppe} ist eine Gruppe $(G,\cdot,e)$ zusammen mit einer
+Topologie auf $G$ bezüglich der die Abbildungen
+\begin{align*}
+G\times G\to G,\quad &(g,h)\mapsto g\cdot h \\
+\shortintertext{und} G\to G,\quad &g \mapsto g^{-1}
+\end{align*}
+stetig sind. Dabei versteht sich $G\times G$ als mit der Produkttopologie
+versehen.
+\end{definition}
+
+Wir definieren eine Äquivalenzrelation $\sim$ auf $\RR$ indem wir für $x,y\in
+\RR$ genau dann $x\sim y$ schreiben, wenn $x - y\in\ZZ$. Damit können wir die
+Quotientenmenge $\RR/{\sim} \eqqcolon \RR/\ZZ$ bilden. Dann können wir $\RR/\ZZ$
+auch mit einer Topologie versehen, bezüglich der die Projektion $\RR\to\RR/\ZZ$,
+die eine reelle Zahl $x$ auf ihre Äquivalenzklasse $[z]$ in $\RR/\ZZ$ abbildet,
+stetig ist. Allgemeiner definieren wir wie folgt.
+\begin{definition}\label{defn:quotients}
+Sei $X$ ein topologischer Raum und $\sim$ eine Äquivalenzrelation auf $X$. Wir
+bezeichnen mit $X/{\sim}$ die Menge der Äquivalenzklassen bezüglich $\sim$ und
+mit $q\colon X\to X/{\sim}$ die Quotientenabbildung. Dann ist
+\[
+\cal T = \{ U \subset X/{\sim} : \textnormal{$q^{-1}(U)$ offen in $X$} \}
+\]
+eine Topologie auf $X/{\sim}$. Sie heißt die \emph{Quotiententopologie}.
+\end{definition}
+\begin{lemma}\label{lem:quotients}
+Mit der Notation wie in \autoref{defn:quotients} ist die Quotiententopologie
+$\cal T$ ist tatsächlich eine Topologie. Weiterhin gilt:
+\begin{enumerate}
+\item Die Quotientenabbildung $q\colon X\to X/{\sim}$ ist stetig.
+\item Die Quotiententopologie $\cal T$ ist die größte Topologie bezüglich der $q$ stetig
+ist, \ddh~ist $\cal T'$ eine weitere Topologie auf $X/{\sim}$ bezüglich der $q$
+stetig ist, so ist $\cal T'\subset\cal T$.
+\item Ist $f\colon X\to Y$ stetig mit $f(x) = f(y)$ für alle $x,y\in X$ mit
+$x\sim y$, so existiert genau eine stetige Abbildung $g\colon X/{\sim}\to Y$ mit
+$g\circ q = f$.
+\[
+\begin{tikzcd}
+X \arrow[r,"f"] \arrow[d, "q"'] & Y \\
+X/{\sim} \arrow[ur, "g"']
+\end{tikzcd}
+\]
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Natürlich sind $q^{-1}(\emptyset) = \emptyset$ und $q^{-1}(X/{\sim}) = X$ offen
+in $X$. Sind $U, V\subset X/{\sim}$ offen in der Quotiententopologie, so ist
+$q^{-1}(U\cap V) = q^{-1}(U)\cap q^{-1}(V)$ offen in $X$ und damit auch $U\cap
+V$ offen im Quotienten.
+
+Ist schließlich $\{U_i\}_{i\in I}$ eine Familie offener Mengen in $X/{\sim}$, so
+ist $q^{-1}(U_i)$ offen in $X$ für jedes $i\in I$ und deshalb auch $q^{-1}(\bigcup_{i\in I} U_i) =
+\bigcup_{i\in I}q^{-1}(U_i)$ offen in $X$. Das heißt, $\bigcup_{i\in I} U_i$ ist
+offen im Quotienten $X/{\sim}$.
+\begin{enumerate}
+\item folgt direkt aus der Definition der Quotiententopologie.
+\item Sei $\cal T'$ eine Topologie auf $X/{\sim}$ bezüglich der $q$ stetig ist.
+Dann ist für jede Menge $U\in\cal T'$ das Urbild $q^{-1}(U)$ offen in $X$. Aber
+das heißt genau, dass $U\in\cal T$. Da $U$ beliebig war, bedeutet das $\cal
+T'\subset\cal T$.
+\item Gegeben eine Äquivalenzklasse $[x]\in X/{\sim}$ definieren wir $g([x]) =
+f(x)$. Das ist möglich, denn wäre $[x] = [y]$, \ddh~$x\sim y$, für ein weiteres
+ $y\in X$, so wäre $f(x) = f(y)$ und es gibt keine Mehrdeutigkeit in dieser
+Definition von $g$. Damit haben wir auch sofort, dass $(g\circ q)(x) = g([x]) =
+f(x)$ für alle $x\in X$ und $g$ ist durch diese Bedingung eindeutig bestimmt. Es
+bleibt zu zeigen, dass $g$ stetig ist. Sei dafür $U\subset Y$ offen. Dann ist
+\[
+q^{-1}(g^{-1}(U)) = (g\circ q)^{-1}(U) = f^{-1}(U)
+\]
+offen in $X$ und damit $g^{-1}(U)$ offen in $X/{\sim}$.\qedhere
+\end{enumerate}
+\end{proof}
+Auch hier nennt man Eigenschaft (iii) in \autoref{lem:quotients} die
+\emph{universelle Eigenschaft} der Quotiententopologie auf $X/{\sim}$. Sie
+charakterisiert die Quotiententopologie bis auf Homöomorphismus.
+\begin{definition}
+Seien $X$ und $Y$ topologische Räume. Eine Abbildung $f\colon X\to Y$ heißt
+\emph{offen}, wenn für jede offene Menge $U\subset X$ das Bild $f(U)\subset Y$
+offen ist.
+\end{definition}
+Mithilfe dieser Definition können wir charakterisieren, wann eine stetige
+Bijektion ein Homöomorphismus ist. In der Tat ist eine solche stetige Bijektion
+$f\colon X\to Y$ genau dann ein Homöomorphismus, wenn sie offen ist. Denn für
+alle Mengen $U\subset X$ ist $(f^{-1})^{-1}(U) = f(U)$ und damit eine bijektive Abbildung
+genau dann offen, wenn ihr Inverses stetig ist.
+
+Wir hatten die Quotiententopologie am Beispiel $\RR/\ZZ$ eingeführt, wobei in
+$\RR/\ZZ$ genau die reellen Zahlen identifiziert wurden, deren Differenz eine
+ganze Zahl ist. Wir wollen nun zeigen, dass $\RR/\ZZ$ mit der Quotiententopologie
+homöomorph zum Einheitskreis $S^1$ ist. Man betrachte dafür die stetige Abbildung
+\[
+f\colon \RR\to S^1,\quad f(x) = e^{2\pi i x}.
+\]
+Nach der universellen Eigenschaft der Quotiententopologie gibt es eine eindeutig
+bestimmte stetige Abbildung $g\colon \RR/\ZZ\to S^1$, so dass
+\[
+\begin{tikzcd}
+\RR \arrow[r, "f"] \arrow[d, "q"'] & S^1 \\
+\RR/\ZZ \arrow[ur, "g"]
+\end{tikzcd}
+\]
+kommutiert. Diese $g$ ist surjektiv, denn $f$ war bereits surjektiv. Außerdem
+ist $g$ injektiv, denn $e^{2\pi i x} = e^{2\pi i x'}$ ist genau dann der Fall,
+wenn $x-x'\in\ZZ$. Das heißt, um zu sehen, dass $g$ ein Homöomorphismus ist,
+genügt es zu zeigen, dass $g$ eine offene Abbildung ist. Zuerst sehen wir, dass
+$f$ selbst eine offene Abbildung ist. Ist nämlich $(-\varepsilon,\varepsilon)\subset\RR$
+mit $\varepsilon \leq 1/2/$ ein offenes Intervall, so sieht man leicht, dass
+$f((-\varepsilon,\varepsilon))\subset S^1$ offen ist. Außerdem ist $f(x+x')
+=f(x)f(x')$ und $f(0) = 1$ und damit sind auch die Bilder aller Intervalle der
+Form $(x-\varepsilon,x+\varepsilon)$ mit $\varepsilon\leq 1/2$ offen in $S^1$.
+Diese offenen Intervalle bilden eine Basis für die euklidische Topologie auf
+$\RR$ und deshalb  sehen wir, dass $f$ eine offene
+Abbildung sein muss. Ist weiter $U\subset\RR/\ZZ$ offen, so ist $g(U) = f(q^{-1}(U))$ offen. Also ist
+$g$ eine offene Abbildung und nach unserer vorherigen Bemerkung folgt, dass $g$
+ein Homöomorphismus ist.
+
+Für ein weiteres Beispiel sei $X=[0,1]$ mit der von $\RR$ induzierten
+Teilraumtopologie. Wir führen eine Äquivalenzrelation $\sim$ auf $X$ ein, indem
+wir $x\sim x'$ genau dann schreiben, wenn entweder $x=x'$ oder $x,x'\in\{0,1\}$.
+Dann ist der Quotient $X/{\sim}$ ebenfalls homöomorph zum Einheitskreis $S^1$.
+Wir können nämlich unser Argument von oben mit der Einschränkung von $f$ auf
+$[0,1]$ wortgleich wiederholen.
+
+Sei nun $X = [0,1]^2$ mit der von $\RR^2$ induzierten Teilraumtopologie mit der
+Äquivalenzrelation $\sim$, bezüglich der genau dann $(x,y)\sim (x',y')$ gilt, wenn
+entweder $(x,y) = (x',y')$ gilt, oder $x,x'\in\{0,1\}$ mit $y=y'$, oder $x=x'$
+mit $y,y'\in\{0,1\}$, oder wenn $\{x,x'\} = \{y,y'\} = \{0,1\}$. Der Quotient
+$X/{\sim}$ ist dann homöomorph zum Torus $S^1\times S^1$.
+
+Für ein etwas exotischeres Beispiel sei $X = \RR\times\{0,1\}\subset \RR^2$ mit
+der von $\RR^2$ induzierten Teilraumtopologie. Wir definieren wieder eine Äquivalenzrelation
+$\sim$ auf $X$, indem wir $(x,y)\sim (x'y')$ genau dann schreiben, wenn entweder
+$(x,y) = (x',y')$ oder $x = x'\neq 0$. Der Quotient $X/{\sim}$ ähnelt dann der
+reellen Geraden $\RR$, enthält aber \emph{zwei} Punkte, die sich wie der
+Ursprung in $\RR$ verhalten. Entsprechend nennt man $X/{\sim}$ die \emph{Gerade
+mit zwei Ursprüngen}.
+
+\begin{definition}
+Sei $X$ ein topologischer Raum und $A\subset X$ eine beliebige Teilmenge. Dann
+definieren wir eine Äquivalenzrelation $\sim_A$ auf $X$, indem wir genau dann
+$x\sim_A x'$ schreiben, wenn entweder $x=x'$ oder $x,x'\in A$. Den Quotienten
+$X/{\sim_A}$ bezeichnen wir dann kurz als $X/A$.
+\end{definition}
+
+Letzere Definition haben wir bereits in einem Beispiel gesehen. Nämlich ist
+$X/\{0,1\}$ homöomorph zu $S^1$. Betrachten wir andererseits etwa $X/[0,1]$, so
+stellen wir fest, dass dieser Quotient wieder homöomorph zu $\RR$ ist. Wir haben
+nämlich eine stetige Abbildung
+\[
+f\colon \RR\to\RR,\quad f(x) = \begin{cases}
+x & x<0 \\
+0 & x\in [0,1] \\
+x-1 & x > 1
+\end{cases}
+\]
+die die Äquivalenzrelation $\sim_{[0,1]}$ auf $\RR$ respektiert. Die universelle
+Eigenschaft der Quotiententopologie liefert dann wieder eine stetige Abbildung
+$g\colon \RR/[0,1]\to\RR$, so dass
+\[
+\begin{tikzcd}
+\RR \arrow[d] \arrow[r, "f"] & \RR \\
+\RR/[0,1] \arrow[ur, "g"']
+\end{tikzcd}
+\]
+kommutiert. Dann ist $g$ augenscheinlich bijektiv und sogar ein Homöomorphismus.
+Sei dafür $U\subset \RR/[0,1]$ offen in der Quotiententopologie und sei $V =
+q^{-1}(U)$. Dann gibt es verschieden Fälle:
+\begin{enumerate}
+\item Ist $V\cap [0,1] = \emptyset$ so ist $f(V) = g(U)$ offen.
+\item Ist $[0,1]\subset V$, so ist $f(V) = g(U)$ ebenso offen.
+\item Ist $[0,1]\cap V\neq\emptyset$ aber $[0,1]\not\subset V$, so ist $V =
+([0,1]\cap V) \cup (V \setminus [0,1])$ und man sieht ebenso leicht, dass $f(V) =
+g(U)$ offen ist.
+\end{enumerate}
+Im Gegensatz zu $\RR/[0,1]$ ist $\RR/(0,1)$ nicht homöomorph zu $\RR$: Sei
+$q\colon R\to\RR/(0,1)$ die Quotientenabbildung. Dann ist die einelementige Menge
+$\{q(1/2)\}$ offen in $\RR/(0,1)$, denn das Urbild $q^{-1}(\{q(1/2)\}) = (0,1)$ ist offen
+in $\RR$. Aber keine offene Menge in $\RR$ enthält nur ein Element.
 \end{document}
