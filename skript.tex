@@ -29,7 +29,7 @@ c\|x\| < \|x\|' < C\|x\|
 \]
 für alle $x\in \RR$.
 \end{theorem}
-\begin{corollary}
+\begin{corollary}\label{cor:continuity-equiv-norms}
 Der Stetigkeitsbegriff für Funktionen $f\colon \RR^n\to\RR$ hängt nicht von der
 gewählten Norm auf $\RR^n$ oder $\RR$ ab.
 \end{corollary}
@@ -183,4 +183,440 @@ damit
 B_\varepsilon(x)\subset U_j\subset\bigcup_{i\in I} U_i.
 \]
 \end{enumerate}
+
+Hier noch einige abstraktere Beispiele für topologische Räume: Jede Menge $X$
+kann mit der \emph{trivialen Topologie}\footnote{Oder der \emph{indiskreten
+Topologie} oder der \emph{Klumpentopologie}} $\{\emptyset, X\}$ versehen
+werden. Genauso kann jede Menge $X$ mit der \emph{diskreten Topologie}
+$\powerset{X}$, der Potenzmenge von $X$, versehen werden. Für beide sind
+die Axiome klar.
+
+Seien verschachtelte topologische Räume $U_1\subset U_2\subset\dots$, so dass
+die Inklusionen $\iota_{i,j}\colon U_i\into U_j$ stetig sind, gegeben. Letzteres
+heißt, dass wann immer $V\subset U_j$ offen ist, so ist auch
+$\iota_{i,j}^{-1}(U_j) = V\cap U_i$ offen. In dieser Situation trägt die
+Vereinigung $U = \bigcup_{i=1}^\infty U_i$ eine Topologie, genannt die
+\emph{finale Topologie}. In ihr ist eine Teilmenge $V\subset U$ genau dann
+offen, wenn $V\cap U_i$ in $U_i$ für alle $i$ offen ist. Wir überprüfen die
+Axiome:
+\begin{enumerate}
+\item Natürlich sind $\emptyset$ und $U$ selbst offen.
+\item Seien $V,W\subset U$ offen. Dann ist $(V\cap W)\cap U_i = (V\cap
+U_i)\cap(W\cap U_i)$ und letzteres ist ein endlicher Schnitt offener Mengen in
+$U_i$. Also ist auch $V\cap W$ offen in $U$.
+\item Ist $\{V_j\}_{j\in J}$ eine Familie offener Mengen in $U$, so ist wieder
+\[
+U_i\cap \bigcup_{j\in J} V_j = \bigcup_{j\in J} U_i\cap V_j
+\]
+eine Vereinigung von offenen Teilmengen von $U_i$. Also ist auch $\bigcup_{j\in
+J} V_j$ offen in $U$.
+\end{enumerate}
+
+\begin{definition}
+Sei $(X,\cal T)$ ein topologischer Raum. Eine Teilmenge $A\subset X$ heißt
+\emph{abgeschlossen}, wenn $\compl{A} = X\setminus A\in\cal T$.
+\end{definition}
+
+Der Begriff \enquote{abgeschlossen} hat nichts mit \enquote{nicht offen} zu tun!
+Zum Beispiel sind in jedem topologischen Raum $\emptyset$ und $X$ sowohl
+abgeschlossen als auch offen.
+
+\begin{theorem}
+Eine Funktion $f\colon X\to Y$ zwischen topologischen Räumen ist genau dann
+stetig, wenn für alle abgeschlossenen $A\subset Y$ das Urbild $f^{-1}(A)$ in $X$
+abgeschlossen ist.
+\end{theorem}
+\begin{proof}
+Für jede Menge $A\subset Y$ ist $f^{-1}(\compl{A}) = f^{-1}(Y\setminus A) =
+X\setminus f^{-1}(A)$.
+\end{proof}
+
+\begin{definition}
+Gegebenen einen topologischen Raum $X$ und eine Teilmenge $M\subset X$,
+definiere
+\begin{align*}
+\cl{M} &= \bigcap_{\substack{A\supset M\\
+\mathclap{\textnormal{abgeschlossen}}}}
+A,\qquad\textnormal{den \emph{Abschluss} von $M$ in $X$,} \\
+\Int{M} &= \bigcup_{\substack{U\subset M\\ \mathclap{\textnormal{offen}}}}
+U,\qquad\textnormal{das \emph{Innere} von $M$} \\
+\shortintertext{und}
+\Bdry{M} &= \cl{M}\setminus\Int{M},\qquad\textnormal{den \emph{Rand} von $M$.}
+\end{align*}
+\end{definition}
+
+Zum Beispiel ist für $M=[0,1)\subset\RR$ in der euklidischen Topologie der
+Abschluss $\cl{M} = [0,1]$, das Innere $\Int{M} = (0,1)$ und der Rand $\Bdry{M}
+= \{0,1\}$. Für $M=\QQ$ haben wir den Abschluss $\cl{\QQ} = \RR$ und das Innere
+$\Int{\QQ} = \emptyset$ und damit auch den Rand $\Bdry{\QQ} = \RR$. Allgemein
+heißt eine Teilmenge $M\subset X$ in einem topologischen Raum $X$ \emph{dicht},
+wenn $\cl{M} = X$.
+
+\subsection{Basen für Topologien}
+\begin{definition}
+Eine \emph{Basis für eine Topologie} auf $X$ ist eine Familie $\cal
+B\subset\powerset{X}$ mit:
+\begin{enumerate}
+\item $\bigcup\cal B = X$, \ddh~$\cal B$ überdeckt $X$,
+\item für je zwei $U,U'\in\cal B$ und $x\in U\cap U'$ gibt es ein $U''\in\cal
+B$ mit $x\in U''\subset U\cap U'$.
+\end{enumerate}
+Erfüllt $\cal B$ nur die erste Bedingung, so ist $\cal B$ eine \emph{Subbasis
+für eine Topologie} auf $X$.
+\end{definition}
+
+\begin{definition}
+Gegeben eine Basis oder Subbasis $\cal B$ für eine Topologie auf $X$ ist die von $\cal B$
+\emph{erzeugte Topologie} $\cal T_{\cal B}$ die kleinste Topologie auf $X$, die alle Mengen in
+$\cal B$ enthält.
+\end{definition}
+\begin{theorem}
+Für eine Basis $\cal B$ ist die erzeugte Topoologie $\cal T_{\cal B}$ gegeben
+durch
+\[
+\cal T = \left\{\bigcup_{i\in I} B_i : \text{$I$ beliebig und $B_i\in\cal B$
+für alle $i\in I$}\right\}.
+\]
+\end{theorem}
+\begin{proof}
+Zuerst ist für jede Familie $\{B_i\}_{i\in I}$ mit $B_i\in\cal B$ natürlich
+$\bigcup_{i\in I} B_i\in\cal T_{\cal B}$. Das heißt, wir haben die Inklusion
+$\cal T\subset\cal T_{\cal B}$. Nachdem $\cal T_{\cal B}$ aber die kleinste
+Topologie ist, die $\cal B$ enthält, und $\cal T$ ebenso $\cal B$ enthält,
+genügt es damit zu zeigen, dass $\cal T$ bereits eine Topologie ist.
+
+Dafür ist zunächst $\emptyset\in\cal T$ und $X\in\cal T$, denn es ist $\emptyset
+= \bigcup\emptyset$ und, da $\cal B$ eine Basis für eine Topologie ist,
+$\bigcup_{U\in \cal B} U = X$.
+
+Sei nun $U = \bigcup_{i\in I} U_i$ und $V = \bigcup_{j\in J} V_j$ mit
+$U_i,V_j\in\cal B$. Sei weiter $x\in U\cap V$, \ddh~es gibt ein $i\in I$ und ein
+$j\in J$ mit $x\in U_i\cap V_j$. Da $\cal B$ eine Basis für eine Topologie auf
+$X$ ist, gibt es dann ein $W_x\in\cal B$ mit $x\in W_x\subset U_i\cap V_j$. Aber
+dann ist $U\cap V = \bigcup_{x\in U\cap V} W_x\in\cal T$.
+
+Ist weiter $\{U_i\}_{i\in I}$ eine Familie von Teilmenen von $X$ mit
+$U_i\in\cal T$, so können wir $U_i = \bigcup_{j\in J_i} B_j$ mit $B_j\in\cal B$
+schreiben. Aber dann ist
+\[
+\bigcup_{i\in I} U_i = \bigcup_{i\in I}\bigcup_{j\in J_i} B_j
+\]
+eine Vereinigung von Mengen in $\cal B$ und deshalb in $\cal T$.
+\end{proof}
+
+Ist $\cal B$ eine Basis für eine Topologie auf $X$  und $\cal T$ eine Topologie
+auf $X$, so nennt man $\cal B$ ein Basis für $\cal T$, wenn $\cal T = \cal T_{\cal B}$.
+Zum Beispiel können wir, gegeben eine Metrik $d\colon X\times X\to\RR$, eine
+Basis für die metrische Topologie finden: Sei
+\[
+\cal B = \{B_r(x) : x\in X, r>0\}.
+\]
+Dann ist $\bigcup\cal B = X$, denn für jedes $x\in X$ ist $x\in B_r(x)$ für
+alle $r>0$. Ist weiter $z\in B_\varepsilon(x)\cap B_\delta(y)$, so ist
+$d(z,x)<\varepsilon$ und $d(z,y)<\delta$. Setze $r = \min\{\varepsilon-d(z,x),
+\delta - d(z,y)\}$. Mit dieser Wahl ist $B_r(z)\subset B_\varepsilon(x)\cap
+B_\delta(y)$: Für jedes $p\in B_r(z)$ ist
+\begin{align*}
+d(p,x) &\leq d(p,z) + d(z,x) < r + d(z,x) \\
+&\leq \varepsilon - d(z,x) + d(z,x) = \varepsilon \\
+\shortintertext{und} d(p,y) &\leq d(p,z) + d(z,y) < r + d(z,y) \\
+&\leq \delta - d(z,y) + d(z,y) = \delta.
+\end{align*}
+Also ist $\cal B$ tatsächlich eine Basis für eine Topologie auf $X$. Dass die
+von $\cal B$ erzeugte Topologie genau die metrische Topologie ist, folgt aus dem
+nächsten Satz.
+\begin{theorem}\label{thm:gentop-char}
+Sei $\cal B$ eine Basis für eine Topologie auf einer Menge $X$. Für eine
+Teilmenge $U\subset X$ sind dann äquivalent:
+\begin{enumerate}
+\item $U\in\cal T_{\cal B}$
+\item Für jedes $x\in U$ gibt es ein $V\in \cal B$ mit $x\in V\subset U$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Sei zuerst $U\in\cal T_{\cal B}$, etwa $U = \bigcup_{i\in I} U_i$ mit
+$U_i\in\cal B$. Aber das heißt, dass es für jedes $x\in U$ ein $i\in I$ gibt,
+mit $x\in U_i\subset U$.
+
+Sei andererseits für jedes $x\in U$ ein $V_x\in\cal B$ mit $x\in V_x\subset U$
+gewählt. Dann ist $U = \bigcup_{x\in U} V_x$.
+\end{proof}
+
+Mithilfe von Basen können wir Stetigkeit für Funktionen zwischen topologischen
+Räumen so umformulieren, dass die Bedingung der ursprünglichen
+$\varepsilon$-$\delta$-Definition für metrische Räume ähnelt.
+\begin{theorem}\label{thm:continuity}
+Sei $f\colon X\to Y$ eine Funktion und $\cal B_X$ eine Basis für eine Topologie
+auf $X$ und $\cal B_Y$ eine Basis für eine Topologie auf $Y$. Dann sind die
+folgenden Aussagen äquivalent:
+\begin{enumerate}
+\item $f$ ist stetig bezüglich $\cal T_{\cal B_X}$ und $\cal T_{\cal B_Y}$.
+\item Für aller $U\in\cal B_Y$ ist $f^{-1}(U)\in\cal T_{\cal B_X}$.
+\item Für jedes $x\in X$ und jedes $U\in\cal B_Y$ mit $f(x)\in U$ existiert ein
+$V\in\cal B_X$ mit $x\in V$ und $f(V)\subset U$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Die Richtung (i$\Rightarrow$ii) ist klar. Für (ii$\Rightarrow$iii) sei $U\in\cal
+B_Y$ mit $f(x)\in U$. Dann ist $f^{-1}(U)$ offen in $\cal T_{\cal B_X}$ und
+$x\in f^{-1}(U)$. Also gibt es nach \autoref{thm:gentop-char} ein $V\in\cal B_X$
+mit $x\in V\subset f^{-1}(U)$, \ddh~$f(V)\subset U$. Das ist aber genau (iii).
+
+Für (iii$\Rightarrow$i) sei $U\subset Y$ offen in $\cal T_{\cal B_Y}$ und $x\in
+f^{-1}(U)$, \ddh~$f(x)\in U$. Es gibt also nach \autoref{thm:gentop-char} ein
+$U'\subset U$ mit $f(x)\in U'$ und $U'\in\cal B_Y$. Wegen (iii) gibt es dann ein
+$V\subset X$ mit $V\in\cal B_X$, $x\in V$ und $f(V)\subset U'$, \ddh~$V\subset
+f^{-1}(U')\subset f^{-1}(U)$. Aber wieder nach \autoref{thm:gentop-char} genügt
+das, um zu sehen, dass $f^{-1}(U)\in\cal T_{\cal B_X}$.
+\end{proof}
+
+Mit \autoref{thm:gentop-char} können wir einen topologischen Beweis für
+\autoref{cor:continuity-equiv-norms} geben. Insbesondere sehen wir, dass die
+euklidische Topologie auf $\RR^n$ tatsächlich den Begriff der Stetigkeit
+charakterisiert, unabhängig von der gewählten Norm.
+\begin{theorem}
+Sei $V$ ein $\RR$-Vektorraum und $\|\_\|$, $\|\_\|'$ zwei äquivalente Normen
+auf $V$. Dann sind die entsprechenden metrischen Topologien gleich: $\cal
+T_{\|\_\|} = \cal T_{\|\_\|'}$.
+\end{theorem}
+\begin{proof}
+Da $\|\_\|$ und $\|\_\|'$ äquivalent sind, seien Konstanten $c,C>0$ mit
+$c\|x\|\leq \|x\|' \leq C\|x\|$ für alle $x\in V$ gegeben. Schreiben wir
+\begin{align*}
+B_\varepsilon(x) &= \{y\in V : \|x-y\|<\varepsilon\} \\
+\shortintertext{und} B'_\varepsilon(x) &= \{y\in V : \|x-y\|'<\varepsilon\},
+\end{align*}
+so bilden $\{B_\varepsilon(x) : \textnormal{$x\in V$, $\varepsilon>0$}\}$ und
+$\{B'_\varepsilon(x) : \textnormal{$x\in V$, $\varepsilon>0$}\}$ Basen für $\cal T_{\|\_\|}$
+beziehungsweise $\cal T_{\|\_\|'}$.
+\begin{enumerate}
+\item Jeder Ball $B_\varepsilon'(x)$ ist offen in $\cal T_{\|\_\|}$: Sei $y\in
+B_\varepsilon'(x)$ und $\delta = (\varepsilon - \|y-x\|')/C$. Für $z\in
+B_\delta(y)$ ist dann
+\[
+\|z-x\|'\leq \|z -y\|' + \|y-x\|' \leq C\|z-y\| + \|y-x\|' < C\delta + \|y-x\|'
+= \varepsilon,
+\]
+also $y\in B_\delta(y)\subset B_\varepsilon'(x)$.
+\item Sei $U\in\cal T_{\|\_\|}$ und $x\in U$. Dann existiert ein $\varepsilon>0$
+mit $B_\varepsilon(x)\subset U$. Setze $\delta = c\varepsilon$. Für $y\in
+B_\delta'(x)$ ist dann
+\[
+\|y-x\| \leq \frac{1}{c}\|y-x\|' < \frac{\delta}{c} = \varepsilon,
+\]
+also $y\in B_\varepsilon(x)$. Es folgt also, dass $B_\delta'(x)\subset
+B_\varepsilon(x)\subset U$, und insgesamt nach \autoref{thm:gentop-char}, dass
+$\cal T_{\|\_\|} = \cal T_{\|\_\|'}$.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Ein topologischer Raum $X$ erfüllt das \emph{zweite Abzählbarkeitsaxiom}, wenn die
+Topologie auf $X$ von einer höchstens abzählbar unendlichen Basis erzeugt wird.
+\end{definition}
+
+\subsection{Weitere Eigenschaften stetiger Funktionen}
+
+Wie in metrischen Räumen können wir im Allgemeinen Folgen und ihre Konvergenz
+betrachten. Allerdings ist der Begriff in allgemeinen topologischen Räumen weit
+weniger hilfreich, wie wir bald sehen werden.
+
+\begin{definition}
+Eine Folge $\{x_n\}_{n\in\NN}$ in einem topologischen Raum $X$
+\emph{konvergiert gegen $x\in X$}, in Symbolen $x_n\cto x$, falls für jede
+offene Menge $U\subset X$ mit $x\in U$ alle bis auf endlich viele der $x_n$ in
+$U$ liegen.
+\end{definition}
+
+Im Gegensatz zu unserer Erfahrung in metrischen Räumen muss der Grenzwert einer
+konvergenten Folge einem allgemeinen topologischen Raum nicht eindeutig bestimmt
+sein. Sei zum Beispiel $X = \{0,1\}$ mit der Topologie $\{\emptyset, X, \{0\}\}$
+und betrachte die konstante Folge $x_n = 0$ für alle $n\in\NN$. Dann gilt
+offenbar $x_n\cto 0$, aber $\{x_n\}_n$ konvergiert auch gegen $1$! Die einzige
+offene Menge in $X$, die $1$ enthält, ist nämlich der ganze Raum $X$.
+
+Nichtsdestotrotz lassen sich einige Sätze über konvergente Folgen für allgemeine
+topologische Räume übertragen. Zum Beispiel ließen sich in metrischen Räume
+stetige Funktionen als genau die folgenstetigen Funktionen charakterisieren.
+
+\begin{theorem}
+Stetige Funktionen sind \emph{folgenstetig}: Wenn $x_n\cto x$ in $X$ und
+$f\colon X\to Y$ stetig ist, dann ist $f(x_n)\cto f(x)$ in $Y$.
+\end{theorem}
+\begin{proof}
+Sei $U\subset Y$ offen mit $f(x)\in U$. Dann ist $f^{-1}(U)$ offen und $x\in
+f^{-1}(U)$. Weil $x_n\cto x$ liegen dann alle bis auf endlich viele der $x_n$ in
+$f^{-1}(U)$ und damit auch alle bis auf endlich viele der $f(x_n)$ ind $U$.
+\end{proof}
+
+In allgemeinen topologischen Räumen ist der Umkehrschluss aber falsch! Sei zum
+Beispiel $X$ eine überabzählbar unendliche Menge. Man definierte die
+\emph{ko-abzählbare Topologie} auf $X$, indem man eine Menge $U\subset X$ offen
+nennt, wenn entweder $U = \emptyset$ oder $X\setminus U$ höchstens abzählbar
+unendlich ist. Sei $\{p_n\}_{n\in\NN}$ eine Folge in $X$, die nicht schließlich
+konstant ist, \ddh~es gibt kein $p\in X$ und $N\in\NN$ mit $p_n = p$ für alle
+$n\geq N$. Wir zeigen, dass dann $\{p_n\}_n$ nicht konvergent sein kann. Sei
+dafür $p\in X$ und setze $U = X\setminus\{p_n : \textnormal{$p_n\neq p$,
+$n\in\NN$}\}$. Da $X$ die ko-abzählbare Topologie trägt ist dann $U$ offen und
+$p\in U$. Außerdem gibt es für jedes $N\in\NN$ ein $n\geq N$ mit $p_n\neq p$,
+\ddh~$p_n\not\in U$, denn ansonsten wäre $\{p_n\}_n$ schließlich konstant gleich
+$p$. Insbesondere kann $\{p_n\}_n$ nicht gegen $p$ konvergieren.
+
+Aber $p\in X$ war beliebig gewählt, also ist keine Folge $\{x_n\}_n$ in $X$ konvergent,
+außer $\{x_n\}_n$ ist schließlich konstant. Natürlich ist jede schließlich
+konstante Folge in jedem topologischen Raum konvergent. Das bedeutet, dass jede
+Funktion $f\colon X\to Y$ folgenstetig ist, denn schließlich konstante Folgen
+werden immer auf schließlich konstante Folgen abgebildet. Hingegen ist es nicht
+schwer eine Funktion auf $X$ zu konstruieren, die nicht stetig ist. Zum Beispiel
+ist die Identitätsabbildung aufgefasst als Funktion von $X$ mit der
+ko-abzählbaren Topologie nach $X$ mit der diskreten Topologie nicht stetig: Da
+$X$ überabzählbar unendlich ist, muss es eine Menge in $X$ geben, die nicht
+offen ist.
+
+Um ein Kriterium an einen topologischen Raum $X$ zu finden, unter dem folgenstetige Funktionen
+$X\to Y$ automatisch stetig sind, führen wir zuerst die folgende Variante von
+Basen für eine Topologie ein.
+
+\begin{definition}
+Eine Familie von offenen Mengen $\cal U$, die allen einen Punkt $x\in X$
+enthalten, heißt \emph{Umgebungsbasis} für $x\in X$, falls für jede offene Menge
+$V\subset X$ mit $x\in V$ ein $U\in\cal U$ existiert mit $x\in U\subset V$.
+\end{definition}
+
+Zum Beispiel ist die Familie $\{B_\varepsilon(x) : \varepsilon>0\}$ für einen
+Punkt $x\in X$ in einem metrischen Raum $X$ eine Umgebungsbasis. Oder
+allgemeiner ist, gegeben eine Basis $\cal B$ für eine Topologie auf einer Menge
+$X$, die Familie $\{U\in\cal B : x\in U\}$ eine Umgebungsbasis für $x\in X$
+bezüglich der erzeugten Topologie $\cal T_{\cal B}$.
+
+\begin{definition}
+Ein topologischer Raum $X$ erfüllt das \emph{erste Abzählbarkeitsaxiom} wenn
+jedes $x\in X$ eine höchstens abzählbar unendliche Umgebungsbasis hat.
+\end{definition}
+
+\begin{theorem}
+Angenommen $X$ erfüllt das erste Abzählbarkeitsaxiom. Dann ist jede
+folgenstetige Funktion $f\colon X\to Y$ stetig.
+\end{theorem}
+\begin{proof}
+Sei $x\in X$ und $f(x)\in U$ mit $U\subset Y$ offen. Dann ist $x\in f^{-1}(U)$
+und es gibt eine höchstens abzählbar unendliche Umgebungsbasis für $x$. Wir
+können diese Umgebungsbasis $\{V_i : i\in\NN\}$ so wählen, dass
+\[
+V_0\supset V_1\supset V_2\supset\cdots\ni x,
+\]
+denn ist $\{W_i : i\in\NN\}$ eine beliebige, höchstens abzählbare Umgebungsbasis
+für $x$, setze $V_i = \bigcap_{j\leq i} W_j$. Angenommen es wäre möglich, dass
+ $V_n\not\subset f^{-1}(U)$ für alle $n\in\NN$. Wählt man dann $x_n\in
+V_n\setminus f^{-1}(U)$ für $n\in\NN$, erhält man eine Folge $\{x_n\}_n$, die
+gegen $x$ konvergiert. Da $f$ folgenstetig ist, konvergiert dann auch
+$\{f(x_n)\}$ gegen $f(x)$. Da $U$ offen ist, gibt es dann ein $N\in\NN$,
+so dass $f(x_n)\in U$ für alle $n\geq N$. Insbesondere ist also $x_N\in
+f^{-1}(U)$, obwohl wir $x_N\in V_N\setminus f^{-1}(U)$ gewählt hatten.
+
+Es folgt also, dass es eine offene Menge $V_N$ gibt mit $x\in V_N\subset
+f^{-1}(U)$. Da $x$ beliebig gewählt war, muss damit nach \autoref{thm:continuity}
+die Funktion $f$ stetig sein.
+\end{proof}
+
+\begin{theorem}
+Gegeben topologische Räume $X$, $Y$ und $Z$ mit stetigen Funktionen $f\colon
+X\to Y$ und $g\colon Y\to Z$, ist die Komposition $g\circ f\colon X\to Z$
+stetig.
+\end{theorem}
+\begin{proof}
+Wenn $U\subset Z$ offen ist, dann auch
+\[
+(g\circ f)^{-1}(U) = g^{-1}(f^{-1}(U))
+\]
+also Urbild der offenen Menge $f^{-1}(U)$ unter $g$.
+\end{proof}
+\begin{definition}
+Sei $(X,\cal T)$ ein topologischer Raum und $Y\subset X$ eine beliebige
+Teilmenge. Dann ist die $\cal T$ induziert \emph{Teilraumtopologie} auf $Y$ die
+Familie
+\[
+\cal T|_Y \coloneqq \{U\cap Y : U\in\cal T\}.
+\]
+\end{definition}
+Dass $\cal T|_Y$ tatsächlich eine Topologie bildet überlassen wir dem Leser zur
+Übung. Für $[0,1)\subset\RR$ ist in der euklidischen Topologie
+\[
+\cl{[0,1)} = [0,1],\quad \Int{[0,1)} = (0,1),\quad \Bdry{[0,1)} = \{0,1\},
+\]
+aber bezüglich der induzierten Teilraumtopologie auf $[0,1)$ haben wir
+\[
+\cl{[0,1)} = [0.1),\quad \Int{[0,1)} = [0,1),\quad \Bdry([0,1)) = \emptyset,
+\]
+da $[0,1)$ in der Teilraumtopologie natürlich offen und abgeschlossen ist.
+Insbesondere sehen wir, dass eine Teilmenge $U\subset A\subset X$, die bezüglich
+der Teilraumtopologie auf $A$ offen ist, nicht notwendigerweise in $X$ offen
+sein muss.
+
+\begin{theorem}
+Seien $X$ und $Y$ topologische Räume und $A\subset Y$. Dann ist die Inklusion
+$\iota\colon A\into Y$ stetig bezüglich der Teilraumtopologie auf $A$. Weiter
+ist eine Funktion $f\colon X\to A$ genau dann stetig, wenn die Komposition
+$\iota\circ f\colon X\to A\into Y$ stetig ist.
+\end{theorem}
+\begin{proof}
+Eine Teilmenge $V\subset A$ ist genau dann offen, wenn es eine in $Y$ offene
+Menge $U$ gibt mit $V = U\cap A = \iota^{-1}(U)$. Insbesondere ist in diesem
+Fall $f^{-1}(V) = (\iota\circ f)^{-1}(U)$ offen.
+\end{proof}
+
+Betrachten wir als Beispiel für eine stetige Funktion die Projektion
+$\pi_1\colon \RR^2\to\RR$ mit $\pi_1(x,y) = x$. Um direkt zu zeigen, dass
+$\pi_1$ stetig ist, genügt es nach \autoref{thm:continuity} zu zeigen, dass für
+jedes $x\in \RR$ und $\varepsilon>0$ der Zylinder
+$\pi_1^{-1}((x-\varepsilon,x+\varepsilon))$ in $\RR^2$ offen ist. Sei dafür
+$(a,b)\in\pi_1^{-1}((x-\varepsilon,x+\varepsilon))$ und setze $\delta =
+\varepsilon - |x-a|$. Für $(c,d)\in B_\delta((a,b))$ haben wir dann
+\begin{align*}
+|c-x| &\leq |c-a| + |x-a| \leq \sqrt{|c-a|^2 + |d-b|^2} + |x-a| < \\
+&< \delta + |x-a| = \varepsilon,
+\end{align*}
+also $(c,d)\in(x-\varepsilon,x+\varepsilon)\times\RR =
+\pi_1^{-1}((x-\varepsilon,x+\varepsilon))$. Das genügt um zu sehen, dass
+$\pi_1^{-1}((x-\varepsilon,x+\varepsilon))$ in $\RR^2$ offen ist. Später werden
+wir die so genannte Produkttopologie auf $\RR^2$ definieren und sehen, dass sie
+gleich der metrischen Topologie ist. Damit werden wir sofort sehen können, dass
+$\pi_1$ stetig sein muss.
+
+Andere Beispiele für stetig Funktionen findet man leicht. Sei $X$ ein beliebiger
+topologischer Raum, $f\colon X\to Y$ eine Abbildung und wähle auf $Y$
+die triviale Topologie. Dann ist $f$ stetig, denn $f^{-1}(\emptyset)=\emptyset$
+und $f^{-1}(Y) = X$ sind beide offen. Trägt $X$ hingegen die diskrete Topologie
+und $Y$ ist ein beliebiger topologischer Raum, so ist auch jede Abbildung
+$f\colon X\to Y$ stetig: jede Teilmenge von $X$ ist offen, und damit insbesondere
+auch $f^{-1}(U)$ für eine offene Teilmenge $U\subset Y$.
+
+Nachdem wir gesehen haben, dass unser topologischer Begriff von Stetigkeit mit
+dem vorherigen Begriff zwischen metrischen Räumen übereinstimmt, erhalten wir
+sofort alle stetigen Funktionen zwischen metrischen Räumen als Beispiele
+stetiger Funktionen. Konkreter ist etwa die Funktion $\tanh\colon \RR\to (-1,1)$ bezüglich
+der euklidischen Topologie stetig. Besser noch, $\tanh$ hat eine inverse
+Funktion $\atanh\colon (-1,1)\to\RR$, die ebenso stetig ist. Man sagt, $\tanh$
+ist ein Homöomorphismus zwischen $\RR$ und $(-1,1)$.
+\begin{definition}
+Eine stetige Abbildung $f\colon X\to Y$ heißt \emph{Homöomorphismus}, wenn eine
+weiter stetige Abbildung $g\colon Y\to X$ existiert mit $g\circ f = \id_X$ und
+$f\circ g = \id_Y$.
+\end{definition}
+Das Thema dieses Kurses wird sein, Methoden kennenzulernen, mit denen man
+erkennen kann ob zwei topologische Räume homöomorph sein können. Als erstes
+Beispiel betrachte die Exponentialfunktion $e^{i\_}\colon [0,2\pi)\to S^1 = \{z
+: |z| = 1\}\subset\CC$. Der Einheitskreis $S^1$ trägt hier wie das halboffene
+Intervall $[0,2\pi)$ die Teilraumtopologie. Diese Abbildung ist stetig und
+bijektiv, es gibt also eine Umkehrabbildung $\arg\colon S^1\to{} [0,2\pi)$. Diese
+Umkehrabbildung ist aber nicht stetig! Zum Beispiel ist $\arg^{-1}([0,\pi))$
+nicht offen in $S^1$, obwohl $[0,\pi) = (-1,\pi)\cap [0,2\pi)$ in $[0,2\pi)$
+offen ist: Jeder offene Ball um $1 = e^{i0}\in S^1$ enthält ein $z\in S^1$ mit
+$\Im(z)<0$, aber $\arg^{-1}([0,\pi))$ enthält nur solche $z\in S^1$ mit
+$\Im(z)\geq 0$.
+
+Wir werden später sehen, dass nicht nur $e^{i\_}$ kein Homöomorphismus zwischen
+$[0,2\pi)$ und $S^1$ ist, sondern dass es überhaupt keinen solchen Homöomorphismus
+geben kann.
+
 \end{document}
