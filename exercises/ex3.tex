@@ -18,10 +18,49 @@ sei $D(n) = \{p\in\Spec{\ZZ} : p \nmid n\}$ und
 \]
 Zeigen Sie, dass $\cal B$ tatsächlich eine Basis für eine Topologie auf
 $\Spec{\ZZ}$ ist. Die erzeugte Topologie heißt \emph{Zariskitopologie}
-auf $\Spec{Z}$.
+auf $\Spec{\ZZ}$.
 \begin{enumerate}
-\item Beschreiben Sie die abgeschlossenen Teilmengen von $\Spec{Z}$.
-\item Zeigen Sie, dass $\{0\}$ dicht in $\Spec{Z}$ ist.
+\item Beschreiben Sie die abgeschlossenen Teilmengen von $\Spec{\ZZ}$.
+\item Zeigen Sie, dass $\{0\}$ dicht in $\Spec{\ZZ}$ ist, und folgern Sie daraus, dass
+$\Spec{\ZZ}$ nicht Hausdorff sein kann.
+\end{enumerate}
+\end{exercise}
+\begin{exercise}
+Sei $(X,d)$ ein metrischer Raum mit abgeschlossenen Teilmengen $A,B\subset X$.
+Wir definieren eine Funktion $d(\_,A)\colon X\to\RR$ durch
+\[
+d(x,A) = \inf\{ d(x,y) : y\in A\}.
+\]
+\begin{enumerate}
+\item Zeigen Sie, dass $d(\_,A)$ stetig ist.
+\item Falls $A\cap B = \emptyset$, konstruieren Sie eine stetige Funktion $\varphi\colon
+X\to \RR$ für die $\varphi(x) = 1$ für alle $x\in A$ und $\varphi(x) = 0$ für
+alle $x\in B$ gilt.
+\end{enumerate}
+\end{exercise}
+\begin{exercise}\leavevmode
+\begin{enumerate}
+\item Sei $Y$ ein topologischer Raum und $\Delta\colon Y\to Y\times Y$, $\Delta (x) = (x,x)$ die
+\emph{Diagonalabbildung}. Zeigen Sie, dass $\Delta$ stetig ist, und dass
+$\Delta(Y)\subset Y\times Y$ genau dann abgeschlossen ist, wenn $Y$ ein
+Hausdorffraum ist.
+\item Sei $X$ ein topologischer Raum und $D\subset X$ eine dichte Teilmenge,
+\ddh~$\cl{D} = X$. Sei weiter $Y$ ein Hausdorffraum mit stetigen Funktionen $f,g\colon X\to Y$, die auf
+$D$ übereinstimmen, \ddh~wir haben $f(x) = g(x)$ für alle $x\in D$. Zeigen Sie,
+dass dann $f = g$. {\footnotesize Ein Hinweis: Schreiben Sie die Menge $\{x\in X :
+f(x)\neq g(x)\}$ als Urbild einer offenen Menge unter einer stetigen Funktion.}
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\leavevmode
+\begin{enumerate}
+\item Welche Folgen konvergieren in der diskreten Topologie? Welche Folgen
+konvergieren in der kofiniten Topologie?
+\item Konstruieren Sie eine Topologie auf $\RR$, in der die Folge
+$\{1/n\}_{n\in\NN}$ gegen jeden der Punkte in $\RR\setminus\{0\}$ konvergiert,
+aber nicht gegen $0$.
+\item Finden Sie einen topologischen Raum, in dem Grenzwerte von Folgen
+eindeutig bestimmt sind, der aber kein Hausdorffraum ist.
 \end{enumerate}
 \end{exercise}
 \end{document}
