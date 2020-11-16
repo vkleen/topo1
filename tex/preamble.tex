@@ -138,6 +138,10 @@
 \let\@oldotimes=\otimes
 \def\@otimeshelper#1#2{\mathrel{\raisebox{.5pt}{$#1\@oldotimes$}}\xspace}
 \DeclareRobustCommand*{\otimes}{\mathpalette\@otimeshelper\relax}
+
+\let\@oldsetminus=\setminus
+\undef\setminus
+\DeclareRobustCommand*{\setminus}{\mathpalette\smallsetminus\relax}
 \makeatother
 
 \tikzset{/tikz/commutative diagrams/arrows={thin}}

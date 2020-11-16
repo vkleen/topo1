@@ -756,7 +756,7 @@ eine Topologie auf $X/{\sim}$. Sie heißt die \emph{Quotiententopologie}.
 \end{definition}
 \begin{lemma}\label{lem:quotients}
 Mit der Notation wie in \autoref{defn:quotients} ist die Quotiententopologie
-$\cal T$ ist tatsächlich eine Topologie. Weiterhin gilt:
+$\cal T$ tatsächlich eine Topologie. Weiterhin gilt:
 \begin{enumerate}
 \item Die Quotientenabbildung $q\colon X\to X/{\sim}$ ist stetig.
 \item Die Quotiententopologie $\cal T$ ist die größte Topologie bezüglich der $q$ stetig
@@ -907,4 +907,140 @@ Im Gegensatz zu $\RR/[0,1]$ ist $\RR/(0,1)$ nicht homöomorph zu $\RR$: Sei
 $q\colon R\to\RR/(0,1)$ die Quotientenabbildung. Dann ist die einelementige Menge
 $\{q(1/2)\}$ offen in $\RR/(0,1)$, denn das Urbild $q^{-1}(\{q(1/2)\}) = (0,1)$ ist offen
 in $\RR$. Aber keine offene Menge in $\RR$ enthält nur ein Element.
+
+\subsection{Trennungsaxiome}
+
+\begin{definition}
+Ein topologischer Raum $X$ hat die \emph{Hausdorffeigenschaft} (oder ist \emph{Hausdorff}), falls für verschiedene Punkte $x\neq y\in X$ offene Mengen $U,V\subset X$ existieren, so dass $x\in U$, $y\in V$ und $U\cap V = \emptyset$.
+\end{definition}
+
+Zum Beispiel ist $\RR$ mit der Standardtopologie Hausdorff. Seien nämlich $x,y\in\RR$ verschieden. Dann ist $\delta = |x-y| > 0$ und wir setzen $U = B_\varepsilon(x)$ und $V= B_\varepsilon(y)$ mit $\varepsilon = \delta/2$. Dann ist $U\cap V = \emptyset$ und $x\in U$ und $y\in V$.
+
+Jede Menge $X$ mit der diskreten Topologie ist Hausdorff. Tatsächlich sind für verschiedene Punkte $x,y\in\RR$ die Mengen $\{x\}$ und $\{y\}$ offen und disjunkt. Hingegen ist die Topologie $\{\emptyset, \{a\}, \{a,b\}\}$ auf $X = \{a,b\}$ nicht Hausdorff, denn es gibt in dieser Topologie keine offene Menge die $a$ aber nicht $b$ enthält. Genauso ist $X = \{a,b\}$ mit der trivialen Topologie $\{\emptyset,\{a,b\}\}$ nicht Hausdorff.
+
+\begin{lemma}\leavevmode
+\begin{enumerate}
+\item In einem Hausdorffraum sind einpunktige Mengen abgeschlossen.
+\item Teilräume und Produkträume von Hausdorffräumen sind Hausdorff.
+\end{enumerate}
+\end{lemma}
+\begin{proof}\leavevmode
+\begin{enumerate}
+\item Sei $x\in X$ und $X$ ein Hausdorffraum. Dann ist zu zeigen, dass $X\setminus\{x\}$ offen ist. Sei dafür $y\in X\setminus\{x\}$ beliebig. Dann gibt es eine offene Menge $U_y\subset X$ mit $y\in U_y$ und $x\not\in U_y$. Damit ist $X\setminus\{x\} = \bigcup_{y\in X\setminus\{x\}} U_y$ eine Vereinigung offener Mengen und daher selbst offen.
+\item Seien zuerst $M\subset X$ ein Teilraum eines Hausdorffraums $X$ und $x,y\in M$ verschiedene Punkte. Dann gibt es disjunkte offene Menge $U\subset X$ und $V\subset X$ mit $x\in U$ und $y\in V$. Also ist $x\in U\cap M$ und $y\in V\cap M$ für die disjunkten, in $M$ offenen Mengen $U\cap M$ und $V\cap M$.
+
+Angenommen $I$ ist eine beliebige Indexmenge und $\{X_i\}_{i\in I}$ ist eine Familie von Hausdorffräumen. Seien $(x_i)_{i\in I}$ und $(y_i)_{i\in I}$ verschiedene Punkte in $\prod_{i\in I}X_i$, das heißt, es gibt ein $j\in I$ mit $x_j\neq y_j$. Da $X_j$ Hausdorff ist, gibt es dann disjunkte offene Mengen $U_j,V_j\subset X_j$ mit $x_j\in U_j$ und $y_j\in V_j$. Für die Projektion $\pi\colon\prod_{i\in I} X_i\to X_j$ sind dann die Urbilder $\pi^{-1}(U_i)$ und $\pi^{-1}(V_j)$ offen und disjunkt in $\prod_{i\in I} X_i$. Außerdem ist dann $(x_i)_i\in\pi^{-1}(U_j)$ und $(y_i)_i\in\pi^{-1}(V_j)$.\qedhere
+\end{enumerate}
+\end{proof}
+
+Quotienten von Hausdorffräumen müssen nicht immer Hausdorff sein. Zum Beispiel ist die Gerade mit zwei Ursprüngen $X = \RR\times\{0,1\}/{\sim}$ kein Hausdorffraum, obwohl $\RR\times\{0,1\}$ Hausdorff ist. Seien $0 = [(0,0)]$ und $0' = [(0,1)]$ die beiden Ursprünge. Dann enthält jede offene Umgebung von $0$ bzw. $0'$ eine Menge der Form $\pi((-\varepsilon,\varepsilon)\times\{0\})$ bzw. $\pi((-\varepsilon,\varepsilon)\times\{1\})$ für $\varepsilon>0$ klein genug und wobei $\pi\colon\RR\times\{0,1\}\to X$ die Quotientenabbildung bezeichnet. Aber es ist immer
+\[
+\pi((-\varepsilon,\varepsilon)\times\{0\})\cap\pi((-\varepsilon,\varepsilon)\times\{1\})\neq\emptyset.
+\]
+
+\begin{definition}
+Ein topologischer Raum $X$ heißt \emph{\Tone}, falls jede einpunktige Menge in $X$ abgeschlossen ist.
+\end{definition}
+
+Wir haben schon gesehen, dass jeder Hausdorffraum \Tone ist. Aber die Umkehrung ist falsch! Zum Beispiel ist die Gerade mit zwei Ursprüngen \Tone aber nicht Hausdorff. Genauso ist $\ZZ$ mit der kofiniten Topologie \Tone aber nicht Hausdorff: alle endlichen Teilmengen von $\ZZ$ sind abgeschlossen in der kofiniten Topologie. Aber keine zwei nichtleeren offenen Mengen in der kofiniten Topologie auf $\ZZ$ sind disjunkt.
+
+\begin{definition}
+Sei $X$ ein \Tone-Raum.
+\begin{enumerate}
+\item $X$ heißt \emph{regulär}, falls es zu jedem $x\in X$ und jeder abgeschlossenen Menge $A\subset X$ mit $x\not\in A$ offene Mengen $U$ und $V$ in $X$ gibt, so dass $x\in U$, $A\subset V$ und $U\cap V = \emptyset$.
+\item $X$ heißt \emph{normal}, falls es zu zwei disjunkten, abgeschlossenen Mengen $A,B\subset X$ disjunkte offene Mengen $U$ und $V$ in $X$ gibt, so dass $A\subset U$, $B\subset V$ und $U\cap V = \emptyset$.
+\end{enumerate}
+\end{definition}
+Manche Autoren fordern nicht, dass reguläre bzw. normale Räume \Tone sind.
+
+\begin{lemma}\label{lem:pf-urysohn}\leavevmode
+\begin{enumerate}
+\item Für $X$ regulär ist jeder Teilraum $Y\subset X$ regulär.
+\item Für $X$ normal ist ein Teilraum $Y\subset X$ normal, sobald $Y\subset X$ abgeschlossen ist.\proofomitted
+\end{enumerate}
+\end{lemma}
+
+\begin{theorem}[Urysohn--Tietze]\label{thm:urysohn-tietze}
+Sei $X$ ein \Tone-Raum. Dann sind die folgenden Aussagen äquivalent:
+\begin{enumerate}
+\item $X$ ist normal.
+\item Zu zwei disjunkten abgeschlossenen Teilmengen $A,B\subset X$ existiert eine stetige Funktion $f\colon X\to{} [0,1]$ mit $f|_A = 0$ und $f|_B = 1$.
+\item Für jede abgeschlossene Teilmenge $A\subset X$ mit einer stetige Funktion $f\colon A\to\RR$ gibt es eine stetige Fortsetzung $F\colon  X\to\RR$ mit $F|_A = f$ und \[
+\sup_{x\in X} F(x) = \sup_{x\in A} f(x)\quad\textnormal{und}\quad \inf_{x\in X} F(x) = \inf_{x\in A} f(x).
+\]
+Ist außerdem $|f(x)| < C$ für alle $a\in A$ lásst sich $F$ so wählen, dass $|F(x)| < C$ für alle $x\in X$.
+\end{enumerate}
+Der Teil (i$\cto$ii) ist das Lemma von Urysohn und eine Funktion $f$ wie in (ii) heißt \emph{Urysohnfunktion}. Der Teil (i$\cto$iii) ist der Fortsetzungssatz von Tietze.
+\end{theorem}
+\begin{lemma}
+Sei $X$ normal. Für $A\subset U$ mit $A$ abgeschlossen und $U$ offen gibt es eine offene Menge $V\subset X$, so dass $A\subset V\subset\cl{V}\subset U$.
+\end{lemma}
+\begin{proof}
+Da $X\setminus U$ abgeschlossen, $A\cap(X\setminus U)=\emptyset$ und $X$ normal ist, gibt es disjunkte offene Mengen $V,W\subset X$, so dass $A\subset V$ und $X\setminus U\subset W$. Dann ist aber auch $V\subset X\setminus W\subset U$ und da $X\setminus W$ abgeschlossen ist, folgt $A\subset V\subset\cl{V}\subset X\setminus W\subset U$.
+\end{proof}
+
+\begin{lemma}\label{lem:claim23}
+Sei $X$ ein Raum, der das Ursyohnlemma, \autoref{thm:urysohn-tietze} Teil (ii), erfüllt, und sei $f\colon A\to\RR$ stetig und beschränkt, etwa $|f(a)| \leq c$ für alle $a\in A$. Dann existiert eine stetig Abbildung $h\colon X\to\RR$ mit $|h(x)|\leq \tfrac{1}{3}c$ für $x\in X$ und $|f(a) - h(a)|\leq \tfrac{2}{3} c$ für $a\in A$.
+\end{lemma}
+\begin{proof}
+Die Mengen
+\[
+A_+ = \{a\in A : f(a) \geq c/3\}\quad\textnormal{und}\quad A_- = \{a\in A : f(a) \leq -c/3\}
+\]
+sind abgeschlossen und disjunkt. Also gibt es eine Urysohnfunktion $h\colon X\to{} [-\tfrac{1}{3}c,\tfrac{1}{3}c]$ mit $h|_{A_+} = \tfrac{1}{3}c$ und $h|_{A_-} = -\tfrac{1}{3}c$. Für dieses $h$ sieht man leicht, dass $|f(a) - h(a)| \leq \tfrac{2}{3}c$ für alle $a\in A$.
+\end{proof}
+
+\begin{proof}[Beweis von \autoref{thm:urysohn-tietze}]
+Wir zeigen zuerst (ii$\cto$i). Seien dafür $A,B\subset X$ abgeschlossen mit $A\cap B = \emptyset$. Dann gibt es eine Urysohnfunktion $f\colon X\to{}[0,1]$ mit $f|_A = 0$ und $f|_B = 1$. Aber dann sind $U = f^{-1}([0,1/2))$ und $V = f^{-1}((1/2,1])$ offen in $X$ und disjunkt. Außerdem ist $A\subset U$ und $B\subset V$.
+
+Nun zu (iii$\cto$ii); seien $A,B\subset X$ abgeschlossen und disjunkt. Dann ist $f\colon A\cup B \to{}[0,1]$ mit $f|_A = 0$ und $f|_B = 1$ stetig und nach (iii) gibt es eine Fortsetzung $F\colon X\to{}[0,1]$. Diese Fortsetzung ist dann eine Urysohnfunktion.
+
+Für (i$\cto$ii) sei $X$ normal mit disjunkten abgeschlossenen Teilmengen $A,B\subset X$. Da $A\subset X\setminus B$ gibt es nach \autoref{lem:pf-urysohn} eine offene Menge $O_1\subset X$ mit $A\subset O_1\subset\cl{O_1}\subset X\setminus B$. Dann gibt es wieder nach \autoref{lem:pf-urysohn} eine offene Menge $O_0\subset X$ mit
+\[
+A\subset O_0\subset \cl{O_0}\subset O_1\subset \cl{O_1}\subset X\setminus B.
+\]
+Induktiv konstruieren wir dann für jedes $n\in\NN$ und $0\leq p\leq 2^n$ offene Teilmengen $O_{p/2^n}\subset X$ mit
+\[
+A\subset O_{p/2^n}\subset\cl{O_{p/2^n}}\subset O_{q/2^n}\subset\cl{O_{q/2^n}}\subset B
+\]
+für $0\leq p \leq q \leq 2^n$. Ist nämlich $p = 2p'$ gerade, setze $O_{p/2^n} = O_{p'/2^{n-1}}$. Ist $p = 2p'+1$, gibt es nach \autoref{lem:pf-urysohn} eine offene Menge $O_{p/2^n}$ mit
+\[
+\cl{O_{p'/2^{n-1}}}\subset O_{p/2^n} \subset\cl{O_{p/2^n}} \subset X\setminus O_{(p'+1)/2^{n-1}}.
+\]
+Damit können wir eine Funktion $f\colon X\to{} [0,1]$ definieren, indem wir
+\[
+f(x) = \inf\left\{\tfrac{p}{2^n}\in\RR : x\in O_{p/2^n}\right\}
+\]
+für $x\in O_1$ und $f(x) = 1$ für $x\not\in O_1$ setzen. Die Funktion $f$ ist stetig: sei $x\in X$ beliebig und $\varepsilon > 0$. Dann gibt es $d_1 = p/2^m$ und $d_2 = q/2^n$ mit
+\[
+f(x) - \varepsilon < d_1 < f(x) < d_2 < f(x) + \varepsilon.
+\]
+Sei $U = O_{d_2}\setminus \cl{O_{d_1}}$. Dann ist $x\in U$ und $f(U)\subset B_\varepsilon(f(x))$: zuerst ist $x\in O_{d_2}$, da $f(x) < d_2$, und $x\not\in\cl{O_{d_1}}$, da $f(x) > d_1$. Für $y\in U$ gilt genauso $d_1 < f(y) < d_2$ und damit $f(y)\in B_\varepsilon(f(x))$. Insgesamt genügt das, um zu sehen, dass $f$ stetig ist.
+
+Für (ii$\cto$iii) sei $A$ abgeschlossen und $f\colon A\to\RR$ stetig. Wir nehmen zuerst an, dass $f$ beschränkt ist, etwa $|f(a)| < c$ für alle $a\in A$. Wir konstruieren induktiv für alle $n\in\NN_0$ und $0\leq m\leq n$ eine stetige Funktion $h_m\colon X\to\RR$ mit
+\[
+|h_m(x)| \leq \tfrac{1}{3}\left(\tfrac{2}{3}\right)^m c\quad\textnormal{und}\quad\left|f(a) - \sum_{m=0}^n h_m(a)\right| \leq \left(\tfrac{2}{3}\right)^{n+1} c.
+\]
+für $x\in X$ und $a\in A$. Setze $h_0 = h$ für $h$ wie in \autoref{lem:claim23}. Für $n > 0$ wendet man \autoref{lem:claim23} auf $f - \sum_{m=0}^n h_m\colon A\to\RR$ an und erhält so
+\[
+h_{m+1}\colon X\to{} \left[-\tfrac{1}{3}\left(\tfrac{2}{3}\right)^{m+1}c, \tfrac{1}{3}\left(\tfrac{2}{3}\right)^{m+1}c\right].
+\]
+Dann konvergiert $\sum_{m=0}^\infty h_m$ gleichmáßig auf $X$ gegen eine stetige Funktion $F\colon X\to\RR$ mit $F(a) = f(a)$ für $a\in A$ und
+\[
+|F(x)| \leq \frac{c}{3}\sum_{m=0}^\infty \left(\tfrac{2}{3}\right)^{m} = \tfrac{c}{3}\cdot 3 = c.
+\]
+
+Angenommen, es ist sogar $|f(a)| < c$ für alle $a\in A$. In diesem Fall ist
+\[
+A_0 = \{x\in X : |F(x)| = c\}
+\]
+abgeschlossen und $A_0\cap A = \emptyset$. Es gibt also eine Urysohnfunktion $m\colon X\to{}[0,1]$ mit $m|_{A_0} = 0$ und $m|_{A} = 1$. Ersetzt man dann $F$ durch $F\cdot m$ erhält man eine Fortsetzung mit $|F(x)| < c$.
+
+Ist $f\colon A\to\RR$ nicht beschränkt, sei $\widehat f(a) = \tfrac{f(a)}{1 + |f(a)|}$. Dann ist $\widehat f\colon A\to (-1,1)$ beschränkt und stetig. Es gibt also eine stetige Fortsetzung $\widehat g\colon X\to{}(-1,1)$ von $\widehat f$. Damit definiert $F(x) = \tfrac{\widehat g(x)}{1 - |\widehat g(x)|}$ eine stetige Funktion $F\colon X\to\RR$ mit $F(a) = f(a)$, \ddh~eine Fortsetzung von $f$.
+\end{proof}
+
+\begin{corollary}
+Metrische Räume sind normal.\proofomitted
+\end{corollary}
+
 \end{document}
