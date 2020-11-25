@@ -1043,4 +1043,140 @@ Ist $f\colon A\to\RR$ nicht beschränkt, sei $\widehat f(a) = \tfrac{f(a)}{1 + |
 Metrische Räume sind normal.\proofomitted
 \end{corollary}
 
+
+% TODO: insert lecture 6
+
+\subsection{Zusammenhang}
+
+
+\subsection{Kompakte Räume}
+
+In $\RR^n$ heißt eine Teilmenge $K$ \emph{kompakt}, wenn $K$ abgeschlossen und beschränkt ist. Allgemeiner heißt in einem metrischen Raum eine Teilmenge $K$ kompakt, wenn jede Folge eine konvergente Teilfolge mit Grenzwert in $K$ zulässt. Beide Definitionen können nicht ohne Weiteres auf allgemeine topologische Räume angewandt werden, da einerseits ein Abstandsbegriff fehlt und andererseits Folgen im Allgemeinen die Topologie nicht bestimmen. Stattdessen führt man folgenden Begriff ein.
+
+\begin{definition}
+Ein topologischer Raum $X$ heißt \emph{kompakt}, falls jede offene Überdeckung von $X$ eine endliche Teilüberdeckung besitzt. Das heißt, gegeben eine Familie $\{U_i\}_{i\in I}$ von offenen Mengen $U_i\subset X$ mit $\bigcup_{i\in I} U_i = X$, existiert eine endliche Teilmenge $J\subset I$ mit $\bigcup_{i\in J} U_i = X$.
+
+Eine Teilmenge $M\subset X$ heißt kompakt, wenn sie bezüglich der Teilraumtopologie ein kompakter Raum ist.
+\end{definition}
+
+Manche Autoren fordern, dass kompakte Räume Hausdorff sind. Wir verzichten aber darauf. Mit dieser Konvention sind zum Beispiel alle endlichen topologischen Räume kompakt. Unendliche Mengen $X$ mit der kofiniten Topologie sind auch kompakt. Ist nämlich $\{U_i\}_{i\in I}$ eine offene Überdeckung von $X$ und $i_0\in I$ mit $U_{i_0} \neq \emptyset$. Dann ist $X\setminus U_{i_0}$ endlich und $\{U_i\setminus U_{i_0}\}_{i\neq i_0}$ eine offene Überdeckung von $X\setminus U_{i_0}$. Aber $X \setminus U_{i_0}$ ist kompakt, also existiert eine endliche Teilmenge $J\subset I$ mit
+\[
+X\setminus U_{i_0} = \bigcup_{\substack{i\in J\\ i\neq i_0}} U_i\setminus U_{i_0}.
+\]
+Aber dann ist $X = \bigcup_{i\in J} U_i \cup U_{i_0}$.
+
+Die reellen Zahlen $\RR$ bilden mit der euklidischen Topologie keinen kompakten Raum. Etwa besitzt die Überdeckung
+\[
+\RR = \cdots \cup (-2,0) \cup (-1,1) \cup (0,2) \cup \cdots
+\]
+keine endliche Teilüberdeckung.
+
+\begin{lemma}\label{lem1}
+Sei $X$ ein topologischer Raum.
+\begin{enumerate}
+\item Ist $X$ kompakt, so ist jede abgeschlossene Teilmenge $A\subset X$ kompakt.
+\item Ist $X$ Hausdorff, so ist jede kompakte Teilmenge $K\subset X$ abgeschlossen.
+\end{enumerate}
+\end{lemma}
+\begin{proof}\leavevmode
+\begin{enumerate}
+\item Sei $A\subset X$ abgeschlossen und $\{U_i\}_{i\in I}$ eine offene Überdeckung von $A$. Dann existieren offene Teilmengen $V_i\subset X$ mit $U_i = V_i\cap A$ und $X = \bigcup_{i\in I} V_i \cup X\setminus A$ ist eine offene Überdeckung von $X$. Folglich existiert eine endliche Teilmenge $J\subset I$ mit $X = \bigcup_{i\in J} V_i \cup X\setminus A$. Dann ist aber auch $A = X\cap A = \bigcup_{i\in J} U_i$.
+\item Sei $K\subset X$ kompakt und $x\in X\setminus K$. Dann existiert eine offene Menge $U\subset X\setminus K$ mit $U\cap K = \emptyset$: Da $X$ Hausdorff ist, existiert nämlich für jedes $y\in K$ eine offene Umgebung $U_y$ von $x$ und eine offene Umgebung $V_y$ von $y$ mit $U_y\cap V_y=\emptyset$. Dann ist $K \subset \bigcup_{y\in K} V_y$ eine offene Überdeckung von $K$ und folglich existert eine endliche Teilmenge $K_0\subset K$ mit $K\subset \bigcup_{y\in K_0} V_y$. Dann ist aber $\bigcap_{y\in K_0} U_y \subset X\setminus K$ eine offene Umgebung von $x$. Das genügt um zu sehen, dass $X\setminus K$ offen ist. \qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Eine Abbildung $f\colon X\to Y$ zwischen topologischen Räumen $X$ und $Y$ heißt \emph{abgeschlossen}, falls für alle abgeschlossenen Teilmengen $A\subset X$ das Bild $f(A)\subset Y$ abgeschlossen ist.
+\end{definition}
+
+Ähnlich wie für offene Abbildungen ist eine stetige Bijektion ist genau dann ein Homöomorphismus, wenn sie eine abgeschlossene Abbildung ist.
+
+\begin{lemma}\label{lem2}
+Seien $X$ und $Y$ topologische Räume, $X$ kompakt und $f\colon X\to Y$ stetig.
+\begin{enumerate}
+\item Ist $f$ surjektiv, so ist $Y$ kompakt.
+\item Ist $Y$ Hausdorff, so ist $f$ abgeschlossen.
+\item Ist $Y$ Hausdorff und $f$ bijektiv, so ist $f$ ein Homöomorphismus.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Natürlich implizieren (i) und (ii) zusammen mit der vorstehenden Bemerkung Teil (iii).
+\begin{enumerate}
+\item Sei $\{U_i\}_{i\in I}$ eine offene Überdeckung von $Y$. Dann ist $\{f^{-1}(U_i)\}_{i\in I}$ eine offene Überdeckung von $X$. Also existiert eine endliche Teilmenge $J\subset I$ mit $\bigcup_{i\in J} f^{-1}(U_i) = X$. Da $f$ surjektiv ist, gilt dann auch $Y = \bigcup_{i\in J} U_i$.
+\item Sei $A\subset X$ abeschlossen. Dann ist $A$ kompakt nach \autoref{lem1} und damit nach (i) auch das Bild $f(A)\subset Y$ kompakt. Aber da $Y$ Hausdorff ist, folgt nach \autoref{lem1}, dass $f(A)$ abgeschlossen ist.\qedhere
+\end{enumerate}
+\end{proof}
+
+Im Allgemeinen sind Teilräume kompakter Räume nicht selbst kompakt. Zum Beispiel ist keine Teilmenge eines kompakten Hausdorffraums, die nicht abgeschlossen ist, kompakt. Hingegen zeigt \autoref{lem2}, dass Quotienten kompakter Räume immer selbst kompakt sind. Es stellt sich heraus, dass Produkte kompakter Räume stets kompakt sind.
+\begin{theorem}\label{thm:tychonoff}
+Beliebige Produkte kompakter Räume sind kompakt in der Produkttopologie.
+\end{theorem}
+
+\begin{corollary}[Heine-Borel]\leavevmode
+\begin{enumerate}
+\item Das Intervall $[0,1]$ ist kompakt.
+\item Eine Teilmenge von $\RR^m$ ist kompakt, genau dann, wenn sie abgeschlossen und beschränkt ist.
+\end{enumerate}
+\end{corollary}
+\begin{proof}\leavevmode
+\begin{enumerate}
+\item Sei $X = \{0,1,2,\dots,9\}$ mit der diskreten Topologie. Dann ist $X$ kompakt und wegen \autoref{thm:tychonoff} auch das Produkt $X^\NN = \prod_{n\in\NN} X$ kompakt. Definiere eine Abbildung
+\[
+f\colon X^\NN \to{} [0,1],\quad f(a_1,a_2,\dots) = \sum_{n\in \NN} \frac{a_n}{10^n} = 0.a_1a_2\dots
+\]
+Dann ist $f$ surjektiv und stetig(!). Wegen \autoref{lem2} ist dann $f(X^\NN) = [0,1]$ kompakt.
+\item Sei zuerst $A\subset\RR^m$ abgeschlossen und beschränkt. Insbesondere gibt es dann ein $n\in\NN$, so dass $A\subset [-n,n]^m$. Aber $[0,1]\isom [-n,n]$ ist kompakt und damit ist nach \autoref{thm:tychonoff} auch $[-n,n]^m$ kompakt. Nach \autoref{lem1} ist dann auch $A$ als abgeschlossene Teilmenge eines kompakten Raums selbst kompakt.
+\item Sei $K\subset \RR^m$ kompakt. Dann ist $K$ nach \autoref{lem1} abgeschlossen. Außerdem ist $K\subset \bigcup_{n\in\NN} B_n(0) = \RR^m$ eine offene Überdeckung. Folglich gibt es eine endliche Teilüberdeckung, \ddh~ein $N\in\NN$ mit $K\subset \bigcup_{n=1}^N B_n(0) = B_N(0)$. Anders gesagt muss $K$ beschränkt sein.
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Sei $X$ ein topologischer Raum und $A\subset X$ eine beliebige Teilmenge. Ein \emph{Grenzwert} von $A$ ist ein $p\in X$, so dass jede Umgebung von $p$ einen Punkt $p'\in A$ mit $p'\neq p$ enthält.
+\end{definition}
+\begin{theorem}\label{thm:limit-points-compact}
+Ist $X$ kompakt, so besitzt jede unendliche Teilmenge $A\subset X$ einen Grenzwert.
+\end{theorem}
+\begin{proof}
+Andernfalls ist zuerst $A$ abgeschlossen: Wäre nämlich $p\in\cl{A}\setminus A$, so wäre für jede Umgebung $U$ von $p$ der Schnitt $U\cap A\neq \emptyset$. Aber dann wäre $p$ ein Grenzwert von $A$.
+
+Außerdem gibt es, falls $A$ keinen Grenzwert besitzt, für alle $p\in A$ eine Umgebung $U_p$ von $p$ mit $A\cap U_p = \{p\}$. Folglich ist die Teilraumtopologie auf $A$ diskret. Aber da $X$ kompakt ist, ist nach \autoref{lem1} auch $A$ kompakt. Aber jeder diskrete, kompakte Raum ist endlich.
+\end{proof}
+
+\begin{definition}
+Ein topologischer Raum $X$ heißt \emph{folgenkompakt}, wenn jede Folge in $X$ eine konvergente Teilfolge besitzt.
+\end{definition}
+
+\begin{theorem}
+Sei $(X,d)$ ein metrischer Raum. Dann sind die folgenden Aussagen äquivalent:
+\begin{enumerate}
+\item $X$ ist kompakt.
+\item Jede unendliche Teilmenge von $X$ hat einen Grenzwert.
+\item $X$ ist folgenkompakt.
+\end{enumerate}
+\end{theorem}
+\begin{proof}\leavevmode
+\begin{enumerate}
+\item[(1\cto2)] Das ist \autoref{thm:limit-points-compact}.
+\item[(2\cto3)] Sei $\{x_n\}_{n\in\NN}$ eine Folge in $X$ und $A = \{x_n : n\in\NN \}$. Ist $A$ endlich, gibt es eine konstante und damit konvergente Teilfolge. Ist $A$ unendlich, besitzt $A$ einen Grenzwert $x\in X$. Dann existiert für jedes $m\in\NN$ ein $x_{n_m}\in A\cap B_{1/m}(x)$ mit $x_{n_m}\neq x$ und $n_m < n_{m+1}$. Dann konvergiert $\{x_{n_m}\}_{m\in\NN}$ gegen $x$.
+\item[(3\cto1)] Sei $X = \bigcup_{i\in I} U_i$ eine offene Überdeckung von $X$. Für eine beliebige Teilmenge $B\subset X$ schreiben wir
+\[
+\diam(B) = \sup\{ d(x,y) : x,y\in B \}.
+\]
+Dann gibt es ein $\delta >0$, so dass für alle $B\subset X$ mit $\diam(B) < \delta$ ein $i\in I$ existiert mit $B\subset U_i$. Andernfalls gäbe es für alle $n\in\NN$ eine Teilmenge $\emptyset\neq C_n\subset X$ mit $\diam(C_n) < \tfrac{1}{n}$ und $C_n\not\subset U_i$ für alle $i\in I$. Sei $x_n\in C_n$ und $\{x_{n_m}\}_{m\in\NN}$ eine konvergente Teilfolge von $\{x_n\}_{n\in\NN}$, etwa $x_{n_m}\cto x$. Sei $j\in I$ mit $U = U_j\ni x$. Dann gibt es ein $\varepsilon>0$ mit $B_\varepsilon(x)\subset U$. Für $k\gg 0$ gilt dann $\tfrac{1}{n_k} < \tfrac{\varepsilon}{2}$ und $d(x_{n_k},x) < \tfrac{\varepsilon}{2}$. Aber dann wäre $C_{n_k}\subset B_{\varepsilon/2}(x_{n_k})\subset B_{\varepsilon}(x)\subset U$.
+
+Weiter gibt es für alle $\varepsilon>0$ Punkte $x_1,\dots,x_m\in X$, so dass $X = B_\varepsilon(x_1)\cup\dots\cup B_\varepsilon(x_m)$. Andernfalls könnten wir induktiv eine Folge $\{x_n\}_{n\in\NN}$ in $X$ konstruieren. Wähle $x_1\in X$ beliebig. Für $n>1$ ist
+\[
+B = B_\varepsilon(x_1)\cup\dots\cup B_\varepsilon(x_{n-1})\neq X.
+\]
+Wähle $x_n\in X\setminus B$. Aber dann kann $\{x_n\}_{n\in\NN}$ keine konvergente Teilfolge besitzen.
+
+Für $\delta$ wie oben sei $\varepsilon = \tfrac{\delta}{3}$. Dann gibt es $x_1,\dots,x_m\in X$ mit $X = B_\varepsilon(x_1)\cup\dots\cup B_\varepsilon(x_m)$. Dann ist $\diam(B_\varepsilon(x_i))\leq 2\varepsilon < \delta$ und dami existiert für jedes $i\in\{1,\dots,m\}$ ein $j_i\in I$ mit $B_\varepsilon(x_{j_i})\subset U_{j_i}$. Aber dann ist
+\[
+X = U_{j_1}\cup\dots\cup U_{j_m}.\qedhere
+\]
+\end{enumerate}
+\end{proof}
+
+Im Allgemeinen sind Folgenkompaktheit und Kompaktheit unabhängig voneinander. Es gibt folgenkompakte Räume, die nicht kompakt sind, und kompakte Räume, die nicht folgenkompakt sind.
+
 \end{document}
