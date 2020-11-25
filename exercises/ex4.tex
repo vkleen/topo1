@@ -1,0 +1,29 @@
+\input{preamble.tex}
+
+\setcounter{Sheet}{4}
+\input{exercisehead.tex}
+
+\begin{document}
+\maketitle
+\begin{exercise}
+Ein Hausdorffraum $X$ heißt \emph{lokalkompakt}, falls für jeden Punkt $x\in X$ eine offene Menge $U\subset X$ und eine kompakte Menge $K\subset X$ existieren mit $x\in U\subset K$. Zeigen Sie:
+\begin{enumerate}
+\item Sei $X$ lokalkompakt. Dann enthält jede Umgebung $U$ von $x\in X$ eine kompakte Menge $K$ und eine Umgebung $V$ von $x$ mit $x\in V\subset K\subset U$.
+\item Sei $X$ lokalkompakt, $K\subset X$ kompakt und $U\supset K$ offen. Dann gibt es eine kompakte Menge $V\subset X$ mit $K\subset \Int{V}\subset V\subset U$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Sei $X = \{ (x,\sin(1/x)) : x\in (0,1]\} \cup \{0\}\times[-1,1]$ die \emph{topologist's sine curve}. Zeigen Sie, dass $X\subset \RR^2$ abgeschlossen und zusammenhängend aber nicht wegzusammenhängend ist.
+\end{exercise}
+
+\begin{exercise}
+Sei $(X,d)$ ein metrischer Raum. Eine Menge $A\subset X$ heißt \emph{beschränkt}, wenn es ein $x\in X$ und ein $R >0$ gibt mit $A\subset B_R(x)$. Zeigen Sie, dass jede kompakte Menge $K\subset X$ abgeschlossen und beschränkt ist.
+
+Finden Sie einen metrischen Raum mit einer abgeschlossenen und beschränkten Teilmenge, die nicht kompakt ist.
+\end{exercise}
+
+\begin{exercise}
+Ein topologischer Raum $X$ heißt \emph{total unzusammenhängend}, wenn für je zwei verschiedene Punkte $x,y\in X$ keine zusammenhängende Teilmenge $U\subset X$ existiert mit $x,y\in U$. Zeigen Sie, dass $\QQ\subset\RR$ mit der Teilraumtopologie total unzusammenhängend ist. {\footnotesize Insbesondere muss eine Menge, deren Abschluss zusammenhängend ist, nicht selbst zusammenhängend sein.}
+\end{exercise}
+\end{document}
