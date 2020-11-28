@@ -1,0 +1,69 @@
+\input{preamble.tex}
+
+\setcounter{Sheet}{5}
+\input{exercisehead.tex}
+
+\begin{document}
+\maketitle
+\begin{exercise}
+Wir betrachten die \emph{topologist's sine curve}
+\[
+S = \{(x,\sin(1/x) : x\in (0,1]\}\cup \{0\}\times[0,1] \subset \RR^2
+\]
+und den Raum
+\[
+T = \{(x,\sin(1/x) : x\in (0,1]\}\cup \{-1\}\times[0,1] \subset \RR^2
+\]
+mit der Teilraumtopologie. Zeigen Sie
+\begin{enumerate}
+\item Die Abbildung
+\[
+f\colon T \to S,\quad f(x,y) = \begin{cases}
+(0,y) & \textnormal{falls $x=-1$} \\
+(x,y) & \textnormal{falls $x\neq -1$}
+\end{cases}
+\]
+ist eine stetige Bijektion.
+\item $T$ ist lokalkompakt.
+\item $S$ ist nicht lokalkompakt. {\footnotesize Insbesondere muss das Bild eines lokalkompakten Raums unter einer stetigen Funktion nicht lokalkompakt sein.}
+\end{enumerate}
+{\footnotesize Zur Erinnerung: Ein Raum $X$ heißt lokalkompakt, wenn es für jedes $x\in X$ eine offene Umgebung $U$ von $x$ und eine kompakte Teilmenge $V\subset X$ mit $x\in U\subset V$ gibt.}
+\end{exercise}
+
+\begin{exercise}
+Sei $I$ eine Menge mit einer Halbordnung $\leq$ und $\{X_i\}_{i\in I}$ eine Familie von topologischen Räumen. Seien weiter $f_{ij}\colon X_j\to X_i$ stetige Abbildungen wannimmer $i\leq j$. In dieser Situation nennen wir $(\{X_i\}, \{f_{ij}\})$ ein \emph{projektives System} und definieren den \emph{projektiven Limes} als den topologischen Raum
+\[
+\lim_{i\in I} X_i \coloneqq \{(x_i)_{i\in I} : \textnormal{$x_i = f_{ij}(x_j)$ für $i\leq j$}\}\subset \prod_{i\in I} X_i
+\]
+mit der Teilraumtopologie. Sei im Folgenden $(\{X_i\},\{f_{ij}\})$ ein projektives System in dem die Räume $X_i$ alle endlich und diskret sind. Zeigen Sie:
+\begin{enumerate}
+\item $\lim_{i} X_i$ ist kompakt.
+\item Jeder Punkt $x\in \lim_i X_i$ besitzt eine Umgebungsbasis aus offenen und gleichzeitig abgeschlossenen Mengen. {\footnotesize Zur Erinnerung: eine Umgebungsbasis für einen Punkt $x$ in einem topologischen Raum $X$ ist eine Familie von offenen Mengen $\{V_j\}_{j\in J}$, so dass für jede offene Menge $U\subset X$ mit $x\in U$ ein $j\in J$ existiert mit $V_j\subset U$.}
+\item Zeigen Sie, dass $\lim_i X_i$ total unzusammenhängend ist, \ddh~jede zusammenhängende Teilmenge in $\lim_i X_i$ hat genau ein Element.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Wir definieren auf $\RR^{n+1}\setminus\{0\}$ eine Äquivalenzrelation ${\sim}$, so dass genau dann $x\sim y$ gilt, wenn ein $t\in\RR\setminus\{0\}$ existiert mit $t\cdot x = y$. Der Quotient $\RR\PP^n = (\RR^{n+1}\setminus\{0\})/{\sim}$ heißt \emph{reeller projektiver Raum}.
+\begin{enumerate}
+\item Wir bezeichnen mit $S^n/\{\pm 1\}$ den Quotienten der Sphäre $S^n = \{x\in \RR^{n+1} : \|x\| =1\}$ bezüglich der Äquivalenzrelation $\sim'$ mit $x\sim' y$ genau dann, wenn $x = -y$. Zeigen Sie, dass es einen Homöomorphismus $S^n/\{\pm 1\} \to \RR\PP^{n}$ gibt und folgern Sie daraus, dass $\RR\PP^n$ kompakt ist.
+\item Zeigen Sie, dass $\RR\PP^{1} \isom S^1$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Wir definieren induktiv eine Folge von Mengen $C_n\subset [0,1]$. Setze $C_0 = [0,1]$ und
+\[
+C_{n+1} = \left(\tfrac{1}{3}\cdot C_n\right) \cup \left(\tfrac{1}{3}\cdot C_n + \tfrac{2}{3}\right).
+\]
+Dann ist $C\coloneqq \bigcap_{n\in\NN} C_n$ die \emph{Cantormenge}. Zeigen Sie:
+\begin{enumerate}
+\item Eine reelle Zahl $x$ liegt genau dann in $C$, wenn sie sich in Basis $3$ nur mit den Ziffern $0$ und $2$ ausdrücken lässt, \ddh~es gibt $a_i\in\{0,2\}$ für $i\in \NN$ mit
+\[
+x = \sum_{i=1}^\infty \frac{a_i}{3^{-i}}
+\]
+\item Es gibt einen Homöomorphismus $\prod_{i=0}^\infty\{0,2\} \to C$, wobei $\{0,2\}$ die diskrete Topologie trägt.
+\item Die Cantormenge $C$ ist kompakt.
+\end{enumerate}
+\end{exercise}
+\end{document}

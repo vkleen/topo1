@@ -1,0 +1,2 @@
+exercises/assignment[0-9]*.tex filter=git-crypt diff=git-crypt
+exercises/build/assignment* filter=git-crypt diff=git-crypt
