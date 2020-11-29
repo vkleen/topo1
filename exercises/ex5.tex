@@ -8,11 +8,11 @@
 \begin{exercise}
 Wir betrachten die \emph{topologist's sine curve}
 \[
-S = \{(x,\sin(1/x) : x\in (0,1]\}\cup \{0\}\times[0,1] \subset \RR^2
+S = \{(x,\sin(1/x) : x\in (0,1]\}\cup \{0\}\times[-1,1] \subset \RR^2
 \]
 und den Raum
 \[
-T = \{(x,\sin(1/x) : x\in (0,1]\}\cup \{-1\}\times[0,1] \subset \RR^2
+T = \{(x,\sin(1/x) : x\in (0,1]\}\cup \{-1\}\times[-1,1] \subset \RR^2
 \]
 mit der Teilraumtopologie. Zeigen Sie
 \begin{enumerate}
@@ -28,19 +28,6 @@ ist eine stetige Bijektion.
 \item $S$ ist nicht lokalkompakt. {\footnotesize Insbesondere muss das Bild eines lokalkompakten Raums unter einer stetigen Funktion nicht lokalkompakt sein.}
 \end{enumerate}
 {\footnotesize Zur Erinnerung: Ein Raum $X$ heißt lokalkompakt, wenn es für jedes $x\in X$ eine offene Umgebung $U$ von $x$ und eine kompakte Teilmenge $V\subset X$ mit $x\in U\subset V$ gibt.}
-\end{exercise}
-
-\begin{exercise}
-Sei $I$ eine Menge mit einer Halbordnung $\leq$ und $\{X_i\}_{i\in I}$ eine Familie von topologischen Räumen. Seien weiter $f_{ij}\colon X_j\to X_i$ stetige Abbildungen wannimmer $i\leq j$. In dieser Situation nennen wir $(\{X_i\}, \{f_{ij}\})$ ein \emph{projektives System} und definieren den \emph{projektiven Limes} als den topologischen Raum
-\[
-\lim_{i\in I} X_i \coloneqq \{(x_i)_{i\in I} : \textnormal{$x_i = f_{ij}(x_j)$ für $i\leq j$}\}\subset \prod_{i\in I} X_i
-\]
-mit der Teilraumtopologie. Sei im Folgenden $(\{X_i\},\{f_{ij}\})$ ein projektives System in dem die Räume $X_i$ alle endlich und diskret sind. Zeigen Sie:
-\begin{enumerate}
-\item $\lim_{i} X_i$ ist kompakt.
-\item Jeder Punkt $x\in \lim_i X_i$ besitzt eine Umgebungsbasis aus offenen und gleichzeitig abgeschlossenen Mengen. {\footnotesize Zur Erinnerung: eine Umgebungsbasis für einen Punkt $x$ in einem topologischen Raum $X$ ist eine Familie von offenen Mengen $\{V_j\}_{j\in J}$, so dass für jede offene Menge $U\subset X$ mit $x\in U$ ein $j\in J$ existiert mit $V_j\subset U$.}
-\item Zeigen Sie, dass $\lim_i X_i$ total unzusammenhängend ist, \ddh~jede zusammenhängende Teilmenge in $\lim_i X_i$ hat genau ein Element.
-\end{enumerate}
 \end{exercise}
 
 \begin{exercise}
@@ -64,6 +51,19 @@ x = \sum_{i=1}^\infty \frac{a_i}{3^{-i}}
 \]
 \item Es gibt einen Homöomorphismus $\prod_{i=0}^\infty\{0,2\} \to C$, wobei $\{0,2\}$ die diskrete Topologie trägt.
 \item Die Cantormenge $C$ ist kompakt.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Sei $I$ eine Menge mit einer Halbordnung $\leq$ und $\{X_i\}_{i\in I}$ eine Familie von topologischen Räumen. Seien weiter $f_{ij}\colon X_j\to X_i$ stetige Abbildungen wannimmer $i\leq j$. In dieser Situation nennen wir $(\{X_i\}, \{f_{ij}\})$ ein \emph{projektives System} und definieren den \emph{projektiven Limes} als den topologischen Raum
+\[
+\lim_{i\in I} X_i \coloneqq \{(x_i)_{i\in I} : \textnormal{$x_i = f_{ij}(x_j)$ für $i\leq j$}\}\subset \prod_{i\in I} X_i
+\]
+mit der Teilraumtopologie. Sei im Folgenden $(\{X_i\},\{f_{ij}\})$ ein projektives System in dem die Räume $X_i$ alle endlich und diskret sind. Zeigen Sie:
+\begin{enumerate}
+\item $\lim_{i} X_i$ ist kompakt.
+\item Jeder Punkt $x\in \lim_i X_i$ besitzt eine Umgebungsbasis aus offenen und gleichzeitig abgeschlossenen Mengen. {\footnotesize Zur Erinnerung: eine Umgebungsbasis für einen Punkt $x$ in einem topologischen Raum $X$ ist eine Familie von offenen Mengen $\{V_j\}_{j\in J}$, so dass für jede offene Menge $U\subset X$ mit $x\in U$ ein $j\in J$ existiert mit $V_j\subset U$.}
+\item Zeigen Sie, dass $\lim_i X_i$ total unzusammenhängend ist, \ddh~jede zusammenhängende Teilmenge in $\lim_i X_i$ hat genau ein Element.
 \end{enumerate}
 \end{exercise}
 \end{document}
