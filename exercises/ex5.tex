@@ -6,20 +6,20 @@
 \begin{document}
 \maketitle
 \begin{exercise}
-Wir betrachten die \emph{topologist's sine curve}
+Wir betrachten eine Variante der \emph{topologist's sine curve}
 \[
-S = \{(x,\sin(1/x) : x\in (0,1]\}\cup \{0\}\times[-1,1] \subset \RR^2
+S = \{(x,\sin(1/x) : x\in (0,1]\}\cup \{(0,0)\} \subset \RR^2
 \]
 und den Raum
 \[
-T = \{(x,\sin(1/x) : x\in (0,1]\}\cup \{-1\}\times[-1,1] \subset \RR^2
+T = \{(x,\sin(1/x) : x\in (0,1]\}\cup \{(-1,0)\} \subset \RR^2
 \]
 mit der Teilraumtopologie. Zeigen Sie
 \begin{enumerate}
 \item Die Abbildung
 \[
 f\colon T \to S,\quad f(x,y) = \begin{cases}
-(0,y) & \textnormal{falls $x=-1$} \\
+(0,0) & \textnormal{falls $x=(-1,0)$} \\
 (x,y) & \textnormal{falls $x\neq -1$}
 \end{cases}
 \]
@@ -33,7 +33,7 @@ ist eine stetige Bijektion.
 \begin{exercise}
 Wir definieren auf $\RR^{n+1}\setminus\{0\}$ eine Äquivalenzrelation ${\sim}$, so dass genau dann $x\sim y$ gilt, wenn ein $t\in\RR\setminus\{0\}$ existiert mit $t\cdot x = y$. Der Quotient $\RR\PP^n = (\RR^{n+1}\setminus\{0\})/{\sim}$ heißt \emph{reeller projektiver Raum}.
 \begin{enumerate}
-\item Wir bezeichnen mit $S^n/\{\pm 1\}$ den Quotienten der Sphäre $S^n = \{x\in \RR^{n+1} : \|x\| =1\}$ bezüglich der Äquivalenzrelation $\sim'$ mit $x\sim' y$ genau dann, wenn $x = -y$. Zeigen Sie, dass es einen Homöomorphismus $S^n/\{\pm 1\} \to \RR\PP^{n}$ gibt und folgern Sie daraus, dass $\RR\PP^n$ kompakt ist.
+\item Wir bezeichnen mit $S^n/\{\pm 1\}$ den Quotienten der Sphäre $S^n = \{x\in \RR^{n+1} : \|x\| =1\}$ bezüglich der Äquivalenzrelation $\sim'$ mit $x\sim' y$ genau dann, wenn $x = -y$ oder $x = y$. Zeigen Sie, dass es einen Homöomorphismus $S^n/\{\pm 1\} \to \RR\PP^{n}$ gibt und folgern Sie daraus, dass $\RR\PP^n$ kompakt ist.
 \item Zeigen Sie, dass $\RR\PP^{1} \isom S^1$.
 \end{enumerate}
 \end{exercise}
@@ -47,7 +47,7 @@ Dann ist $C\coloneqq \bigcap_{n\in\NN} C_n$ die \emph{Cantormenge}. Zeigen Sie:
 \begin{enumerate}
 \item Eine reelle Zahl $x$ liegt genau dann in $C$, wenn sie sich in Basis $3$ nur mit den Ziffern $0$ und $2$ ausdrücken lässt, \ddh~es gibt $a_i\in\{0,2\}$ für $i\in \NN$ mit
 \[
-x = \sum_{i=1}^\infty \frac{a_i}{3^{-i}}
+x = \sum_{i=1}^\infty \frac{a_i}{3^{i}}.
 \]
 \item Es gibt einen Homöomorphismus $\prod_{i=0}^\infty\{0,2\} \to C$, wobei $\{0,2\}$ die diskrete Topologie trägt.
 \item Die Cantormenge $C$ ist kompakt.
