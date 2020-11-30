@@ -688,7 +688,7 @@ Y \arrow[rd, "f_i"'] \arrow[r, "g", dashed] & X \mathrlap{{}= \prod_{i\in I} X_i
 \]
 \end{enumerate}
 \end{lemma}
-\begin{proof}\leavevmode
+\begin{proof}\needspace{2\baselineskip}\leavevmode
 \begin{enumerate}
 \item Sei $U\subset X_i$ offen. Dann ist $\pi_i^{-1}(U)$ enthalten in der
 Subbasis, die die Produkttopologie auf $X$ definiert. Insbesondere ist damit
@@ -918,13 +918,13 @@ Zum Beispiel ist $\RR$ mit der Standardtopologie Hausdorff. Seien nämlich $x,y\
 
 Jede Menge $X$ mit der diskreten Topologie ist Hausdorff. Tatsächlich sind für verschiedene Punkte $x,y\in\RR$ die Mengen $\{x\}$ und $\{y\}$ offen und disjunkt. Hingegen ist die Topologie $\{\emptyset, \{a\}, \{a,b\}\}$ auf $X = \{a,b\}$ nicht Hausdorff, denn es gibt in dieser Topologie keine offene Menge die $a$ aber nicht $b$ enthält. Genauso ist $X = \{a,b\}$ mit der trivialen Topologie $\{\emptyset,\{a,b\}\}$ nicht Hausdorff.
 
-\begin{lemma}\leavevmode
+\begin{lemma}\needspace{2\baselineskip}\leavevmode
 \begin{enumerate}
 \item In einem Hausdorffraum sind einpunktige Mengen abgeschlossen.
 \item Teilräume und Produkträume von Hausdorffräumen sind Hausdorff.
 \end{enumerate}
 \end{lemma}
-\begin{proof}\leavevmode
+\begin{proof}\needspace{2\baselineskip}\leavevmode
 \begin{enumerate}
 \item Sei $x\in X$ und $X$ ein Hausdorffraum. Dann ist zu zeigen, dass $X\setminus\{x\}$ offen ist. Sei dafür $y\in X\setminus\{x\}$ beliebig. Dann gibt es eine offene Menge $U_y\subset X$ mit $y\in U_y$ und $x\not\in U_y$. Damit ist $X\setminus\{x\} = \bigcup_{y\in X\setminus\{x\}} U_y$ eine Vereinigung offener Mengen und daher selbst offen.
 \item Seien zuerst $M\subset X$ ein Teilraum eines Hausdorffraums $X$ und $x,y\in M$ verschiedene Punkte. Dann gibt es disjunkte offene Menge $U\subset X$ und $V\subset X$ mit $x\in U$ und $y\in V$. Also ist $x\in U\cap M$ und $y\in V\cap M$ für die disjunkten, in $M$ offenen Mengen $U\cap M$ und $V\cap M$.
@@ -953,7 +953,7 @@ Sei $X$ ein \Tone-Raum.
 \end{definition}
 Manche Autoren fordern nicht, dass reguläre bzw. normale Räume \Tone sind.
 
-\begin{lemma}\label{lem:pf-urysohn}\leavevmode
+\begin{lemma}\label{lem:pf-urysohn}\needspace{2\baselineskip}\leavevmode
 \begin{enumerate}
 \item Für $X$ regulär ist jeder Teilraum $Y\subset X$ regulär.
 \item Für $X$ normal ist ein Teilraum $Y\subset X$ normal, sobald $Y\subset X$ abgeschlossen ist.\proofomitted
@@ -1043,11 +1043,78 @@ Ist $f\colon A\to\RR$ nicht beschränkt, sei $\widehat f(a) = \tfrac{f(a)}{1 + |
 Metrische Räume sind normal.\proofomitted
 \end{corollary}
 
+Natürlich ist nicht jeder Hausdorffraum regulär. Zum Beispiel kann man die folgende Basis für eine Topologie auf $\RR$ betrachten. Sie enthält zunächst alle offenen Intervalle der Form $(a,b)$ für $a,b\in\RR$, aber auch die Mengen $(a,b)\setminus\{\tfrac1n : n\in\ZZ_{>0}\}$. Wir schreiben vorübergehend $K = \{\tfrac1n : n\in\ZZ_{>0}\}$ und $\RR_K$ für $\RR$ mit der erzeugten Topologie. Die Topololgie auf $\RR_K$ ist feiner als die euklidische Topologie, also ist $\RR_K$ automatisch Hausdorff. Aber $\RR_K$ ist nicht regulär. Es ist nämlich $K\subset \RR_K$ abgeschlossen und $0\not\in K$. Gäbe es offene Mengen $U,V\subset\RR_K$ mit $0\in U$, $K\subset V$ und $U\cap V = \emptyset$, so könnten wir zuerst ohne Einschränkung annehmen, dass $U$ ein Basiselement für die Topologie auf $\RR_K$ ist. Aber $U=(a,b)$ ist unmöglich, weil $0\in(a,b)$ implizieren würde, dass ein $N\in\NN$ existiert mit $\tfrac1N\in (a,b)$. Also ist $U = (a,b)\setminus K$ mit $a<0<b$. Dann existiert aber wieder ein $n\in\NN$ mit $\tfrac1n\in(a,b)$. Aber es ist $\frac1n\in V$ und nach der definition der Topologie auf $\RR_K$ existiert dann ein offenes Intervall $(c,d)\subset V$ mit $\tfrac1n\in(c,d)$. Aber dann wäre $((a,b)\setminus K)\cap (c,d)\neq\emptyset$.
 
-% TODO: insert lecture 6
+Wir hatten gesehen, dass Produkte von Hausdorffräumen wieder Hausdorffräume sind. Das gilt nicht für normale Räume. Zum Beispiel bilden die halboffenen Intervalle $[a,b)$ mit $a,b\in\RR$ eine Basis für eine Topologie auf $\RR$ und $\RR$ mit der erzeugten Topologie ist die \emph{Sorgenfreygerade} $\Rsf$. Der Raum $\Rsf$ ist normal, denn seien $A,B\subset\Rsf$ abgeschlossen und disjunkt. Für jedes $b\in B$ wähle ein $b'$ mit $[b,b')\subset \Rsf\setminus A$. Dann ist $V = \bigcup_{b\in B}[b,b')$ offen in $\Rsf$ und $B\subset V$. Analog wähle für jedes $a\in A$ ein $a''$ mit $[a,a'')\subset \Rsf\setminus B$. Dann ist auch $U = \bigcup_{a\in A} [a,a'')\subset\Rsf$ offen und $A\subset U$. Wäre nun aber $U\cap V\neq\emptyset$, dann gäbe es $a,b\in\RR$ mit $[a,a'')\cap [b,b')\neq\emptyset$ im Widerspruch zu $A\cap B = \emptyset$.
 
+Wir betrachten nun die \emph{Sorgenfreyebene} $\Rsf^2 = \Rsf\times\Rsf$ mit der Produkttopologie. Dann ist $\Rsf^2$ nicht normal: Zuerst ist nämlich $\QQ^2\subset\Rsf^2$ dicht, denn für jede nichtleere offene Menge $U\subset \Rsf^2$ existiert ein halboffenes Rechteck $[a,b)\times[c,d)\subset U$ und $[a,b)\times[c,d)\cap\QQ^2\neq\emptyset$. Weiter ist die Antidiagonale $\Delta' = \{(x,-x): x\in\RR\}\subset\Rsf^2$ abgeschlossen, denn für $(x,y)\in\Rsf^2$ mit $x\neq -y$ gibt es zwei Fälle:
+\begin{description}
+\item[{$x > -y$:}] Dann ist $[x,x+1)\times[y,y+1)\subset \Rsf^2\setminus\Delta'$.
+\item[{$x < -y$:}] Sei dann $\varepsilon = -(x+y)/2 > 0$. Dann ist $[x,x+\varepsilon)\times[y, y+\varepsilon)\subset \Rsf^2\setminus \Delta'$.
+\end{description}
+Außerdem ist $\Delta'$ sogar diskret in der Teilraumtopologie, denn für jedes $x\in\RR$ ist die Einpunktmenge $\{(x,-x)\} = \Delta'\cap [x,x+1)\times[-x,-x+1)$ offen in der Teilraumtopologie auf $\Delta'$. Nehmen wir jetzt an, $\Rsf^2$ wäre doch normal. Dann ist jede Teilmenge $A\subset\Delta'$ abgeschlossen in $\Rsf^2$ und es gäbe \emph{disjunkte} offene Mengen $U_A,V_A\subset\Rsf^2$ mit $A\subset U_A$ und $\Delta'\setminus A\subset V_A$. Definiere eine Abbildung
+\[
+\psi\colon\{A\subset\Delta' : A\neq\emptyset,\Delta'\}\to \powerset{\QQ},\quad A\mapsto U_A\cap \QQ^2.
+\]
+Diese Abbildung ist dann injektiv, denn seien $A,B\subset\Delta'$ mit $A\neq B$. Dann gibt es ein $z\in A$ mit $z\not\in B$ und dafür ist dann $z\in U_A$ und $z\in \Delta'\setminus B\subset V_B$. Aber dann ist $U_A\cap V_B$ nichtleer und offen in $\Rsf^2$. Also gibt es ein $q\in \QQ^2\cap U_A\cap V_B$ und für dieses $q$ ist dann $q\not\in U_B$. Also ist auch $\psi(A) = U_A\cap\QQ^2 \neq U_B\cap\QQ^2 = \psi(B)$. Aber $\psi$ kann aus Kardinalitätsüberlegungen nicht injektiv sein; die Kardinalität von $\powerset{Q}$ ist die Kardinalität des Kontinuums, aber die Kardinalität von $\powerset{\Delta'}\setminus\{\emptyset,\Delta'\}$ ist die der Potenzmenge des Kontinuums, also strikt größer.
+
+Insbesondere haben wir gezeigt, dass $\Rsf^2$ nicht metrisierbar sein kann. Daraus folgt auch, dass $\Rsf$ selbst nicht metrisierbar ist, denn Produkte metrisierbarer Räume sind metrisierbar. Aber $\Rsf$ ist trotzdem normal.
 \subsection{Zusammenhang}
 
+\begin{definition}
+Ein nichtleerer topologischer Raum $X$ ist \emph{zusammenhängend}, für offene Menge $U,V\subset X$ mit $U\cup V = X$ und $U\cap V = \emptyset$ bereits $U=\emptyset$ oder $V = \emptyset$. Alternativ aber äquivalent heißt ein Raum $X$ \emph{unzusammenhängend}, wenn es eine nichttriviale offene und abgeschlossene Menge in $X$ gibt, \ddh~ein $U\subset X$ mit $U\neq\emptyset$, $U\neq X$, aber $U$ offen und $U$ abgeschlossen.
+
+Ein nichtleerer topologischer Raum $X$ ist \emph{wegzusammenhängend}, wenn es für alle $x,y\in X$ eine stetige Funktion $f\colon [0,1]\to X$ gibt mit $f(0) = x$ und $f(1) = y$. Eine solche Funktion heißt \emph{Weg} von $x$ nach $y$.
+\end{definition}
+
+\begin{theorem}[Zwischenwertsatz]\label{thm:intermediate-value}
+Sei $X$ zusammenhängend und $f\colon X\to Y$ stetig. Dann ist $f(X)\subset X$ mit der Teilraumtopologie zusammenhängend.
+\end{theorem}
+\begin{proof}
+Seien $U,V\subset Y$ offen mit $U\cap V\cap f(X) = \emptyset$ und $f(X) \subset U\cup V$. Dann ist $X = f^{-1}(U)\cup f^{-1}(V)$ mit den offenen Mengen $f^{-1}(U)$ und $f^{-1}(V)$. Außerdem ist $f^{-1}(U)\cap f^{-1}(V) = f^{-1}(U\cap V\cap f(X)) = \emptyset$. Also ist bereits $f^{-1}(U) = \emptyset$ oder $f^{-1}(V) = \emptyset$. Dann ist aber entsprechend $f(X)\cap U = \emptyset$ oder $f(X)\cap V = \emptyset$.
+\end{proof}
+
+\begin{theorem}\label{thm:closure-connected}
+Sei $M\subset X$ zusammenhängend und $M\subset N\subset \cl{M}$. Dann ist auch $N$ zusammenhängend.
+\end{theorem}
+\begin{proof}
+Seien $U,V\subset X$ offen mit $U\cap V\cap N = \emptyset$ und $N\subset U\cup V$. Aber dann ist auch $M\subset U\cup V$, also etwa ohne Einschränkung $U\cap M = \emptyset$. Also ist $M\subset X\setminus U$ und damit auch $N \subset \cl{M}\subset X\setminus U$, \ddh~$U\cap N = \emptyset$.
+\end{proof}
+
+\begin{lemma}
+Sei $U\subset X$ eine Teilmenge und $\{u_n\}_{n\in\NN}$ eine Folge in $X$ mit $u_n\in U$ für alle $n\in\NN$. Angenommen $u_n\cto u$. Dann ist $u\in\cl{U}$.
+\end{lemma}
+\begin{proof}
+Sei $A\supset U$ abgeschlossen in $X$. Wäre $u\not\in A$, so wäre $u\in X\setminus A$ und $X\setminus A$ ist offen. Also gäbe es insbesondere ein $n\in\NN$ mit $u_n\in X\setminus A$ im Widerspruch zu $u_n\in U$. Also ist $u\in A$ und da $A$ beliebig war schließen wir, dass $u\in\cl{U}$.
+\end{proof}
+
+\begin{theorem}
+In $\RR$ sind Intervalle zusammenhängend.
+\end{theorem}
+\begin{proof}
+Wegen \autoref{thm:closure-connected} können wir annehmen, dass das fragliche Intervall von der Form $(a,b)$ ist. Seien $U,V\subset (a,b)$ offen mit $U\cap V = \emptyset$ und $(a,b) = U\cup V$. Angenommen, es wäre $U\neq\emptyset$ und $V\neq\emptyset$. Setze $v = \sup V$. Dann gibt es eine Folge $(v_n)_{n\in\NN}$ mit $v_n\in V$ und $v_n\cto v$. Aber $V = (a,b)\setminus U$ ist abgeschlossen in $(a,b)$ und deshalb ist dann $v\in V$. Also ist $(v,b)\subset U$. Aber dann gibt es eine Folge $(u_n)_{n\in\NN}$ mit $u_n\in (v,b)\subset U$ und $u_n\cto v$. Aber $U = (a,b)\setminus V$ ist auch abgeschlossen in $(a,b)$, also wäre $v\in U$ im Widerspruch zu $U\cap V = \emptyset$.
+\end{proof}
+
+\begin{theorem}
+Ein wegzusammenhängender Raum $X$ ist zusammenhängend.
+\end{theorem}
+\begin{proof}
+Seien $U,V\subset X$ offen mit $U\cup V = X$ und $U\cap V = \emptyset$. Angenommen, es wären $U\neq\emptyset$ und $V\neq\emptyset$, etwa $u\in U$ und $v\in V$. Da $X$ wegzusammenhängend ist, gibt es eine stetige Funktion $f\colon [0,1]\to X$ mit $f(0) = u$ und $f(1) = v$. Dann ist nach \autoref{thm:intermediate-value} das Bild $M = f([0,1])$ zusammenhängend. Aber es wäre dann $(M\cap U)\cap (M\cap V) = \emptyset$, $(M\cap U)\cup (M\cap V) = M$, obwohl $u\in M\cap U$ und $v\in M\cap V$.
+\end{proof}
+
+Nicht jeder zusammenhängende Raum ist auch wegzusammenhängend. Sei zum Beispiel
+\[
+X = \{(x,\sin(1/x)) : x\in (0,1]\}\cup \{0\}\times[-1,1]
+\]
+die \emph{topologist's sine curve}. Dann ist $X$ zusammenhängend, denn für $\Gamma = \{(x,\sin(1/x)) : x\in (0,1]\}$ ist $X = \cl{\Gamma}$ und $\Gamma$ ist das Bild der zusammenhängenden Menge $(0,1]$ unter der stetigen Funktion $x\mapsto (x,\sin(1/x))$. Aber man überlegt sich, dass es keine stetige Funktion $f\colon[0,1]\to X$ mit $f(0) = (0,0)$ und $f(1) = (1,\sin(1))$.
+
+\begin{definition}
+Sei $X$ ein topologischer Raum. Wir definieren eine Áquivalenzrelation $\sim$ auf $X$, für die $x\sim y$ genau dann, wenn es einen Weg von $x$ nach $y$ in $X$ gibt. Der Quotient $\pi_0(X) = X/{\sim}$ ist die Menge der \emph{Wegzusammenhangskomponenten}.
+\end{definition}
+
+Die Anzahl der Wegzusammenhangskomponenten $\#\pi_0(X)$ eines Raums $X$ ist eine Homöomorphieinvariante. Ist nämlich $\varphi\colon X\to Y$ ein Homöomorphismus, so haben wir eine Abbildung $\varphi_*\colon \pi_0(X)\to\pi_0(Y)$ mit $\varphi([x]) = [\varphi(x)]$. Diese Abbildung ist tatsächlich wohldefiniert, denn für $x\sim y$ entlang eines Wegs $f\colon [0,1]\to X$ ist $\varphi\circ f\colon [0,1]\to Y$ ein Weg von $f(x)$ nach $f(y)$. Außerdem ist $\varphi_*$ bijektiv mit Umkehrabbildung $(\varphi^{-1})_*$. Insbesondere folgt, dass $\#\pi_0(X) = \#\pi_0(Y)$.
+
+Zum Beispiel haben wir jetzt genügend technische Werkzeuge um zu sehen, dass es keinen Homöomorphismus $[0,2\pi)\to S^1$ geben kann. Man überlegt sich nämlich, dass $S^1\setminus \{x\}$ für jedes $x\in S^1$ wegzusammenhängend ist. Aber $[0,2\pi)\setminus\{\pi\} = [0,\pi)\cup (\pi,2\pi)$ ist unzusammenhängend. Gäbe es nun einen Homöomorphismus $\varphi\colon [0,2\pi)\to S^1$, dann wäre $\varphi|_{[0,2\pi)\setminus\{\pi\}}$ ein Homöomorphismus $[0,2\pi)\setminus\{\pi\}\to S^1\setminus\{\varphi(\pi)\}$. Aber $\#\pi_0(S^1\setminus\{\varphi(\pi)\}) = 1$ während $\#\pi_0([0,2\pi)\setminus\{\pi\}) = 2$.
 
 \subsection{Kompakte Räume}
 
@@ -1078,7 +1145,7 @@ Sei $X$ ein topologischer Raum.
 \item Ist $X$ Hausdorff, so ist jede kompakte Teilmenge $K\subset X$ abgeschlossen.
 \end{enumerate}
 \end{lemma}
-\begin{proof}\leavevmode
+\begin{proof}\needspace{2\baselineskip}\leavevmode
 \begin{enumerate}
 \item Sei $A\subset X$ abgeschlossen und $\{U_i\}_{i\in I}$ eine offene Überdeckung von $A$. Dann existieren offene Teilmengen $V_i\subset X$ mit $U_i = V_i\cap A$ und $X = \bigcup_{i\in I} V_i \cup X\setminus A$ ist eine offene Überdeckung von $X$. Folglich existiert eine endliche Teilmenge $J\subset I$ mit $X = \bigcup_{i\in J} V_i \cup X\setminus A$. Dann ist aber auch $A = X\cap A = \bigcup_{i\in J} U_i$.
 \item Sei $K\subset X$ kompakt und $x\in X\setminus K$. Dann existiert eine offene Menge $U\subset X\setminus K$ mit $U\cap K = \emptyset$: Da $X$ Hausdorff ist, existiert nämlich für jedes $y\in K$ eine offene Umgebung $U_y$ von $x$ und eine offene Umgebung $V_y$ von $y$ mit $U_y\cap V_y=\emptyset$. Dann ist $K \subset \bigcup_{y\in K} V_y$ eine offene Überdeckung von $K$ und folglich existert eine endliche Teilmenge $K_0\subset K$ mit $K\subset \bigcup_{y\in K_0} V_y$. Dann ist aber $\bigcap_{y\in K_0} U_y \subset X\setminus K$ eine offene Umgebung von $x$. Das genügt um zu sehen, dass $X\setminus K$ offen ist. \qedhere
@@ -1107,18 +1174,15 @@ Natürlich implizieren (i) und (ii) zusammen mit der vorstehenden Bemerkung Teil
 \end{enumerate}
 \end{proof}
 
-Im Allgemeinen sind Teilräume kompakter Räume nicht selbst kompakt. Zum Beispiel ist keine Teilmenge eines kompakten Hausdorffraums, die nicht abgeschlossen ist, kompakt. Hingegen zeigt \autoref{lem2}, dass Quotienten kompakter Räume immer selbst kompakt sind. Es stellt sich heraus, dass Produkte kompakter Räume stets kompakt sind.
-\begin{theorem}\label{thm:tychonoff}
-Beliebige Produkte kompakter Räume sind kompakt in der Produkttopologie.
-\end{theorem}
+Im Allgemeinen sind Teilräume kompakter Räume nicht selbst kompakt. Zum Beispiel ist keine Teilmenge eines kompakten Hausdorffraums, die nicht abgeschlossen ist, kompakt. Hingegen zeigt \autoref{lem2}, dass Quotienten kompakter Räume immer selbst kompakt sind.
 
-\begin{corollary}[Heine-Borel]\leavevmode
+\begin{corollary}[Heine-Borel]\needspace{2\baselineskip}\leavevmode
 \begin{enumerate}
 \item Das Intervall $[0,1]$ ist kompakt.
 \item Eine Teilmenge von $\RR^m$ ist kompakt, genau dann, wenn sie abgeschlossen und beschränkt ist.
 \end{enumerate}
 \end{corollary}
-\begin{proof}\leavevmode
+\begin{proof}\needspace{2\baselineskip}\leavevmode
 \begin{enumerate}
 \item Sei $X = \{0,1,2,\dots,9\}$ mit der diskreten Topologie. Dann ist $X$ kompakt und wegen \autoref{thm:tychonoff} auch das Produkt $X^\NN = \prod_{n\in\NN} X$ kompakt. Definiere eine Abbildung
 \[
@@ -1131,33 +1195,34 @@ Dann ist $f$ surjektiv und stetig(!). Wegen \autoref{lem2} ist dann $f(X^\NN) = 
 \end{proof}
 
 \begin{definition}
-Sei $X$ ein topologischer Raum und $A\subset X$ eine beliebige Teilmenge. Ein \emph{Grenzwert} von $A$ ist ein $p\in X$, so dass jede Umgebung von $p$ einen Punkt $p'\in A$ mit $p'\neq p$ enthält.
+Sei $X$ ein topologischer Raum und $A\subset X$ eine beliebige Teilmenge. Ein \emph{Häufungspunkt} von $A$ ist ein $p\in X$, so dass jede Umgebung von $p$ einen Punkt $p'\in A$ mit $p'\neq p$ enthält.
 \end{definition}
 \begin{theorem}\label{thm:limit-points-compact}
-Ist $X$ kompakt, so besitzt jede unendliche Teilmenge $A\subset X$ einen Grenzwert.
+Ist $X$ kompakt, so besitzt jede unendliche Teilmenge $A\subset X$ einen Häufungspunkt.
 \end{theorem}
 \begin{proof}
-Andernfalls ist zuerst $A$ abgeschlossen: Wäre nämlich $p\in\cl{A}\setminus A$, so wäre für jede Umgebung $U$ von $p$ der Schnitt $U\cap A\neq \emptyset$. Aber dann wäre $p$ ein Grenzwert von $A$.
+Andernfalls ist zuerst $A$ abgeschlossen: Wäre nämlich $p\in\cl{A}\setminus A$, so wäre für jede Umgebung $U$ von $p$ der Schnitt $U\cap A\neq \emptyset$. Aber dann wäre $p$ ein Häufungspunkt von $A$.
 
-Außerdem gibt es, falls $A$ keinen Grenzwert besitzt, für alle $p\in A$ eine Umgebung $U_p$ von $p$ mit $A\cap U_p = \{p\}$. Folglich ist die Teilraumtopologie auf $A$ diskret. Aber da $X$ kompakt ist, ist nach \autoref{lem1} auch $A$ kompakt. Aber jeder diskrete, kompakte Raum ist endlich.
+Außerdem gibt es, falls $A$ keinen Häufungspunkt besitzt, für alle $p\in A$ eine Umgebung $U_p$ von $p$ mit $A\cap U_p = \{p\}$. Folglich ist die Teilraumtopologie auf $A$ diskret. Aber da $X$ kompakt ist, ist nach \autoref{lem1} auch $A$ kompakt. Aber jeder diskrete, kompakte Raum ist endlich.
 \end{proof}
 
 \begin{definition}
 Ein topologischer Raum $X$ heißt \emph{folgenkompakt}, wenn jede Folge in $X$ eine konvergente Teilfolge besitzt.
 \end{definition}
+Im Allgemeinen sind Folgenkompaktheit und Kompaktheit unabhängig voneinander. Es gibt folgenkompakte Räume, die nicht kompakt sind, und kompakte Räume, die nicht folgenkompakt sind.
 
 \begin{theorem}
 Sei $(X,d)$ ein metrischer Raum. Dann sind die folgenden Aussagen äquivalent:
 \begin{enumerate}
 \item $X$ ist kompakt.
-\item Jede unendliche Teilmenge von $X$ hat einen Grenzwert.
+\item Jede unendliche Teilmenge von $X$ hat einen Häufungspunkt.
 \item $X$ ist folgenkompakt.
 \end{enumerate}
 \end{theorem}
-\begin{proof}\leavevmode
+\begin{proof}\needspace{2\baselineskip}\leavevmode
 \begin{enumerate}
 \item[(1\cto2)] Das ist \autoref{thm:limit-points-compact}.
-\item[(2\cto3)] Sei $\{x_n\}_{n\in\NN}$ eine Folge in $X$ und $A = \{x_n : n\in\NN \}$. Ist $A$ endlich, gibt es eine konstante und damit konvergente Teilfolge. Ist $A$ unendlich, besitzt $A$ einen Grenzwert $x\in X$. Dann existiert für jedes $m\in\NN$ ein $x_{n_m}\in A\cap B_{1/m}(x)$ mit $x_{n_m}\neq x$ und $n_m < n_{m+1}$. Dann konvergiert $\{x_{n_m}\}_{m\in\NN}$ gegen $x$.
+\item[(2\cto3)] Sei $\{x_n\}_{n\in\NN}$ eine Folge in $X$ und $A = \{x_n : n\in\NN \}$. Ist $A$ endlich, gibt es eine konstante und damit konvergente Teilfolge. Ist $A$ unendlich, besitzt $A$ einen Häufungspunkt $x\in X$. Dann existiert für jedes $m\in\NN$ ein $x_{n_m}\in A\cap B_{1/m}(x)$ mit $x_{n_m}\neq x$ und $n_m < n_{m+1}$. Dann konvergiert $\{x_{n_m}\}_{m\in\NN}$ gegen $x$.
 \item[(3\cto1)] Sei $X = \bigcup_{i\in I} U_i$ eine offene Überdeckung von $X$. Für eine beliebige Teilmenge $B\subset X$ schreiben wir
 \[
 \diam(B) = \sup\{ d(x,y) : x,y\in B \}.
@@ -1177,6 +1242,144 @@ X = U_{j_1}\cup\dots\cup U_{j_m}.\qedhere
 \end{enumerate}
 \end{proof}
 
-Im Allgemeinen sind Folgenkompaktheit und Kompaktheit unabhängig voneinander. Es gibt folgenkompakte Räume, die nicht kompakt sind, und kompakte Räume, die nicht folgenkompakt sind.
+\begin{definition}
+Eine Teilmenge $A$ in einem metrischen Raum $(X,d)$ ist \emph{totalbeschränkt}, wenn es zu jedem $\varepsilon>0$ eine endliche Menge von Punkten $x_1,\dots,x_n\in A$ existiert, so dass $A\subset \bigcup_{i=1}^n B_\varepsilon(x_i)$.
+\end{definition}
 
+\begin{definition}
+Eine Folge $\{x_n\}_{n\in\NN}$ in einem metrischen Raum $(X,d)$ ist eine \emph{Cauchyfolge}, falls für jedes $\varepsilon>0$ ein $N\in\NN$ existiert, so dass $d(x_m,x_n)<\varepsilon$ für $m,n\geq N$.
+
+Der metrische Raum $(X,d)$ heißt \emph{vollständig}, wenn jede Cauchyfolge in $X$ konvergiert.
+\end{definition}
+
+Eine totalbeschränkte Teilmenge eines metrischen Raums ist natürlich auch beschränkt. Die Umkehrung gilt aber nicht. Jede kompakte Teilmenge $A$ eines metrischen Raums $(X,d)$ ist totalbeschränkt: Für $\varepsilon>0$ hat die offene Überdeckung $A\subset \bigcup_{x\in A} B_\varepsilon(x)$ nämlich eine endliche Teilüberdeckung.
+
+Jede kompakte Teilmenge $A$ ist auch vollständig. Ist nämlich $\{x_n\}_{n\in\NN}$ eine Cauchyfolge in $A$, so existiert eine konvergente Teilfolge $\{x_{n_k}\}_{k\in\NN}$; etwa $x_{n_k}\cto x\in A$. Dann konvergiert auch $\{x_n\}$ gegen $x$, denn sei $\varepsilon>0$ und $N\in\NN$ so groß, dass $d(x_n, x_{n_N}) < \varepsilon/2$ für alle $n\geq N$ und $d(x, x_N) < \varepsilon/2$.  Dann ist $d(x,x_n) \leq d(x,x_{n_N}) + d(x_{n_N}, x_n) < \varepsilon$ für $n\geq N$. Ohne Beweis erwähnen wir das folgende Resultat.
+
+\begin{theorem}
+Ein totalbeschränkter und vollständiger metrischer Raum ist kompakt.\proofomitted
+\end{theorem}
+
+\subsection{Ultrafilter und der Satz von Tychonoff}
+TODO
+
+\begin{definition}
+Für $f\colon X\to Y$ eine Abbildung zwischen zwei Mengen $X$ und $Y$ und $\cal F$ ein Filter auf $X$, definieren wir
+\[
+f_*\cal F \coloneqq \{M\subset Y : f^{-1}(M)\in\cal F\},
+\]
+den \emph{Pushforward-Filter}.
+\end{definition}
+
+\begin{lemma}
+Sei $f\colon X\to Y$ eine Abbildung zwischen zwei Mengen $X$ und $Y$ und $\cal F$ ein Filter auf $X$.
+\begin{enumerate}
+\item Der Pushforward-Filter $f_*\cal F$ ist tatsächlich ein Filter auf $Y$.
+\item Wenn $\cal F$ ein Ultrafilter ist, so ist auch $f_*\cal F$ ein Filter.
+\end{enumerate}
+\end{lemma}
+\begin{proof}\needspace{2\baselineskip}\leavevmode
+\begin{enumerate}
+\item Wir haben $Y\in f_*\cal F$, denn $f^{-1}(Y) = X\in\cal F$, und $\emptyset\not\in f_*\cal F$, denn $f^{-1}(\emptyset) = \emptyset\not\in\cal F$. Für $M,N\in f_*\cal F$ ist $f^{-1}(M\cap N) = f^{-1}(M)\cap f^{-1}(N)\in\cal F$, also auch $M\cap N\in f_*\cal F$.
+
+Ist weiter $M\in f_*\cal F$ und $N\supset M$, so ist $f^{-1}(M)\in\cal F$ und wegen $f^{-1}(N)\supset f^{-1}(M)$ auch $f^{-1}(N)\in \cal F$. Also ist auch $N\in f_*\cal F$.
+\item Sei $M\subset Y$. Dann ist entweder $f^{-1}(M)\in\cal F$ oder $X\setminus f^{-1}(M) = f^{-1}(Y\setminus M)\in\cal F$. Aber das heißt, dass entweder $M\in f_*\cal F$ oder $Y\setminus M\in f_*\cal F$.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}[Tychonoff]\label{thm:tychonoff}
+Beliebige Produkte kompakter Räume sind kompakt in der Produkttopologie.
+\end{theorem}
+\begin{proof}
+Sei $I$ beliebige Indexmenge und $\{X_i\}_{i\in I}$ eine Familie kompakter topologischer Räume. Sei $X = \prod_{i\in I} X_i$ nichtleer und $\pi_j\colon X\to X_j$ die Projektion auf $X_j$ für jedes $j\in I$. Wir zeigen, dass $X$ kompakt ist, indem wir zeigen, dass jeder Ultrafilter in $X$ konvergiert.
+
+Sei also $\cal F$ ein Ultrafilter auf $X$. Dann ist für jedes $i\in I$ der Pushforward-Filter $(\pi_i)_*\cal F$ ein Ultrafilter auf $X_i$. Weil $X_i$ kompakt ist, konvergiert $(\pi_i)_*\cal F$ gegen ein $x_i\in X_i$. Wir zeigen, dass dann $(x_i)_{i\in I}$ ein Grenzwert von $\cal F$ ist. Sei dafür $U\subset X$ eine offene Umgebung von $x$. Wegen dem dritten Filteraxiom können wir ohne Einschränkung $U$ durch eine offene Menge der Form $\prod_{i\in I}\pi_i^{-1}(U_i)$ für offene Mengen $U_i\subset X_i$ mit $x_i\in U_i$ ersetzen, wobei aber nur endlich viele der $U_i$ verschieden von $X_i$ sind. Sei etwa $J\subset I$ eine endliche Teilmenge mit $U_i = X_i$ für $i\not\in J$.
+
+Aber dann ist $U_i$ fur jedes für jedes $i\in I$ eine offene Umgebung von $x_i$. Da $(\pi_i)_*\cal F$ gegen $x_i$ konvergiert, ist dann $U_i\in (\pi_i)_*\cal F$, \ddh~$\pi_i^{-1}(U_i)\in\cal F$. Aber dann ist $\bigcap_{i\in J} \pi_i^{-1}(U_i)\in\cal F$, da $J$ endlich ist. Außerdem ist
+\[
+\prod_{i\in I} U_i = \bigcap_{i\in J}\pi_i^{-1}(U_i).
+\]
+Also konvergiert $\cal F$ tatsächlich gegen $(x_i)_{i\in I}$.
+\end{proof}
+
+Der Beweis funktioniert nicht, wenn man die Produkttopologie durch die Boxtopologie ersetzt. Ist zum Beispiel $X$ ein endlicher diskreter topologischer Raum, so ist $\prod_{n\in\NN} X$ mit der Produkttopologie wie eben gezeigt kompakt. Aber die Boxtopologie auf $\prod_{n\in\NN} X$ ist diskret!
+
+\subsection{Einpunktkompaktifizierung}
+Das offene Intervall $(0,1)$ mit der euklidischen Topologie ist nicht kompakt. Aber es gibt eine stetige Funktion $(0,1)\to S^1$ deren Bild nur einen Punkt in $S^1$ nicht enthält und $S^1$ ist kompakt. Das ist ein erstes Beispiel für eine Einpunktkompaktifizierung.
+
+\begin{definition}
+Sei $X$ ein Hausdorffraum und $X^* = X\cup\{\infty\}$, wobei $\infty\not\in X$. Sei $\cal T_\infty$ die folgende Menge von Teilmengen von $X^*$:
+\begin{enumerate}
+\item Für jede offene Teilmenge $U\subset X$ ist $U\in\cal T_\infty$.
+\item Für $K\subset X$ kompakt ist $X^*\setminus K\in\cal T_\infty$.
+\end{enumerate}
+Der topologische Raum $(X,\cal T_\infty)$ heißt \emph{Einpunktkompaktifizierung} von $X$.
+\end{definition}
+
+\begin{lemma}
+Die Familie $\cal T_\infty$ ist eine Topologie auf $X^*$.
+\end{lemma}
+\begin{proof}
+Wir haben $\emptyset\in\cal T_\infty$, da $\emptyset\subset X$ offen ist. Außerdem ist $X^*\in\cal T_\infty$, denn $X^*\setminus \emptyset = X^*$ und $\emptyset\subset X$ ist kompakt.
+
+Für $U_1,U_2\subset X$ offen ist natürlich auch $U_1\cap U_2\in\cal T_\infty$. Ist $U\subset X$ offen und $V = X^*\setminus K$ mit $K\subset X$ kompakt, so ist $U\cap V = U\cap (X^*\setminus K) = U\cap (X\setminus K)\subset X$ offen in $X$, denn $K$ ist als kompakte Menge in einem Hausdorffraum abgeschlossen. Sind weiter $K_1,K_2\subset X$ kompakt, so ist $(X^*\setminus K_1)\cap (X^*\setminus K_2) = X^*\setminus (K_1\cup K_2)\in\cal T_\infty$, da $K_1\cup K_2\subset X$ kompakt ist.
+
+Ist $\{U_i\}_{i\in I}$ eine Familie von offenen Teilmengen von $X$, so ist natürlich auch $\bigcup_{i\in I} U_i\in\cal T_\infty$. Ist $\{K_i\}_{i\in I}$ eine Familie kompakter Teilmengen von $X$, so ist
+\[
+\bigcup_{i\in I} (X^*\setminus K_i) = X^*\setminus \bigcap_{i\in I} K_i \in \cal T_\infty,
+\]
+da $\bigcap_{i\in I} K_i\subset X$ kompakt ist.
+
+Es bleibt zu zeigen, dass $U\cup (X^*\setminus K)\in\cal T_\infty$ für $U\subset X$ offen und $K\subset X$ kompakt. Dann ist $U\cup (X^*\setminus K) = X^*\setminus (K\setminus K\cap U)$ und $K\setminus (K\cap U) = K\cap (X\setminus U)\subset K$ ist eine abgeschlossene Teilmenge der kompakten Menge $K$. Also ist auch $U\cup (X^*\setminus K)\in\cal T_\infty$.
+\end{proof}
+\begin{lemma}
+Die Teilraumtopologie auf $X\subset X^*$ stimmt der ursprünglichen Topologie auf $X$ überein.
+\end{lemma}
+\begin{proof}
+Ist $U\subset X$ offen in der ursprünglichen Topologie auf $X$, so ist auch $U\subset X^*$ offen und $U = X\cap U$.
+
+Sei $U\subset X^*$ eine beliebige offene Teilmenge. Ist $U\subset X$, so ist $X\cap U = U$ offen in der ursprünglichen Topologie auf $X$. Ist $U = X^*\setminus K$ für $K\subset X$ kompakt, so ist $X\cap U = X\setminus K$ auch offen in der ursprünglichen Topologie auf $X$, denn $X$ ist Hausdorff und $K$ ist als kompakte Menge in einem Hausdorffraum abgeschlossen.
+\end{proof}
+
+\begin{lemma}
+Der Raum $X^*$ ist kompakt.
+\end{lemma}
+\begin{proof}
+Sei $X^* = \bigcup_{i\in I} U_i$ mit $U_i\subset X^*$ offen. Dann gibt es ein $i_0\in I$ mit $\infty\in U_{i_0}$ und dafür ist $U_{i_0} = X^*\setminus K$ für $K\subset X$ eine kompakte Teilmenge. Aber dann ist $K\subset \bigcup_{i\in I} X\cap U_i$ und es gibt eine endliche Teilmenge $J\subset I$ mit $K\subset \bigcup_{i\in J} X\cap U_i$. Aber dann ist $X^* = U_{i_0}\cup \bigcup_{i\in J} U_i$ eine endliche Teilüberdeckung.
+\end{proof}
+
+\begin{lemma}
+Sei $X$ \emph{lokalkompakt}, \ddh~$X$ ist Hausdorff und für jedes $x\in X$ gibt es eine offene Umgebung $U\subset X$ von $x$ und eine kompakte Menge $K\subset X$ mit $x\in U\subset K$. Dann ist $X^*$ ein Hausdorffraum.
+\end{lemma}
+\begin{proof}
+Seien $x\neq y$ Punkte in $X^*$. Sind $x,y\in X$, so gibt es offene Mengen $U,V\subset X$ mit $x\in U$, $y\in V$ und $U\cap V = \emptyset$, da wir annehmen, dass $X$ Hausdorff ist. Sei also einer der Punkte $\infty\in X^*$, etwa $x\in X$ und $y=\infty$. Da $X$ lokalkompakt ist, gibt es eine offene Umgebung $U\subset X$ von $x$ und eine kompakte Teilmenge $K\subset X$ mit $x\in U\subset K$. Aber dann ist $\infty\in X^*\setminus K$ und $X^*\setminus K\subset X^*$ ist offen. Außerdem ist $U\cap(X^*\setminus K) = \emptyset$.
+\end{proof}
+
+Insgesamt haben wir folgenden Satz gezeigt.
+\begin{theorem}
+Sei $X$ ein Hausdorffraum und $X^* = X\cup\{\infty\}$ die Einpunktkompaktifizierung von $X$. Dann gilt:
+\begin{enumerate}
+\item Die Teilraumtopologie auf $X\subset X^*$ stimmt mit der ursprünglichen Topologie auf $X$ überein.
+\item $X^*$ ist kompakt.
+\item Wenn $X$ lokalkompakt ist, dann ist $X^*$ Hausdorff.
+\end{enumerate}
+\end{theorem}
+
+\begin{lemma}\label{lem:loccomp-compactification-hausdorff}
+Sei $Y$ ein kompakter Hausdorffraum und $X\subset Y$ ein Teilraum, so dass $Y\setminus X = \{\pt\}$ nur einen Punkt enthält. Dann ist $X$ lokalkompakt.
+\end{lemma}
+\begin{proof}
+Sei $x\in X$. Da $Y$ Hausdorff ist, gibt es offene Teilmengen $U,V\subset Y$ mit $x\in U$, $\pt\in V$ und $U\cap V = \emptyset$. Aber dann ist $Y\setminus V$ abgeschlossen und als Teilmenge des kompakten Raums $Y$ selbst kompakt. Außerdem ist $x\in X\cap U\subset Y\setminus V$.
+\end{proof}
+
+\begin{lemma}
+Sei $X$ lokalkompakt und $X^*$ die Einpunktkompaktifizierung. Angenommen, $Y$ ist ein kompakter Hausdorffraum, so dass $X\subset Y$ ein Teilraum und $Y\setminus X = \{\pt\}$ ist. Dann ist die Abbildung $\varphi\colon Y\to X^*$ mit $\varphi|_X = \id_X$ und $\varphi(\pt) = \infty$ ein Homöomorphismus.
+\end{lemma}
+\begin{proof}
+Die Abbildung $\varphi$ ist offenbar eine Bijektion. Da $Y$ kompakt und $X^*$ nach \autoref{lem:loccomp-compactification-hausdorff} Hausdorff ist, genügt es also zu zeigen, dass $\varphi$ stetig ist. Sei dafür $U\subset X^*$ offen.
+
+Ist $U\subset X$, so ist $\varphi^{-1}(U) = U\subset X\subset Y$ offen in der Teilraumtopologie auf $X$. Aber $X\subset Y$ ist offen, da $\{\pt\}\subset Y$ abgeschlossen ist, also ist $U$ auch offen in $Y$. Ist hingegen $U = X^*\setminus K$ für eine kompakte Teilmenge $K\subset X$, so ist $\varphi^{-1}(U) = Y\setminus \varphi^{-1}(K) = Y\setminus K$. Aber $K\subset Y$ ist kompakt (in der Teilraumtopologie) und damit abgeschlossen, da $Y$ ein Hausdorffraum ist. Also ist auch dann $\varphi^{-1}(U)$ offen.
+\end{proof}
+
+Mit diesem Lemma können wir auch sehen, dass $S^1\isom (0,1)^*$. Es ist nämlich leicht zu sehen, dass $S^1\setminus\{\pt\}\isom (0,1)$ für jeden Punkt $\pt\in S^1$. Außerdem ist $S^1$ ein kompakter Hausdorffraum und $(0,1)$ ist lokalkompakt. Ähnlich ist die Einpunktkompaktifizierung von $\RR^n$ homöomorph zur $n$-Sphäre $S^n$.
 \end{document}
