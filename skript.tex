@@ -1382,4 +1382,165 @@ Ist $U\subset X$, so ist $\varphi^{-1}(U) = U\subset X\subset Y$ offen in der Te
 \end{proof}
 
 Mit diesem Lemma können wir auch sehen, dass $S^1\isom (0,1)^*$. Es ist nämlich leicht zu sehen, dass $S^1\setminus\{\pt\}\isom (0,1)$ für jeden Punkt $\pt\in S^1$. Außerdem ist $S^1$ ein kompakter Hausdorffraum und $(0,1)$ ist lokalkompakt. Ähnlich ist die Einpunktkompaktifizierung von $\RR^n$ homöomorph zur $n$-Sphäre $S^n$.
+
+\section{Algebraische Topologie}
+TODO
+
+\begin{definition}
+Sei $X$ ein topologischer Raum und $A\subset X$. Eine \emph{Homotopie relativ $A$} von $f\colon X\to Y$ nach $g\colon X\to Y$ ist eine Homotopie $H\colon X\times[0,1]\to Y$ von $f$ nach $g$, so dass $H(a,t) = f(a) = g(a)$ für alle $a\in A$. Wir schreiben $f\simeq_A g$.
+\end{definition}
+
+Wieder ist $\simeq_A$ eine Äquivalenzrelation. Der Beweis ist komplett analog zu dem für $\simeq$. Das wichtigste Beispiel für eine relative Homotopie findet sich bei Wegen. Zwei Wege $\gamma_1\colon [0,1]\to X$ und $\gamma_2\colon[0,1]\to X$ heißen nämlich \emph{homotop}, $\gamma_1\simeq\gamma_2$, wenn sie homotop relativ $\{0,1\}$ sind. Wir bezeichnen mit $[\gamma]$ die Homotopieklasse (relativ $\{0,1\}$) von einem Weg $\gamma$. Um die Notation etwas zu vereinfachen schreiben wir oft $I\coloneqq [0,1]$ für das Einheitsintervall.
+
+Seien zum Beispiel $X = \RR^n$ mit der euklidischen Topologie und $\gamma_1,\gamma_2\colon I \to \RR^n$ zwei Wege mit $\gamma_1(0) = \gamma_2(0)$ und $\gamma_1(1) = \gamma_2(1)$. Dann ist immer $\gamma_1\simeq\gamma_2$, denn
+\[
+I\times I\to \RR^n,\quad (s,t)\mapsto (1-t)\gamma_1(s) + t\gamma_2(s)
+\]
+ist eine Homotopie relativ $\{0,1\}$.
+
+\begin{definition}
+Sei $X$ ein topologischer Raum mit Wegen $\gamma_1,\gamma_2\colon I\to X$, so dass $\gamma_1(1) = \gamma_2(0)$. Dann definieren wir einen Weg $\gamma_1*\gamma_2\colon I\to X$, die \emph{Verknüpfung} von $\gamma_1$ und $\gamma_2$, durch
+\[
+(\gamma_1*\gamma_2)(s) = \begin{cases}
+\gamma_1(2s) & s\in[0,\tfrac12]\\
+\gamma_2(2s-1) & s\in[\tfrac12, 1].
+\end{cases}
+\]
+\end{definition}
+
+\begin{lemma}
+Sei $X$ ein topologischer Raum mit Wegen $\gamma_1,\gamma_2\colon I\to X$, so dass $\gamma_1(1) = \gamma_2(0)$. Seien weiter $\gamma_1',\gamma_2'\colon I\to X$ Wege mit $\gamma_1\simeq_{\{0,1\}}\gamma_1'$ und $\gamma_2\simeq_{\{0,1\}}\gamma_2'$. Dann ist $\gamma_1*\gamma_2\simeq_{\{0,1\}} \gamma_1'*\gamma_2'$. Insbesondere ist die Verknüpfung
+\[
+([\gamma_1],[\gamma_2]) \mapsto [\gamma_1]\cdot[\gamma_2] \coloneqq [\gamma_1*\gamma_2]
+\]
+von Homotopieklassen wohldefiniert.
+\end{lemma}
+\begin{proof}
+Sei $H\colon I\times I\to X$ eine Homotopie von $\gamma_1$ nach $\gamma_1'$. Wir definieren
+\[
+H'\colon I\times I\to X,\quad (s,t)\mapsto\begin{cases}
+H(2s, t) & s\in[0,\tfrac12] \\
+\gamma_2(2s-1) & s\in[\tfrac12, 1].
+\end{cases}
+\]
+Dann ist $H'$ eine Homotopie von $\gamma_1*\gamma_2$ nach $\gamma_1'*\gamma_2$, denn $H'$ ist stetig und es gilt
+\begin{align*}
+H'(s,0) &= \begin{cases}
+\gamma_1(2s) = H(2s,0) & s\in[0,\tfrac12] \\
+\gamma_2(2s-1) & s\in[\tfrac12,1]
+\end{cases} \\
+\shortintertext{und}
+H'(s,1) &= \begin{cases}
+\gamma_1'(2s) = H(2s,1) & s\in[0,\tfrac12] \\
+\gamma_2(2s-1) & s\in[\tfrac12,1].
+\end{cases}
+\end{align*}
+Sei weiter $G\colon I\times I\to X$ eine Homotopie von $\gamma_2$ nach $\gamma_2'$. Wir definieren
+\[
+G'\colon I\times I\to X,\quad (s,t)\mapsto\begin{cases}
+\gamma_1'(2s) & s\in[0,\tfrac12] \\
+G(2s-1, t) & s\in[\tfrac12, 1].
+\end{cases}
+\]
+Wieder ist $G'$ eine Homotopie von $\gamma_1'*\gamma_2$ nach $\gamma_1'*\gamma_2'$. Also ist insgesamt $\gamma_1*\gamma_2\simeq\gamma_1'*\gamma_2\simeq\gamma_1'*\gamma_2'$.
+\end{proof}
+
+\begin{lemma}\label{lem:reparam}
+Sei $\gamma\colon I\to X$ eine Weg in einem topologischen Raum $X$ und $\varphi\colon I\to I$ eine stetige Funktion mit $\varphi(0) = 0$ und $\varphi(1) = 1$. Dann ist $\gamma\circ\varphi\simeq_{\{0,1\}}\gamma$.
+\end{lemma}
+\begin{proof}
+Die Abbildung
+\[
+H\colon I\times I\to X,\quad (s,t)\mapsto \gamma(t\varphi(s) + (1-t)s)
+\]
+ist eine Homotopie relativ $\{0,1\}$ von $\gamma$ nach $\gamma\circ\varphi$.
+\end{proof}
+
+\begin{lemma}\label{lem:path-assoc}
+Sei $X$ ein topologischer Raum mit Wegen $\gamma_1,\gamma_2,\gamma_3\colon I\to X$, so dass $\gamma_1(1) = \gamma_2(0)$ und $\gamma_2(1) = \gamma_3(0)$. Dann ist $(\gamma_1*\gamma_2)*\gamma_3 \simeq_{\{0,1\}} \gamma_1*(\gamma_2*\gamma_3)$, also $([\gamma_1]\cdot[\gamma_2])\cdot[\gamma_3] = [\gamma_1]\cdot([\gamma_2]\cdot[\gamma_3])$.
+\end{lemma}
+\begin{proof}
+Wir haben $((\gamma_1*\gamma_2)*\gamma_3)\circ\varphi = \gamma_1*(\gamma_2*\gamma_3)$ für
+\[
+\varphi\colon I\to I,\quad s\mapsto\begin{cases}
+\tfrac12 s & s\in[0,\tfrac12] \\
+s - \tfrac14 & s\in[\tfrac12,\tfrac34] \\
+2s - 1 & s\in[\tfrac34, 1].
+\end{cases}
+\]
+Also folgt $(\gamma_1*\gamma_2)*\gamma_3\simeq\gamma_1*(\gamma_2*\gamma_3)$ aus \autoref{lem:reparam}.
+\end{proof}
+
+\begin{lemma}\label{lem:path-neutral}
+Sei $X$ ein topologischer Raum und $x\in X$. Sei weiter $\varepsilon_x\colon I\to X$ der konstante Weg $\varepsilon(s) = x$. Für einen weiteren Weg $\gamma\colon[0,1]\to X$ mit $\gamma_1(1) = x$ ist dann $[\gamma*\varepsilon_x] = [\gamma]$. Ist hingegen $\gamma_1(0) = x$, so gilt $[\varepsilon_x*\gamma] = [\gamma]$.
+\end{lemma}
+\begin{proof}
+Wir haben $(\gamma*\varepsilon_x)\circ\varphi = \gamma$ für
+\[
+\varphi\colon I\to I,\quad s\mapsto\begin{cases}
+2s & s\in[0,\tfrac12] \\
+1 & s\in[\tfrac12,1].
+\end{cases}
+\]
+Also ist $\gamma*\varepsilon_x\simeq\gamma$ nach \autoref{lem:reparam}. Der zweite Teil folgt analog.
+\end{proof}
+
+\begin{lemma}\label{lem:path-inverse}
+Sei wieder $\varepsilon_x$ der konstante Weg bei $x\in X$. Für einen Weg $\gamma\colon [0,1]\to X$ sei $\gamma'\colon I\to X$ definiert durch $\gamma'(s) = \gamma(1-s)$. Dann ist $[\gamma*\gamma'] = [\varepsilon_{\gamma(0)}]$ und $[\gamma'*\gamma] = [\varepsilon_{\gamma(1)}]$.
+\end{lemma}
+\begin{proof}
+Wir haben eine Homotopie
+\[
+H\colon I\times I\to X,\quad (s,t)\mapsto\begin{cases}
+\gamma(2s(1-t)) & s\in[0,\tfrac12] \\
+\gamma(2(1-s)(1-t)) & s\in[\tfrac12, 1]
+\end{cases}
+\]
+von $\gamma*\gamma'$ nach $\varepsilon_{\gamma(0)}$. Der zweite Teil folgt analog.
+\end{proof}
+
+\begin{definition}
+Sei $X$ ein topologischer Raum. Eine \emph{Schleife bei $x\in X$} ist ein Weg $\gamma\colon I\to X$ mit $\gamma(0) = \gamma(1) = x$.
+\end{definition}
+\begin{definition}
+Sei $X$ ein topologischer Raum mit $x_0\in X$. Die \emph{Fundamentalgruppe} $\pi_1(X,x_0)$ ist die Menge
+\[
+\pi_1(X,x_0) = \{[\gamma] : \textnormal{$\gamma\colon I\to X$ ist eine Schleife bei $x\in X$}\}.
+\]
+\end{definition}
+
+\begin{theorem}
+Die Menge $\pi_1(X,x_0)$ bildet mit der Verknüpfung $[\gamma_1]\cdot[\gamma_2] = [\gamma_1*\gamma_2]$ und dem neutralen Element $e = [\varepsilon_{x_0}]$ eine Gruppe.\proofomitted
+\end{theorem}
+
+Zum Beispiel ist die Fundamentalgruppe $\pi_1(\RR^n,0) = \{e\}$ trivial. In $\RR^n$ sind nämlich immer je zwei Wege mit den gleichen Start- und Endpunkten homotop. Insbesondere ist immer $\gamma\simeq \varepsilon_0$ für jede Schleife $\gamma$ bei $0\in\RR^n$. Wir werden später auch Räume kennenlernen, deren Fundamentalgruppe nichttrivial ist. Zum Beispiel zeigen wir später, dass $\pi_1(S^1,1)\isom\ZZ$.
+
+Wir hatten in diesem Beispiel für $\RR^n$ den Basispunkt $0$ gewählt. Aber diese Wahl ist für die Fundamentalgruppe unerheblich. Sei nämlich $X$ ein topologischer Raum und $x_0,x_1\in X$ mit einem Weg $\tau\colon I\to X$ von $x_0$ nach $x_1$. Dann induziert $\tau$ eine Abbildung
+\[
+c(\tau)\colon \pi_1(X,x_1)\to\pi_1(X,x_0),\quad [\gamma]\mapsto [\tau*\gamma*\tau'].
+\]
+\begin{lemma}
+Die Abbildung $c(\tau)\colon \pi_1(X,x_1)\to\pi_1(X,x_0)$ ist ein Gruppenisomorphismus.
+\end{lemma}
+\begin{proof}
+Die Abbildung $c(\tau)$ ist ein Homomorphismus, denn
+\[
+c(\tau)([\gamma_1]\cdot[\gamma_2]) = [\tau * \gamma_1*\gamma_2*\tau'] = [\tau*\gamma_1*\tau'*\tau*\gamma_2*\tau'] = [\tau*\gamma_1*\tau']\cdot[\tau*\gamma_2*\tau'].
+\]
+Außerdem ist $c(\tau')$ die Umkehrabbildung von $c(\tau)$, denn
+\[
+(c(\tau)\circ c(\tau'))(\gamma) = [\tau * \tau' * \gamma * \tau * \tau'] = [\gamma]
+\]
+und
+\[
+(c(\tau')\circ c(\tau))(\gamma) = [\tau' * \tau * \gamma * \tau' * \tau] = [\gamma].\qedhere
+\]
+\end{proof}
+
+Für wegzusammenhängende Räume $X$ hängt, bis auf Isomorphismus, die Fundamentalgruppe also nicht von der Wahl des Basispunkts ab. Wir schreiben in diesem Fall manchmal einfach $\pi_1(X)$.
+
+\begin{definition}
+Ein wegzusammenhängender topologischer Raum $X$ mit trivialer Fundamentalgruppe $\pi_1(X) = \{e\}$ heißt \emph{einfach zusammenhängend}.
+\end{definition}
+
 \end{document}
