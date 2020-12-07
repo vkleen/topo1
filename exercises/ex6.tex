@@ -28,14 +28,14 @@ Hier ist $D^2$ die abgeschlossene Kreisscheibe $\{x\in\RR^2 : \|x\|\leq 1\}$ mit
 \begin{exercise}
 Sei $G$ eine topologische Gruppe. Wir wollen zeigen, dass dann $\pi_1(G,e)$ immer abelsch ist. Sei dafür $M$ eine Menge mit zwei Operationen $\times\colon M\times M\to M$ und $\circ\colon M\times M\to M$, die jeweils ein Einheitselement $e_{\times}$ bzw.~$e_{\circ}$ besitzen. Das heißt, es ist $e_{\times}\times x = x\times e_{\times} = x$ und $e_{\circ}\circ x = x\circ e_{\circ} = x$ für alle $x\in M$. Wir nehmen außerdem an, dass
 \[
-(a\circ b)\times (c\circ d) = (a\times b)\circ (c\times d)
+(a\circ b)\times (c\circ d) = (a\times c)\circ (b\times d)
 \]
 für alle $a,b,c,d\in M$ gilt. Zeigen Sie:
 \begin{enumerate}
 \item Es gilt $e_{\times} = e_{\circ}$.
 \item Es gilt $a\circ b = b\times a = b\circ a = a\times b$ für alle $a,b\in M$.
 \item Sei $\times\colon G\times G\to G$ die Gruppenoperation auf $G$. Dann induziert $\times$ eine binäre Operation $\times\colon \pi_1(G,e)\times\pi_1(G,e)\to\pi_1(G,e)$ auf $\pi_1(G,e)$.
-\item Für die Operation $\times$ aus (iii) gilt $(\alpha\cdot\beta)\times (\gamma\cdot\delta) = (\alpha\times\beta)\cdot(\gamma\times\delta)$ für $\alpha,\beta,\gamma,\delta\in\pi_1(G,e)$. Hier bezeichnet $\cdot$ die übliche Gruppenstruktur auf der Fundamentalgruppe $\pi_1(G,e)$.
+\item Für die Operation $\times$ aus (iii) gilt $(\alpha\cdot\beta)\times (\gamma\cdot\delta) = (\alpha\times\gamma)\cdot(\beta\times\delta)$ für $\alpha,\beta,\gamma,\delta\in\pi_1(G,e)$. Hier bezeichnet $\cdot$ die übliche Gruppenstruktur auf der Fundamentalgruppe $\pi_1(G,e)$.
 \item Die Gruppe $\pi_1(G,e)$ ist abelsch.
 \end{enumerate}
 \end{exercise}
