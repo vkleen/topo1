@@ -1,0 +1,60 @@
+\input{preamble.tex}
+
+\setcounter{Sheet}{7}
+\input{exercisehead.tex}
+
+\begin{document}
+\maketitle
+\begin{exercise}
+Sei $i\colon S^1\into D^2$ die Inklusion des Einheitskreises als Rand in
+der Einheitskreisscheibe. Zeigen Sie, dass es keine \emph{Retraktion} $r\colon
+D^2\to S^1$ geben kann, \ddh~keine stetige Abbildung $r$ mit $r\circ i =
+\id_{S^1}$.
+
+Folgern Sie, dass jede stetige Abbildung $f\colon D^2\to D^2$ einen Fixpunkt
+haben muss:
+\begin{enumerate}
+\item Wenn eine stetige Funktion $f\colon D^2\to D^2$ keinen Fixpunkt hat, zeigen
+Sie, dass es dann eine stetige Funktion $F\colon D^2\to S^1$ gibt, so dass
+$F(x)$ genau der Schnittpunkt des Strahls von $x$ durch $f(x)$ mit $S^1$ ist.
+\item Eine stetige Funktion $f\colon D^2\to D^2$ ohne Fixpunkt würde eine
+Retraktion $D^2\to S^1$ induzieren.
+\end{enumerate}
+\end{exercise}
+\begin{exercise}
+Sei $\varphi\colon \ZZ\to\ZZ$ ein Gruppenhomomorphismus. Finden Sie eine stetige
+Abbildung $f\colon S^1\to S^1$ mit $\varphi = f_*\colon
+\pi_1(S^1,1)\to\pi_1(S^1,f(1))$.
+\end{exercise}
+\begin{exercise}
+In einer Gruppe $G$ heißen Elemente $g,h\in G$ \emph{konjugiert} zueinander,
+falls ein $\tau\in G$ existiert mit $g = \tau h \tau^{-1}$. Zeigen Sie:
+\begin{enumerate}
+\item Konjugation ist eine Äquivalenzrelation. Die Äquivalenzklassen in $G$
+heißen \emph{Konjugationsklassen}.
+\item Sei $(X,x)$ ein wegzusammenhängender punktierter topologischer
+Raum. Finden Sie eine Bijektion zwischen Homotopieklassen von stetigen
+Abbildungen $S^1\to X$ und Kon\-ju\-ga\-tions\-klas\-sen in $\pi_1(X, x)$:
+\[
+\Mor_{\htop}(S^1, X) \isom \pi_1(X,x)/{\textnormal{Konjugation}}.
+\]
+\end{enumerate}
+\end{exercise}
+\pagebreak
+\begin{exercise}
+Eine Teilmenge $A\subset\RR^n$ heißt \emph{sternförmig}, falls es einen Punkt
+$x\in A$ gibt, so dass für jedes $a\in A$ die Strecke von $a$ nach $x$ ganz in
+$A$ liegt: $\{tx + (1-t)a : t\in[0,1]\}\subset A$. Zeigen Sie, dass sternförmige
+Teilmengen $A$ zusammenziehbar sind.
+
+Sind folgende Bilder sternförmige Mengen?
+\begin{center}
+\includegraphics[width=.2\linewidth]{images/star.pdf}\quad\includegraphics[width=.2\linewidth]{images/tree.pdf}
+\end{center}
+
+Welche der folgenden Weihnachtsgebäcke sind homotopieäquivalent?
+\begin{center}
+\includegraphics[width=.4\linewidth]{images/Spekulatius_four_pieces_of.jpg}\quad\includegraphics[width=.4\linewidth]{images/HBS_Lebkuchen_470x370.png}
+\end{center}
+\end{exercise}
+\end{document}
