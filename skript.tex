@@ -1543,4 +1543,198 @@ Für wegzusammenhängende Räume $X$ hängt, bis auf Isomorphismus, die Fundamen
 Ein wegzusammenhängender topologischer Raum $X$ mit trivialer Fundamentalgruppe $\pi_1(X) = \{e\}$ heißt \emph{einfach zusammenhängend}.
 \end{definition}
 
+TODO
+
+\subsection{Die Fundamentalgruppe von \texorpdfstring{$S^1$}{S1}}
+Wir betrachten den Einheitskreis $S^1 = \{z\in\CC : |z| = 1\}\subset \CC$. Unser
+Ziel ist zu zeigen, dass $\pi_1(S^1,1)\isom\ZZ$. Dazu benutzen wir die
+\emph{Exponentialabbildung} $\pi\colon\RR\to S^1$ mit $\pi(t) = e^{2\pi i\cdot
+t}$. Sie ist ein Beispiel einer sogenannten \emph{Überlagerung}. Wir werden
+damit zeigen, dass
+\begin{enumerate}
+\item es für $\gamma\colon [0,1]\to S^1$ eine Schleife bei $1$ genau einen Weg
+$\gamma'\colon [0,1]\to\RR$ gibt mit $\gamma'(0) = 0$ und $\gamma = \pi\circ \gamma'$;
+\item und dass für zwei homotope Schleifen $\gamma_1,\gamma_2\colon [0,1]\to
+S^1$ bei $1$ die Wege $\gamma_1'$ und $\gamma_2'$ homotop sind.
+\end{enumerate}
+Unter diesen Annahmen ist dann die Abbildung $\varphi\colon \pi_1(S^1,1)\to\ZZ$
+mit $\varphi([\gamma]) = \gamma'(1)$ wohldefiniert und wir können weiter zeigen,
+dass $\varphi$ sogar ein Gruppenisomorphismus ist.
+
+\begin{theorem}[Path lifting property]\label{thm:s1-path-lifting}
+Seien $z_0\in S^1$, $z_0'\in\pi^{-1}(\{z_0\})$ und $\gamma\colon I\to S^1$ ein
+Weg mit $\gamma(0) = z_0$. Dann gibt es genau einen Weg $\gamma'\colon I\to \RR$
+mit $\gamma'(0) = z_0'$ und $\pi\circ\gamma' = \gamma$, also
+\[
+\begin{tikzcd}
+* \ar[r, "z_0'"] \ar[d, "0"'] & \RR \ar[d,"\pi"] \\
+I \ar[r, "\gamma"']\ar[ru,dashed,"\gamma'"'] & S^1
+\end{tikzcd}
+\]
+kommutiert. Der Pfad $\gamma'$ heißt \emph{Lift} von $\gamma$ mit Startpunkt
+$z_0'$.
+\end{theorem}
+\begin{proof}
+Wir zeigen zuerst die Eindeutigkeit. Angenommen, $\gamma'$ und $\gamma''$ sind
+zwei Lifts von $\gamma$ mit $\gamma'(0) = \gamma''(0) = z_0'$. Dann muss
+$\gamma'(t) - \gamma''(t)\in\ZZ$ gelten. Aber $\gamma'-\gamma''$ ist stetig und
+$\ZZ\subset\RR$ ist diskret. Also ist $\gamma'-\gamma''$ sogar konstant und
+wegen $\gamma'(0) = \gamma''(0)$ folgt, dass $\gamma' = \gamma''$.
+
+Nun zur Existenz. Wir behaupten, es gibt $0=t_0<t_1<\dots<t_n=1$ und
+$z_1,\dots,z_n\in S^1$, so dass $\gamma|_{[t_i,t_{i+1}]}\subset
+S^1\setminus\{z_i\}$. Tatsächlich, gibt es für jedes $s\in [0,1]$ ein offenes
+Intervall $(\alpha_s,\beta_s)\subset[0,1]$ mit $s\in (\alpha_s,\beta_s)$ und ein
+$y_s$ mit  $\gamma((\alpha_s,\beta_s))\subset S^1\setminus\{y_s\}$. Da $[0,1] =
+\bigcup_{s\in[0,1]}(\alpha_s,\beta_s)$ kompakt ist, können wir
+\[
+[0,1] = (\alpha_{s_1},\beta_{s_1})\cup\dots\cup (\alpha_{s_n},\beta_{s_n})
+\]
+mit $s_1<s_2<\dots<s_n$ schreiben. Wir wählen jetzt $t_0 = 0$ und $t_n = 1$. Für
+$1\leq i\leq n-1$ wähle $t_i\in (\alpha_{s_i},\beta_{s_i})\cap
+(\alpha_{s_{i+1}},\beta_{s_{i+1}})$. Dann ist nämlich
+$\gamma([t_i,t_{i+1}])\subset S^1\setminus\{y_{s_{i+1}}\}$.
+
+Wir konstruieren jetzt induktiv den Lift $\gamma'$. Angenommen,
+$\gamma'|_{[0,t_i]}$ ist bereits konstruiert. Für $\xi\in\RR$ ist $\pi_\xi =
+\pi|_{(\xi,\xi+1)}\colon (\xi,\xi+1)\to S^1\setminus\{\pi(\xi)\}$ ein
+Homöomorphismus. Wir wählen $\xi_i\in\pi^{-1}(\{z_i\})$ so, dass
+$\gamma'(t_i)\in (\xi_i,\xi_i+1)$. Dann setzen wir $\gamma'|_{[t_i,t_{i+1}]} =
+\pi_{\xi_i}^{-1}\circ\gamma|_{[t_i,t_{i+1}]}$.
+\end{proof}
+
+\begin{theorem}[Homotopy lifting property]\label{thm:s1-homotopy-lifting}
+Seien $\gamma_0,\gamma_1\colon I\to S^1$ Wege von $z_0$ nach $z_1$. Für $H$ eine
+Homotopie von $\gamma_0$ nach $\gamma_1$ und $\gamma_0'$ ein Lift von
+$\gamma_0$ mit Startpunkt $z_0'$, existiert genau eine Homotopie $H'\colon
+I\times I\to \RR$ mit $H'(\_,0) = \gamma_0'$ und $\pi\circ H' = H$, also
+\[
+\begin{tikzcd}
+I \ar[r, "\gamma_0'"] \ar[d, "\id\times 0"'] & \RR \ar[d,"\pi"] \\
+I\times I \ar[r, "H"'] \ar[ru,dashed,"H'"'] & S^1
+\end{tikzcd}
+\]
+kommutiert. Insbesondere ist $\gamma_1' = H'(\_,1)$ ein Lift von $\gamma_1$ und
+$\gamma_0'\simeq\gamma_1'$.
+\end{theorem}
+\begin{proof}
+Wir zeigen wieder zuerst die Eindeutigkeit. Für ein fixes $s_0\in I$ ist
+$H'(s_0,\_)\colon I\to \RR$ ein Lift von $H(s_0,\_)\colon I\to S^1$ mit Startpunkt $\gamma'_0(s_0)$.
+Also ist $H'(s_0,\_)$ für jedes $s_0$ eindeutig bestimmt und damit auch ganz
+$H'$ eindeutig bestimmt.
+
+Nun zur Existenz. Sei $\gamma_s'$ ein Lift von $H(s,\_)\colon I\to S^1$ mit
+Startpunkt $\gamma_0'(s)$. Für $H'(s,t)\coloneqq = \gamma_s'(t)$ ist dann $H'(s,0) = \gamma_0'(s)$ und $\pi\circ H'(s,t)
+= \pi\circ\gamma_s'(t) = H(s,t)$. Es bleibt zu zeigen, dass $H'$ stetig ist.
+
+Wir behaupten, dass es für $s_0\in I$ eine Partition $0 = t_0<t_1<\dots<t_n =
+1$, $z_1,\dots,z_n\in S^1$
+und ein offenes Intervall $U$ mit $s_0\in U$ gibt, so dass $H(U\times
+[t_i,t_{i+1}])\subset S^1\setminus\{z_i\}$. Tatsächlich gibt es für jedes
+$r\in[0,1]$ ein $y_r$ und $a_r,b_r,\alpha_r,\beta_r$ mit $s_0\in (a_r,b_r)$ und
+$r\in (\alpha_r,\beta_r)$ und so, dass
+$H((a_r,b_r)\times(\alpha_r,\beta_r))\subset S^1\setminus\{y_r\}$. Da $I = \bigcup_{r\in I} (\alpha_r,\beta_r)$ kompakt
+ist, können wir
+\[
+I = (\alpha_{r_1},\beta_{r_1})\cup\dots\cup(\alpha_{r_n},\beta_{r_n})
+\]
+mit $0 < r_1<\dots <r_n$ schreiben. Wir wählen $t_i\in
+(\alpha_{r_i},\beta_{r_i})\cap (\alpha_{r_{i+1}},\beta_{r_{i+1}})$ so, dass  und setzen $U
+= \bigcap_{i=1}^n (a_{r_i},b_{r_i})$. Dann ist $H(U\times [t_i,t_{i+1}]\subset
+S^1\setminus\{y_{r_{i+1}}\}$.
+
+Sei angenommen, dass $H'|_{U\times[0,t_i]}$ stetig ist. Wir wissen, dass
+$H'(U\times\{t_i\})\subset (\xi_i,\xi_i + 1) \isom S^1\setminus\{z_i\}$ für ein
+$\xi_i\in\pi^{-1}(\{z_i\})$. Also ist $H'|_{U\times[t_i,t_{i+1}]} = \pi_{\xi_i}^{-1}\circ
+H|_{U\times [t_i,t_{i+1}]}$ und deshalb $H'$ stetig auf $U\times[0,t_{i+1}]$. Da
+$s_0$ beliebig und $U$ eine offene Umgebung von $s_0$ war, folgt dass $H'$
+insgesamt stetig ist.
+\end{proof}
+
+\begin{theorem}\label{thm:pi1s1}
+Sei $\varphi\colon \pi_1(S^1,1)\to\ZZ$ so definiert, dass $\varphi([\gamma]) =
+\gamma'(1)$ für $\gamma'$ ein Lift von $\gamma$ mit Startpunkt $0$. Dann ist
+$\varphi$ ein Gruppenisomorphismus.
+\end{theorem}
+\begin{proof}
+Wegen \autoref{thm:s1-path-lifting} und \autoref{thm:s1-homotopy-lifting} ist
+$\varphi$ wohldefiniert. Seien $\gamma_1,\gamma_2\colon I\to S^1$ zwei Schleifen
+bei $1$. Sei $\gamma_1'$ ein Lift von $\gamma_1$ mit Startpunkt $0$ und
+$\gamma_2'$ ein Lift von $\gamma_2$ mit Startpunkt $\gamma_1'(1)$. Dann ist
+$\gamma_1' * \gamma_2'$ ein Lift von $\gamma_1 * \gamma_2$ und damit
+$\varphi([\gamma_1]\cdot[\gamma_2]) = \gamma_2'(1)$. Andererseits ist $\gamma_2'
+- \gamma_1'(1)$ ein Lift von $\gamma_2$ mit Startpunkt $0$. Also ist
+$\varphi([\gamma_1]) + \varphi([\gamma_2]) = \gamma_1'(1) + \gamma_2'(1) -
+\gamma_1'(1) = \gamma_2'(1)$.
+
+Die Abbildung $\varphi$ ist surjektiv, denn für $n\in\ZZ$ sei $\gamma'\colon[0,1]\to\RR$ mit
+$\gamma'(t) = nt$. Dann ist $\pi\circ\gamma'$ eine Schleife in $S^1$ bei $1$ und
+$\varphi([\gamma]) = \gamma'(1) = n$.
+
+Sei nun $\gamma\colon I\to S^1$ eine Schleife bei $1$ mit $\varphi([\gamma]) =
+0$. Sei $\gamma'$ ein Lift von $\gamma$ mit Startpunkt $0$. Dann ist $\gamma'(1)
+= 0$, also $\gamma'$ eine Schleife bei $0$. Da $\RR$ einfach zusammenhängend
+ist, gibt es eine Homotopie $H'$ von $\gamma'$ zur konstanten Schleife
+$\varepsilon_0$. Aber dann ist $\pi\circ H'$ eine Homotopie von $\gamma$ zur
+konstante Schleife $\varepsilon_1$. Anders gesagt, wir haben $[\gamma] =
+e\in\pi_1(S^1,1)$.
+\end{proof}
+
+\begin{corollary}[Fundamentalsatz der Algebra]
+Jedes nichtkonstante Polynom $p(z)\in\CC[z]$ hat eine Nullstelle.
+\end{corollary}
+\begin{proof}
+Wir können ohne Einschränkung annehmen, dass $p(z) = z^n + a_1 z^{n-1}+\dots+
+a_n$. Angenommen, es wäre $p(z)\neq 0$ für alle $z\in\CC$. Für $r\in\RR$ sei
+$f_r\colon[0,1]\to S^1$ mit
+\[
+f_r(s) = \frac{p(re^{2\pi i s})/p(r)}{|p(r e^{2\pi i s})/p(r)|}.
+\]
+Dann ist $f_r$ eine Schleife in $S^1$ bei $1$. Sei $r >
+\max\{1,|a_1|+\dots+|a_n|\}$. Für $z\in \CC$ mit $|z| = r$ gilt dann
+\[
+|z^n| = r^n > (|a_1|+\dots+|a_n|)\cdot |z^{n-1}|\geq |a_1z^{n-1} + \dots a_n|.
+\]
+Also hat $p_t(z) = z^n + t( a_1z^{n-1} + \dots + a_n)$ für $t\in[0,1]$ keine
+Nullstelle in $\CC$. Wir definieren eine Homotopie $H\colon I\times I\to S^1$
+durch
+\[
+H(s,t) = \frac{p_t(re^{2\pi i s})/p_t(r)}{|p_t(r e^{2\pi i s})/p_t(r)|}.
+\]
+Dann ist $H$ eine Homotopie von $\omega_n(s)\coloneqq e^{2\pi i n s}$  nach
+$f_r$. Sei $\varphi\colon \pi_1(S^1,1)\to\ZZ$ der Isomorphismus aus
+\autoref{thm:pi1s1}. Dann ist $\varphi([f_r]) = \varphi([\omega_n]) = n$.
+
+Andererseits ist $G\colon I\times I\to S^1$ mit $G(s,t) = f_{tr}(s)$ eine
+Homotopie von $f_0(s) = 1$ nach $f_r$. Also wäre $\varphi([f_r]) =
+\varphi([f_0]) = 0\neq n$.
+\end{proof}
+
+\begin{corollary}[Borsuk--Ulam in Dimension 2]
+Sei $f\colon S^2\to\RR^2$ stetig. Dann gibt es ein $x\in S^2$ mit $f(x) =
+f(-x)$.
+\end{corollary}
+\begin{proof}
+Angenommen, es wäre $f(x) \neq f(-x)$ für alle $x\in S^2$. Wir definieren eine
+stetige Abbildung $g\colon S^2\to S^1$ durch
+\[
+g(x) = \frac{f(x) - f(-x)}{\|f(x) - f(-x)\|}.
+\]
+Sei $\eta\colon[0,1]\to S^2\subset\RR^3$ definiert durch
+$\eta(s) = (\cos(2\pi s), \sin(2\pi s), 0)$. Dann ist $h = g\circ\eta$ eine
+Schleife in $S^1$ bei $1$. Es ist $g(-x) = -g(x)$ für alle $x\in S^2$, und deshalb $h(s
++ \tfrac12) = -h(s)$ für $s\in[0,\tfrac12]$. Sei $h'\colon I\to\RR$ ein Lift von
+$h$ mit Startpunkt $0$. Insbesondere ist dann $h'(s+\tfrac12) = h'(s) +
+\tfrac{q(s)}{2}$ für $q(s)\in 2\ZZ +1$. Aber $q$ ist dann stetig und $2\ZZ +
+1\subset\RR$ ist diskret; also ist $q$ konstant.
+
+Es folgt also, dass $h'(1) = h'(\tfrac12) + \tfrac{q}{2} = h'(0) + q$; also $\varphi([h]) = q\neq 0$
+für den Isomorphismus $\varphi\colon \pi_1(S^1,1)\to\ZZ$ aus
+\autoref{thm:pi1s1}.
+
+Aber $h = g\circ\eta\colon I\to S^1$ und $\eta\colon I\to S^2$ ist nullhomotop
+wegen $\pi_1(S^2)\isom \{e\}$. Dann wäre auch $h$ nullhomotop im Widerspruch zu
+$\varphi([h]) \neq 0\in\pi_1(S^1,1)$.
+\end{proof}
+
 \end{document}
