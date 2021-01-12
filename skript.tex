@@ -1737,4 +1737,229 @@ wegen $\pi_1(S^2)\isom \{e\}$. Dann wäre auch $h$ nullhomotop im Widerspruch zu
 $\varphi([h]) \neq 0\in\pi_1(S^1,1)$.
 \end{proof}
 
+\subsection{Der Satz von Seifert und van Kampen}
+\begin{lemma}[Lebesgue]\label{lem:lebesgue}
+\end{lemma}
+TODO
+
+\begin{theorem}[Seifert--van Kampen]
+Sei $X$ ein topologischer Raum und $X = U\cup V$ für offene $U,V\subset X$. Seien außerdem $U$, $V$ und $U\cap V$ wegzusammenhängend und $x_0\in U\cap V$. Dann induzieren die Inklusionen $U\into X$ und $U\into V$ einen Isomorphismus
+\[
+\varphi\colon \pi_1(U,x_0) *_{\pi_1(U\cap V, x_0)} \pi_1(V,x_0) \iso \pi_1(X,x_0)
+\]
+durch das Diagramm
+\[
+\begin{tikzcd}
+\pi_1(U\cap V, x_0) \ar[r]\ar[d] & \pi_1(U,x_0)\ar[d, "i_U"] \\
+\pi_1(V,x_0)\ar[r, "i_V"'] & \pi_1(X,x_0).
+\end{tikzcd}
+\]
+\end{theorem}
+
+\begin{proof}
+Die Abbildung $\varphi$ ist gegeben durch
+\[
+[\gamma_1][\gamma_2]\dots [\gamma_n] \mapsto [\gamma_1*\gamma_2*\dots *\gamma_n]\in\pi_1(X)
+\]
+für $[\gamma_i]\in\pi_1(U)$ oder $[\gamma_i]\in\pi_1(V)$ für alle $i$. Um zu sehen, dass $\varphi$ surjektiv ist, sei $\gamma$ eine Schleife in $X$ bei $x_0$. Wir haben die offene Überdeckung $[0,1]=\gamma^{-1}(U)\cup\gamma^{-1}(V)$. Sei $\lambda$ die entsprechende Lebesguezahl aus \autoref{lem:lebesgue} und $0=t_0 < t_1 <\dots < t_n = 1$ eine Partition von $[0,1]$, so dass $t_{i+1} - t_i < \lambda$. Dann ist $\gamma([t_i,t_{i+1}])\subset U$ oder $\gamma([t_i,t_{i+1}])\subset V$ für jedes $i$ und insbesondere $\gamma(t_i)\in U\cap V$. Da $U\cap V$ wegzusammenhängend ist, existieren Wege $\tau_i$ von $\gamma(t_i)$ nach $x_0$ in $U\cap V$. Sei $\gamma_i'$ eine Reparametrisierung von $\gamma|_{[t_i,t_{i+1}]}$ zu einem Weg von $\gamma(t_i)$ nach $\gamma(t_{i+1})$. Dann ist
+\[
+\gamma\simeq \gamma_0' * \tau_1 * \tau_1^{-} * \gamma_1' * \tau_2 *\tau_2^{-} *\cdots * \tau_{n-1}^{-}* \gamma_{n-1}'
+\]
+und $\tau_i*\gamma_i'*\tau_{i+1}^-$ ist eine Schleife in $U$ bzw.~$V$, je nachdem ob $\gamma_i$ eine Schleife in $U$ oder in $V$ ist. Insgesamt ist $\gamma$ homotop zu einer Verknüpfung von Schleifen in $U$ bzw. $V$, und folglich liegt $[\gamma]$ im Bild von $\varphi$.
+
+TODO
+\end{proof}
+
+
+\section{Überlagerungen}
+Wir haben bereits die Exponentialabbildung $\RR\to S^1$ mit $t\mapsto e^{2\pi i t}$ zur Berechnung von $\pi_1(S^1)$ benutzt. Sie ist das erste Beispiel einer sogenannten \emph{Überlagerung}.
+
+\begin{definition}
+Eine stetige Abbildung $\pi\colon E\to B$ ist \emph{lokal trivial mit typischer Faser $F$}, wenn es für alle $b\in B$ eine Umgebung $U\subset B$ von $b$ und einen Homöomorphismus $\varphi\colon U\times F\to \pi^{-1}(U)$ gibt, so dass
+\[
+\begin{tikzcd}
+U\times F \ar[r, "\varphi"] \ar[dr, bend right, "{\proj[U]}"'] & \pi^{-1}(U) \ar[r, into] \ar[d, "\pi|_{\pi^{-1}(U)}"] & E \ar[d, "\pi"] \\
+& U \ar[r,into] & B.
+\end{tikzcd}
+\]
+Ein solcher Homöomorphismus $\varphi$ heißt \emph{lokale Trivialisierung} von $\pi\colon E\to B$. Die Teilmenge $\pi^{-1}(\{b\})\subset E$ heißt \emph{Faser über $b$}.
+\end{definition}
+
+Im Beispiel ist die Exponentialabbildung $\exp\colon\RR\to S^1$ lokal trivial mit typischer Faser $\ZZ$. Für jede lokal triviale Abbildung $\pi\colon E\to B$ mit typischer Faser $F$ ist die Faser $\pi^{-1}(\{b\})$ homöomorph zu $F$.
+
+\begin{definition}\label{defn:covering}
+Falls $F$ ein diskreter topologischer Raum ist, heißt eine lokal triviale Abbildung $E\to B$ mit typischer Faser $F$ \emph{Überlagerung}. Der Raum $B$ heißt \emph{Basis} und $E$ heißt \emph{Totalraum} der Überlagerung. Falls $F$ zusätzlich endlich mit $n$ Elementen ist, sprechen wir von einer \emph{$n$-fachen} oder \emph{$n$-blättrigen} Überlagerung.
+\end{definition}
+
+Es gibt viele verschieden Überlagerungen mit Basis $S^1$. Es gibt natürlich die trivialen Beispiele $S^1\times F\to S^1$ für jeden diskreten topologischen Raum $F$. Ein interessanteres Beispiel ist für $n\in \ZZ$ die Abbildung $\pi\colon S^1\to S^1$ mit $\pi(z) = z^n$. Hier betrachten wir wie üblich $S^1$ als Teilmenge von $\CC$. Die Faser $F$ ist in diesem Beispiel homöomorph zu $\{1,\dots,n\}$.
+
+Für einen diskreten Raum $F$ ist $U\times F\isom \coprod_{f\in F} U\times\{f\}$. Außerdem ist die Einschränkung der Projektion $\proj_U\colon U\times F\to F$ auf $U\times\{f\}$ für $f\in F$ ein Homöomorphismus. Wir können alternativ eine Überlagerung auch wie folgt definieren: Eine Überlagerung von $B$ ist ein topologischer Raum $E$ zusammen mit einer stetigen und surjektiven Abbildung $\pi\colon E\to B$, so dass für jedes $b\in B$ eine Umgebung $U\subset B$ von $b$ existiert, für die $\pi^{-1}(U)\subset E$ eine Vereinigung paarweise disjunkter Mengen $S_i$ ist, so dass $\pi|_{S_i}\colon S_i\to U$ ein Homöomorphismus ist. Die $S_i$ heißen dann \emph{Blätter} der Überlagerung.
+
+Diese beiden Definitionen sind für \emph{zusammenhängende} Räume $B$ äquivalent. Aber für $B = \{1,2\}$ diskret und $E = \{1, 2, 3\}$ diskret, wäre $\pi\colon \{1,2,3\}\to\{1,2\}$ mit $\pi(1) = 1$ und $\pi(2) = \pi(3) = 2$ eine Überlagerung im zweiten Sinn, aber nich im Sinn von \autoref{defn:covering}.
+
+\begin{definition}\label{defn:group-op}
+Sei $X$ ein topologischer Raum und $G$ eine Gruppe. Eine \emph{Gruppenoperation} (oder \emph{Gruppenwirkung}) von $G$ auf $X$ ist eine Abbildung $G\times X \to X$, $(g,x)\mapsto g\cdot x$, so dass:
+\begin{enumerate}
+\item für jedes $g\in G$ ist $g\cdot\_\colon X\to X$ stetig.
+\item $e\cdot x = x$ für alle $x\in X$.
+\item $(gh)\cdot x = g\cdot(h\cdot x)$ für alle $x\in X$.
+\end{enumerate}
+\end{definition}
+
+Zum Beispiel operiert $\ZZ$ auf $\RR$ durch $(n,x)\mapsto x + n$ oder $\{\pm 1\}$ auf $S^n$ durch $(\pm 1, x)\mapsto \pm x$.
+
+In einer Kategorie $\cal C$ ist eine Gruppenoperation von $G$ auf auf einem Objekt $X$ in $\cal C$ ein Gruppenhomomorphismus $G \to \aut_{\cal C}(X)$. Die \emph{Automorphismengruppe} $\aut_{\cal C}(X)$ von $X$ ist hier die Menge aller Isomorphismen $X\to X$ mit der Verknüpfung von Morphismen als Gruppenmultiplikation. Zum Beispiel ist $\aut_{\Set}(X)$ die Menge der Bijektionen $X\to X$. Für $\cal C=\Top$ ist $\aut_{\Top}(X)$ die Menge aller Homöomorphismen $X\to X$.
+
+Diese allgemeine Definition in einer Kategorie $\cal C$ stimmt mit \autoref{defn:group-op} überein für $\cal C = \Top$. Ist nämlich $\rho\colon G\times X\to X$ eine Gruppenoperation nach \autoref{defn:group-op}, so definiert die Zuordnung $\varphi(g)(x) = \rho(g,x)$ einen Gruppenhomomorphismus $\varphi\colon G\to\aut_{\Top}(X)$. Umgekehrt definiert für ein solches $\varphi$ die Formel $\rho(g,x) = \varphi(g)(x)$ immer ein Gruppenoperation.
+
+\begin{definition}
+Sei $\rho\colon G\times X\to X$ eine Gruppenoperation auf einem topologischen Raum $X$.
+\begin{enumerate}
+\item Die Operation heißt \emph{frei}, falls für alle $x\in X$ und $g\in G\setminus\{e\}$ gilt, dass $g\cdot x\neq x$.
+\item Sei $x\in X$. Der \emph{Stabilisator} von $x$ ist die Untergruppe $G_x = \{g\in X : g\cdot x = x\}\subset G$.
+\item Für $x\in X$ ist $Gx = \{g\cdot x : g\in G\}\subset X$ die \emph{Bahn} (oder der \emph{Orbit}) von $x$.
+\item Der Quotient $X/G = \{Gx : x\in X\}$ mit der Quotiententopologie heißt \emph{Bahnenraum} der Operation $\rho$.
+\end{enumerate}
+\end{definition}
+
+Die Operation $\ZZ\times \RR\to\RR$ mit $(n,x)\mapsto x + n$ ist frei und der Bahnenraum $\RR/\ZZ$ ist homöomorph zu $S^1$ entlang der von der Exponentialabbildung $\exp\colon \RR\to S^1$ induzierten Abbildung. Die Operation $\{\pm 1\}\times S^n\to S^n$ ist auch frei. Der Bahnenraum $S^n/\{\pm 1\}$ ist der projektive Raum $\RR\PP^n$.
+
+Ein Beispiel für eine Gruppenoperation, die nicht frei ist, wäre etwa die Operation von $\{\pm 1\}$ auf $S^2$, für die $(-1)\cdot\_\colon S^2\to S^2$ die Einschränkung der Reflektion $\RR^3\to\RR^3$ an einer Ebene durch den Ursprung ist.
+
+\begin{definition}\label{defn:covering-action}
+Eine Gruppenoperation $G\times X\to X$ heißt \emph{Überlagerungsoperation}, falls für alle $x\in X$ eine Umgebung $U\subset X$ von $x$ existiert, so dass $gU\cap U = \emptyset$ für alle $g\in G\setminus\{g\}$.
+\end{definition}
+
+Überlagerungsoperationen sind immer frei. Für eine Überlagerungsoperation $G\times X\to X$ und $x\in X$ sei nämlich $U$ eine Umgebung wie in \autoref{defn:covering-action}. Dann ist natürlich $gx\in gU$ und wegen $gU\cap U = \emptyset$ kann $gx$ niemals gleich $x$ sein.
+
+Die Umkehrung gilt nicht. Sei zum Beispiel $\xi_0\in \RR\setminus\QQ$ und $z_0 = e^{2\pi i \xi_0}$. Dann definiert die Zuordnung $(n,z)\mapsto z_0^n z$ eine Gruppenoperation $\ZZ\times S^1\to S^1$, die zwar frei aber keine Überlagerungsoperation ist. Sei nämlich $\cal O = \{z_0^n : n\in\ZZ\}\subset S^1$ die Bahn von $1\in S^1$. Jetzt gibt es für jedes $\alpha\in \RR$ und $N\in\NN$ ein $q\in \NN$, $1\leq q\leq N$, und ein $p\in \ZZ$, so dass $|q\alpha - p| < \tfrac{1}{N+1}$. Das heißt für $\alpha\in\xi_0$ und $N\gg 0$ ist $z_0^q = e^{2\pi i q\alpha}$ beliebig nahe bei $e^{2\pi i p} = 1$; genauer gibt es für jede Umgebung $U$ von $1$ in $S^1$ ein $x\in\cal O$ mit $x\in U$. Tatsächlich ist $\cal O$ sogar dicht in $S^1$.
+
+Sei $G$ hingegen eine endliche Gruppe und $X$ ein Hausdorffraum. Dann ist jede freie Gruppenoperation $G\times X\to X$ auch eine Überlagerungsoperation.
+
+\begin{theorem}
+Sei $\rho\colon G\times X\to X$ eine Überlagerungsoperation und betrachte $G$ als diskreten topologischen Raum. Dann ist die Quotientenabbildung $q\colon X\to X/G$ eine Überlagerung mit typischer Faser $G$.
+\end{theorem}
+\begin{proof}
+Sei $b = q(x)\in X/G$ und $U\subset X$ eine Umgebung von $x$ mit $gU\cap U = \emptyset$ für alle $g\in G\setminus\{e\}$. Dann ist $q|_U\colon U\to q(U) \eqqcolon V$ ein Homöomorphismus: wegen unserer Wahl von $U$ ist $q|_U$ injektiv und $q$ und damit $q|_U$ ist sogar offen, da $\rho$ eine Gruppenoperation ist. Sei nämlich $W\subset X$ offen. Dann ist $q^{-1}(q(W)) = \bigcup_{g\in G} gW$ offen, da $g\cdot\_\colon X\to X$ für jedes $g\in G$ ein Homöomorphismus ist.
+
+Sei $s\colon V\to U$ das Inverse von $q|_U$. Wir können jetzt durch $\varphi(y,g) = g\cdot s(y)$ eine lokale Trivialisierung $\varphi\colon V\times G\to q^{-1}(V)$  definieren. Es ist nämlich $q(\varphi(y,g)) = q(g\cdot s(y)) = q(s(y)) = y=\proj[V](y,g)$ für alle $(y,g)\in V\times G$. Außerdem ist $\varphi$ surjektiv, da bereits $s\colon V\to U$ surjektiv ist. Unsere Wahl von $U$ stellt sicher, dass $\varphi$ injektiv und offen ist.
+\end{proof}
+
+In unserem Beweis, dass $\pi_1(S^1)\isom\ZZ$, war der Schlüssel, \emph{Lifts} von Schleifen in $S^1$ entlang der Überlagerung $\RR\to\ZZ$ zu betrachten. Genauso wird es für unser Verständnis von allgemeineren Überlagerungen wichtig sein, Lifts zu betrachten.
+
+\begin{definition}
+Sei $p\colon E\to B$ eine Überlagerung und $f\colon X\to B$ eine stetige Abbildung. Ein \emph{Lift} von $f$ nach $E$ ist eine stetige Abbildung $f'\colon X\to E$, so dass das Dreieck
+\[
+\begin{tikzcd}
+& E \ar[d, "p"] \\
+X \ar[ru, "f'"] \ar[r, "f"'] & B
+\end{tikzcd}
+\]
+kommutiert.
+\end{definition}
+
+Im Allgemeinen kann dieselbe Abbildung $f\colon X\to B$ keinen oder viele verschiedene Lifts zulassen. Aber für zusammenhängende $X$ ist ein Lift, wenn er denn existiert, bereits durch einen einzigen Wert eindeutig bestimmt:
+
+\begin{theorem}\label{thm:lift-uniqueness}
+Sei $p\colon E\to B$ eine Überlagerung, $f\colon X\to B$ eine stetige Abbildung und $x_0\in X$. Angenommen, $f',f''\colon X\to E$ sind zwei Lifts von $f$ nach $E$ mit $f'(x_0) = f''(x_0)$. Wenn $X$ zusammenhängend ist, gilt $f' = f''$.
+\end{theorem}
+\begin{proof}
+Wir betrachten die Menge $A = \{x\in X : f'(x) = f''(x)\}\subset X$. Sei $x\in A$ beliebig und $\varphi\colon p^{-1}(V)\to V\times F$ eine lokale Trivialisierung von $p$ in einer Umgebung $V$ von $f(x)$. Dann ist $\varphi(f'(x)) = \varphi(f''(x))\in V\times\{a\}$ für ein $a\in F$. Da $p$ eine Überlagerung ist, ist $F$ diskret, und deshalb $V\times\{a\}\subset V\times F$ offen. Da $f'$ und $f''$ stetig sind, existiert eine offene Umgebung $U$ von $x$, so dass $\varphi(f'(U))\subset V\times\{a\}$ und $\varphi(f''(U))\subset V\times\{a\}$. Aber $p$ lässt sich zu einem Homöomorphismus $\varphi^{-1}(V\times\{a\}) \to V$ einschränken und es folgt, dass $f'|_U = f''|_U$. Das heißt aber $U\subset A$ ist eine Umgebung von $x$, die ganz in $A$ enthalten ist. Da $x\in A$ beliebig war, folgt damit, dass $A$ offen ist.
+
+Aber $A$ ist auch abgeschlossen. Sei nämlich $x\in X\setminus A$ und $\varphi\colon p^{-1}(V)\to V\times F$ eine lokale Trivialiserung von $p$ um $f(x)$ wie bevor. Wie oben sehen wir, dass dann $\varphi(f'(x))\in V\times\{a\}$ und $\varphi(f''(x))\in V\times\{b\}$ für $a\neq b$ gelten muss. Da $f'$ und $f''$ stetig sind, existiert wieder eine Umgebung $U$ von $x$ mit $\varphi(f'(U))\subset V\times\{a\}$ und $\varphi(f''(U))\subset V\times\{b\}$ und es folgt wie oben, dass $f'(y)\neq f''(y)$ für alle $y\in U$. Mit anderen Worten, $U\subset X\setminus A$. Da $x\in X\setminus A$ beliebig war, ist $X\setminus A$ offen.
+
+Da es nach unserer Annahme an $f'$ und $f''$ ein $x_0\in X$ gibt, so dass $f'(x_0) = f''(x_0)$, ist $A\neq \emptyset$. Wir haben also eine nichtleere, offene und abgeschlossene Teilmenge $A\subset X$. Aber $X$ ist zusammenhängend, also ist die einzige solche Teilmenge ganz $X$. Mit anderen Worten, $f' = f''$.
+\end{proof}
+
+\begin{theorem}
+Jede Überlagerung $p\colon E\to B$ hat die Homotopieliftungseigenschaftung: Für jede Homotopie $H\colon X\times I\to B$ von $f$ nach $g$ und jeden Lift $f'\colon X\to E$ von $f$ existiert ein eindeutig bestimmter Lift $H'\colon X\times I\to E$ von $H$ nach $E$, so dass
+\[
+\begin{tikzcd}
+X \ar[r, "{f'}"] \ar[d, "{\id}\times 0"'] & E \ar[d, "p"] \\
+X\times I \ar[r, "H"'] \ar[ru, "{H'}"'] & B
+\end{tikzcd}
+\]
+kommutiert. Insbesondere ist $H'\circ ({\id}\times 1)$ ein Lift von $g$.
+\end{theorem}
+\begin{proof}
+Wir nennen eine offene Teilmenge $U\subset B$ \emph{zulässig}, wenn $p$ eine lokale Trivialiserung über $U$ besitzt. Sei $x\in X$ und $I_x = \{x\}\times [0,1]\subset X\times I$. Die Familie $\{H^{-1}(U) : \textnormal{$U\subset B$ zulässig}\}$ ist eine offene Überdeckung von $I_x$ und nach \autoref{lem:lebesgue} existiert eine Lebesguezahl $\lambda > 0$ für diese Überdeckung. Sei $0 = t_0 < \dots < t_n = 1$ eine Partition von $[0,1]$ mit $t_i - t_{i-1} < \lambda$ für alle $i$. Für jedes $0\leq i < n$ ist dann $H(\{x\}\times[t_i,t_{i+1}])\subset U_i$ für ein zulässiges $U_i\subset B$.
+
+Für $t\in [t_i,t_{i+1}]$ existiert, da $H$ stetig ist, eine offene Umgebung $V_{x,t}\subset X\times I$ von $(x,t)$ mit $H(V_{x,t})\subset U_i$. Die Familie $\{V_{x,t} : t\in [0,1]\}$ bildet eine Überdeckung von $\{x\}\times [0,1]$ und dieser Raum ist kompakt. Es gibt also endlich viele $t_1,\dots,t_k$, so dass $\{V_{x,t_i} : i=1,\dots, k\}$ eine Überdeckung von $\{x\}\times [0,1]$ ist. Setze $V_x = \bigcap_{i=1}^n V_{x,t_i}$. Dann erfüllt $V_x$ folgende Eigenschaften:
+\begin{enumerate}
+\item $V_x$ ist eine Umgebung von $x$ in $X$.
+\item Für jedes $i\in\{0,\dots,n-1\}$ ist $H(V_x\times [t_i,t_{i+1}])\subset U_i$ für eine zulässige Teilmenge $U_i\subset X$.
+\end{enumerate}
+
+Wir konstruieren nun induktiv einen Lift $H'$ von $H$ auf $V_x\times[0,1]$. Angenommen, $H'|_{V_x\times[0,t_i]}$ ist bereits konstruiert. Sei $\varphi\colon U_i\times F \to p^{-1}(U_i)$ eine lokale Trivialisierung von $p\colon E\to B$ über $U_i$. Für $a\in F$ sei $V_{x,a} = H'(\_,t_i)^{-1}(\varphi(U_i\times\{a\}))\cap V_x$. Die Überlagerung $p\colon E\to B$ lässt sich zu einem Homöomorphismus $p_a\colon \varphi(U_i\times\{a\})\to U_i$ einschränken. Damit können wir
+\[
+H'\colon V_{x,a}\times [t_i,t_{i+1}] \to \varphi(U_i\times\{a\}),\quad (y,t)\mapsto p_a^{-1}(H(y,t))
+\]
+definieren. Wir haben aber eine disjunkte Vereinigung $V_x = \bigsqcup_{a\in F} V_{x,a}$ und deshalb setzen sich diese Definitionen zu einer stetigen Abbildung $H'\colon V_x\times [t_i,t_{i+1}]\to p^{-1}(U_i)$ zusammen.
+
+Insgesamt haben wir also für jedes $x\in X$ eine offene Umgebung $V_x\subset X$ und einen Lift $H'_x\colon V_x\times I\to E$ von $H$ über $V_x$. Für $y\in V_x\cap V_{x'}$ haben wir Lifts $H'_x\colon \{y\}\times I\to E$ und $H'_{x'}\colon\{y\}\times I\to E$ mit $H'_x(y,0) = f'(y) = H'_{x'}(y,0)$. Aber $\{y\}\times I$ ist zusammenhängend und deshalb stimmen $H'_x$ und $H'_{x'}$ nach \autoref{thm:lift-uniqueness} auf $\{y\}\times I$ überein. Da $y$ beliebig war, stimmen also $H'_x$ und $H'_{x'}$ bereits auf ganz $(V_x\cap V_{x'})\times [0,1]$ überein. Das genügt um zu sehen, dass sich die $H'_x$ zu einer stetigen Abbildung $H'\colon X\times I\to E$ zusammensetzen lassen. Diese Abbildung ist der gesuchte Lift.
+\end{proof}
+
+Dieser Satz impliziert alle Spezialfälle von Liftungseigenschaften, die wir zuvor betrachtet hatten. Wir halten folgendes Korollar fest.
+
+\begin{corollary}\label{cor:lifting}
+Sie $p\colon E\to B$ eine Überlagerung.
+\begin{enumerate}
+\item Für $b_0\in B$, $e_0\in p^{-1}(\{b_0\})$ und einen Weg $\gamma\colon I\to B$ mit $\gamma(0) = b_0$ existiert ein eindeutig bestimmter Lift $\gamma'$ im Diagramm
+\[
+\begin{tikzcd}
+\{0\} \ar[d,into] \ar[r, "e_0"] & E\ar[d, "p"] \\
+I \ar[r, "\gamma"'] \ar[ur,dashed,"\gamma'"'] & B.
+\end{tikzcd}
+\]
+\item Seien $\gamma_0,\gamma_1\colon I\to B$ Wege in $B$ und $H\colon I\times I\to B$ eine Homotopie relativ $\{0,1\}$ von $\gamma_0$ nach $\gamma_1$. Für jeden Lift $\gamma_0'\colon I\to E$ von $\gamma_0$ existiert ein eindeutig bestimmter Lift $H'\colon I\times I\to E$ von $H$, der eine Homotopie relativ $\{0,1\}$ von $\gamma_0'$ zu einem Lift von $\gamma_1$ ist. Insbesondere existiert ein Lift $\gamma_1'$ von $\gamma_1$ mit $\gamma_1'(0) = \gamma_0'(0)$ und $\gamma_1'(1) = \gamma_0'(1)$.
+\end{enumerate}
+\end{corollary}
+
+Mithilfe dieser Liftungseigenschaften können wir eine Verbindung zwischen Überlagerungen und der Fundamentalgruppe finden. Im Beispiel der Exponentialabbildung $\exp\colon \RR\to S^1$ hatten wir gesehen, dass $\exp$ eine Überlagerung mit typischer Faser $\ZZ$ ist. Wir haben außerdem einen Isomorphismus $\psi\colon \pi_1(S^1)\to\ZZ$ konstruiert, indem wir für eine Schleife $\gamma$ in $S^1$ einen Lift $\gamma'\colon I\to\RR$ betrachten und dann $\psi([\gamma]) = \gamma'(1)$ setzen. Nun operiert $\ZZ$ auf sich selbst durch $\ZZ\times \ZZ\to \ZZ$, $(n,m)\mapsto n+m$. Wir können diese Operation auch als Gruppenoperation von $\pi_1(S^1)$ auf der typischen Faser $\ZZ$ von $\exp$ auffassen. Diese Operation ist ein Beispiel für eine \emph{Monodromieoperation}.
+Sei $p\colon E\to B$ eine Überlagerung mit typischer Faser $F$ und $b\in B$. Wir können annehmen, dass $F = \pi^{-1}(\{b\})$. Sei $\gamma\colon I\to B$ eine Schleife in $B$ bei $b$. Für jedes $a\in F$ sei $\gamma'_a\colon I\to E$ ein Lift von $\gamma$ nach $E$ mit $\gamma'_a(0) = a$. Nach \autoref{cor:lifting} ist dieser Lift eindeutig durch $a\in F$ bestimmt. Wir erhalten also eine Abbildung
+\[
+\psi_\gamma\colon F\to F,\quad \psi_\gamma(a) = \gamma'_a(1).
+\]
+
+\begin{lemma}\label{lem:monodromy-homotopy}
+Die oben konstruierte Abbildung $\psi_\gamma\colon F\to F$ hängt nur von der Homotopieklasse relativ $\{0,1\}$ von $\gamma$ ab.
+\end{lemma}
+\begin{proof}
+Sei $\beta\colon I\to B$ eine Schleife und $H\colon I\times I\to B$ eine Homotopie relativ $\{0,1\}$ von $\gamma$ nach $\beta$. Sei $a\in F$ und $\beta'_a\colon I\to E$ der eindeutig bestimme Lift von $\beta$ nach $E$ mit $\beta'_a(0) = a$. Nach \autoref{cor:lifting} existiert dann ein Lift $H'\colon I\times I\to E$ von $H$, der eine Homotopie relativ $\{0,1\}$ von $\gamma_a'$ nach $\beta_a'$ ist. Insbesondere ist $\psi_\gamma(a) = \gamma_a'(1) = \beta_a'(1)$.
+\end{proof}
+
+\begin{lemma}\label{lem:monodromy-comp}
+Für $\gamma$ und $\delta$ Schleifen in $B$ bei $b$ gilt
+\[
+\psi_{\gamma * \delta} = \psi_\delta\circ\psi_\gamma \colon F\to F.
+\]
+Außerdem ist $\psi_{c_b} = \id_F$ für $c_b$ die konstante Schleife bei $b$.
+\end{lemma}
+\begin{proof}
+Zuerst ist für jedes $a\in F$ der konstante Weg $c_a$ in $a$ ein Lift von $c_b$ nach $E$. Also ist $\psi_{c_b}(a) = c_a(1) = a$.
+
+Sei jetzt $\gamma'$ ein Lift von $\gamma$ mit $\gamma'(0) = a$ und $\delta'$ ein Lift von $\delta$ mit $\delta'(0) = \gamma'(1)$. Dann ist $\gamma' * \delta'$ wohldefiniert und ein Lift von $\gamma * \delta$. Also folgt
+\[
+\psi_{\gamma*\delta}(a) = (\gamma'*\delta')(1) = \delta'(1) = \psi_\delta(\gamma'(1)) = \psi_\delta(\psi_\gamma(a)).\qedhere
+\]
+\end{proof}
+
+\Autoref{lem:monodromy-comp} und \autoref{lem:monodromy-homotopy} zeigen zusammen, dass die Zuordnung $[\gamma]\mapsto\psi_\gamma$ eine Abbildung $\psi\colon \pi_1(B,b)\to \aut(F)$ definiert. Für $\pi_1(B,b)$ abelsch ist sie ein Gruppenhomomorphismus. Im Allgemeneinen müssen wir einen weiteren Begriff aus der Gruppentheorie einführen.
+
+\begin{definition}
+Sei $(G,{\cdot},e)$ eine Gruppe. Die \emph{umgekehrte Gruppe} $\op{G}$ hat dieselbe zugrundeliegende Menge $G$ und dasselbe Einheitselement $e$, aber die Gruppenmultiplikation
+\[
+\_\mathbin{\op{\cdot}}\_\colon G\times G\to G, \quad (g,h) \mapsto h\cdot g.
+\]
+Ein Gruppenhomomorphismus $\op{G}\to H$ heißt auch Antihomomorphismus $G\to H$.
+\end{definition}
+
+\begin{theorem}
+Sei $p\colon E\to B$ eine Überlagerung, $b\in B$ und $F = p^{-1}(\{b\})$. Dann operiert die Gruppe $\op{\pi_1(B,b))}$ auf $F$ mittels
+\[
+\op{\pi_1(B,b)}\times F\to F,\quad ([\gamma], a)\mapsto \psi_\gamma(a).
+\]
+Diese Operation heißt \emph{Monodromieoperation} von $p$.
+\end{theorem}
+
 \end{document}
