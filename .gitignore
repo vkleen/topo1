@@ -1,3 +1,5 @@
 **/build/*
 !**/build/*.pdf
 texput.log
+exam/**
+exercises/abgaben/**

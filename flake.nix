@@ -10,6 +10,7 @@
       let pkgs = nixpkgs.legacyPackages.${system};
       in {
         devShell = pkgs.mkShell {
+          name = "latex";
           buildInputs = with pkgs; [
             texlive.combined.scheme-full
             bibtool

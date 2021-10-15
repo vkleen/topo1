@@ -720,10 +720,10 @@ Einfache Beispiele stetiger Funktionen bezüglich der Produkttopologie sind etwa
 die Addition $+\colon\RR\times\RR\to\RR$ und die Multiplikation
 $\cdot\colon\RR\times\RR\to\RR$.
 
-Genauso trägt die Menge $\Mat_m(\RR)$ von $m\times m$-Matrizen die
+Genauso trägt die Menge $\Mat{m}(\RR)$ von $m\times m$-Matrizen die
 Produkttopololgie, wir fassen sie als $\RR^{m^2}$ auf. Hier gibt es ebenso
-stetige Funktion $+\colon \Mat_m(\RR)\times\Mat_m(\RR)\to\Mat_m(\RR)$ und
-$\cdot\colon \Mat_m(\RR)\times\Mat_m(\RR)\to\Mat_m(\RR)$. In den beiden letzten
+stetige Funktion $+\colon \Mat{m}(\RR)\times\Mat{m}(\RR)\to\Mat{m}(\RR)$ und
+$\cdot\colon \Mat{m}(\RR)\times\Mat{m}(\RR)\to\Mat{m}(\RR)$. In den beiden letzten
 Beispielen gibt es zusätzlich stetige Abbildungen
 $(\_)^{-1}\colon\RR\setminus\{0\}\times\RR\setminus\{0\}\to\RR\setminus\{0\}$
 und $(\_)^{-1}\colon\GL_m(\RR)\times\GL_m(\RR)\to\GL_m(\RR)$. Damit haben wir
@@ -1866,13 +1866,13 @@ Sei $p\colon E\to B$ eine Überlagerung, $f\colon X\to B$ eine stetige Abbildung
 \begin{proof}
 Wir betrachten die Menge $A = \{x\in X : f'(x) = f''(x)\}\subset X$. Sei $x\in A$ beliebig und $\varphi\colon p^{-1}(V)\to V\times F$ eine lokale Trivialisierung von $p$ in einer Umgebung $V$ von $f(x)$. Dann ist $\varphi(f'(x)) = \varphi(f''(x))\in V\times\{a\}$ für ein $a\in F$. Da $p$ eine Überlagerung ist, ist $F$ diskret, und deshalb $V\times\{a\}\subset V\times F$ offen. Da $f'$ und $f''$ stetig sind, existiert eine offene Umgebung $U$ von $x$, so dass $\varphi(f'(U))\subset V\times\{a\}$ und $\varphi(f''(U))\subset V\times\{a\}$. Aber $p$ lässt sich zu einem Homöomorphismus $\varphi^{-1}(V\times\{a\}) \to V$ einschränken und es folgt, dass $f'|_U = f''|_U$. Das heißt aber $U\subset A$ ist eine Umgebung von $x$, die ganz in $A$ enthalten ist. Da $x\in A$ beliebig war, folgt damit, dass $A$ offen ist.
 
-Aber $A$ ist auch abgeschlossen. Sei nämlich $x\in X\setminus A$ und $\varphi\colon p^{-1}(V)\to V\times F$ eine lokale Trivialiserung von $p$ um $f(x)$ wie bevor. Wie oben sehen wir, dass dann $\varphi(f'(x))\in V\times\{a\}$ und $\varphi(f''(x))\in V\times\{b\}$ für $a\neq b$ gelten muss. Da $f'$ und $f''$ stetig sind, existiert wieder eine Umgebung $U$ von $x$ mit $\varphi(f'(U))\subset V\times\{a\}$ und $\varphi(f''(U))\subset V\times\{b\}$ und es folgt wie oben, dass $f'(y)\neq f''(y)$ für alle $y\in U$. Mit anderen Worten, $U\subset X\setminus A$. Da $x\in X\setminus A$ beliebig war, ist $X\setminus A$ offen.
+Aber $A$ ist auch abgeschlossen. Sei nämlich $x\in X\setminus A$ und $\varphi\colon p^{-1}(V)\to V\times F$ eine lokale Trivialisierung von $p$ um $f(x)$ wie bevor. Wie oben sehen wir, dass dann $\varphi(f'(x))\in V\times\{a\}$ und $\varphi(f''(x))\in V\times\{b\}$ für $a\neq b$ gelten muss. Da $f'$ und $f''$ stetig sind, existiert wieder eine Umgebung $U$ von $x$ mit $\varphi(f'(U))\subset V\times\{a\}$ und $\varphi(f''(U))\subset V\times\{b\}$ und es folgt wie oben, dass $f'(y)\neq f''(y)$ für alle $y\in U$. Mit anderen Worten, $U\subset X\setminus A$. Da $x\in X\setminus A$ beliebig war, ist $X\setminus A$ offen.
 
 Da es nach unserer Annahme an $f'$ und $f''$ ein $x_0\in X$ gibt, so dass $f'(x_0) = f''(x_0)$, ist $A\neq \emptyset$. Wir haben also eine nichtleere, offene und abgeschlossene Teilmenge $A\subset X$. Aber $X$ ist zusammenhängend, also ist die einzige solche Teilmenge ganz $X$. Mit anderen Worten, $f' = f''$.
 \end{proof}
 
 \begin{theorem}
-Jede Überlagerung $p\colon E\to B$ hat die Homotopieliftungseigenschaftung: Für jede Homotopie $H\colon X\times I\to B$ von $f$ nach $g$ und jeden Lift $f'\colon X\to E$ von $f$ existiert ein eindeutig bestimmter Lift $H'\colon X\times I\to E$ von $H$ nach $E$, so dass
+Jede Überlagerung $p\colon E\to B$ hat die Homotopieliftungseigenschaft: Für jede Homotopie $H\colon X\times I\to B$ von $f$ nach $g$ und jeden Lift $f'\colon X\to E$ von $f$ existiert ein eindeutig bestimmter Lift $H'\colon X\times I\to E$ von $H$ nach $E$, so dass
 \[
 \begin{tikzcd}
 X \ar[r, "{f'}"] \ar[d, "{\id}\times 0"'] & E \ar[d, "p"] \\
@@ -1882,7 +1882,7 @@ X\times I \ar[r, "H"'] \ar[ru, "{H'}"'] & B
 kommutiert. Insbesondere ist $H'\circ ({\id}\times 1)$ ein Lift von $g$.
 \end{theorem}
 \begin{proof}
-Wir nennen eine offene Teilmenge $U\subset B$ \emph{zulässig}, wenn $p$ eine lokale Trivialiserung über $U$ besitzt. Sei $x\in X$ und $I_x = \{x\}\times [0,1]\subset X\times I$. Die Familie $\{H^{-1}(U) : \textnormal{$U\subset B$ zulässig}\}$ ist eine offene Überdeckung von $I_x$ und nach \autoref{lem:lebesgue} existiert eine Lebesguezahl $\lambda > 0$ für diese Überdeckung. Sei $0 = t_0 < \dots < t_n = 1$ eine Partition von $[0,1]$ mit $t_i - t_{i-1} < \lambda$ für alle $i$. Für jedes $0\leq i < n$ ist dann $H(\{x\}\times[t_i,t_{i+1}])\subset U_i$ für ein zulässiges $U_i\subset B$.
+Wir nennen eine offene Teilmenge $U\subset B$ \emph{zulässig}, wenn $p$ eine lokale Trivialisierung über $U$ besitzt. Sei $x\in X$ und $I_x = \{x\}\times [0,1]\subset X\times I$. Die Familie $\{H^{-1}(U) : \textnormal{$U\subset B$ zulässig}\}$ ist eine offene Überdeckung von $I_x$ und nach \autoref{lem:lebesgue} existiert eine Lebesguezahl $\lambda > 0$ für diese Überdeckung. Sei $0 = t_0 < \dots < t_n = 1$ eine Partition von $[0,1]$ mit $t_i - t_{i-1} < \lambda$ für alle $i$. Für jedes $0\leq i < n$ ist dann $H(\{x\}\times[t_i,t_{i+1}])\subset U_i$ für ein zulässiges $U_i\subset B$.
 
 Für $t\in [t_i,t_{i+1}]$ existiert, da $H$ stetig ist, eine offene Umgebung $V_{x,t}\subset X\times I$ von $(x,t)$ mit $H(V_{x,t})\subset U_i$. Die Familie $\{V_{x,t} : t\in [0,1]\}$ bildet eine Überdeckung von $\{x\}\times [0,1]$ und dieser Raum ist kompakt. Es gibt also endlich viele $t_1,\dots,t_k$, so dass $\{V_{x,t_i} : i=1,\dots, k\}$ eine Überdeckung von $\{x\}\times [0,1]$ ist. Setze $V_x = \bigcap_{i=1}^n V_{x,t_i}$. Dann erfüllt $V_x$ folgende Eigenschaften:
 \begin{enumerate}
@@ -1933,10 +1933,10 @@ Für $\gamma$ und $\delta$ Schleifen in $B$ bei $b$ gilt
 \[
 \psi_{\gamma * \delta} = \psi_\delta\circ\psi_\gamma \colon F\to F.
 \]
-Außerdem ist $\psi_{c_b} = \id_F$ für $c_b$ die konstante Schleife bei $b$.
+Außerdem ist $\psi_{\varepsilon_b} = \id_F$ für $\varepsilon_b$ die konstante Schleife bei $b$.
 \end{lemma}
 \begin{proof}
-Zuerst ist für jedes $a\in F$ der konstante Weg $c_a$ in $a$ ein Lift von $c_b$ nach $E$. Also ist $\psi_{c_b}(a) = c_a(1) = a$.
+Zuerst ist für jedes $a\in F$ der konstante Weg $\varepsilon_a$ in $a$ ein Lift von $c_b$ nach $E$. Also ist $\psi_{\varepsilon_b}(a) = \varepsilon_a(1) = a$.
 
 Sei jetzt $\gamma'$ ein Lift von $\gamma$ mit $\gamma'(0) = a$ und $\delta'$ ein Lift von $\delta$ mit $\delta'(0) = \gamma'(1)$. Dann ist $\gamma' * \delta'$ wohldefiniert und ein Lift von $\gamma * \delta$. Also folgt
 \[
@@ -1944,7 +1944,7 @@ Sei jetzt $\gamma'$ ein Lift von $\gamma$ mit $\gamma'(0) = a$ und $\delta'$ ein
 \]
 \end{proof}
 
-\Autoref{lem:monodromy-comp} und \autoref{lem:monodromy-homotopy} zeigen zusammen, dass die Zuordnung $[\gamma]\mapsto\psi_\gamma$ eine Abbildung $\psi\colon \pi_1(B,b)\to \aut(F)$ definiert. Für $\pi_1(B,b)$ abelsch ist sie ein Gruppenhomomorphismus. Im Allgemeneinen müssen wir einen weiteren Begriff aus der Gruppentheorie einführen.
+\Autoref{lem:monodromy-comp} und \autoref{lem:monodromy-homotopy} zeigen zusammen, dass die Zuordnung $[\gamma]\mapsto\psi_\gamma$ eine Abbildung $\psi\colon \pi_1(B,b)\to \aut(F)$ definiert. Für $\pi_1(B,b)$ abelsch ist sie ein Gruppenhomomorphismus. Im Allgemeinen müssen wir einen weiteren Begriff aus der Gruppentheorie einführen.
 
 \begin{definition}
 Sei $(G,{\cdot},e)$ eine Gruppe. Die \emph{umgekehrte Gruppe} $\op{G}$ hat dieselbe zugrundeliegende Menge $G$ und dasselbe Einheitselement $e$, aber die Gruppenmultiplikation
@@ -1954,6 +1954,11 @@ Sei $(G,{\cdot},e)$ eine Gruppe. Die \emph{umgekehrte Gruppe} $\op{G}$ hat diese
 Ein Gruppenhomomorphismus $\op{G}\to H$ heißt auch Antihomomorphismus $G\to H$.
 \end{definition}
 
+Die Gruppe $\op{G}$ ist isomorph zu $G$ via $\varphi(g) = g^{-1}$, denn
+\[
+\varphi(g\cdot h) = (g\cdot h)^{-1} = h^{-1}\cdot g^{-1} = \varphi(h)\cdot\varphi(g) = \varphi(g)\mathbin{\op{\cdot}}\varphi(h).
+\]
+
 \begin{theorem}
 Sei $p\colon E\to B$ eine Überlagerung, $b\in B$ und $F = p^{-1}(\{b\})$. Dann operiert die Gruppe $\op{\pi_1(B,b))}$ auf $F$ mittels
 \[
@@ -1962,4 +1967,302 @@ Sei $p\colon E\to B$ eine Überlagerung, $b\in B$ und $F = p^{-1}(\{b\})$. Dann 
 Diese Operation heißt \emph{Monodromieoperation} von $p$.
 \end{theorem}
 
+Wir betrachten als Beispiele die folgenden drei Überlagerungen von $S^1$:
+\begin{enumerate}
+\item Sei $p_1\colon S^1\to S^1$ die Identitätsabbildung $p_1=\id_{S^1}$. Die typische Faser ist hier $\{1\}$ und die Monodromieoperation ist trivial.
+\item Sei $p_2\colon S^1\to S^1$ definiert durch $p_2(z) = z^2$. Die typische Faser ist $\{1,-1\}$ und ein Erzeuger von $\pi_1(S^1)$ operiert durch $\pm 1\mapsto \mp 1$.
+\item Sei $p_3\colon \RR\to S^1$ die Exponentialabbildung $p_3 = \exp$. Die typischer Faser ist $\ZZ$ und ein Erzeuger von $\pi_1(S^1)$ operiert durch $n\mapsto n+1$.
+\end{enumerate}
+
+Alle diese Monodromieoperationen sind \emph{transitiv}, \ddh~es gibt nur eine Bahn in der Faser unter der Operation von $\pi_1(S^1)$.
+\begin{lemma}
+Sei $p\colon E\to B$ eine Überlagerung mit typischer Faser $F$ und $E$ wegzusammenhängend. Dann ist die Monodromieoperation auf $F$ transitiv.
+\end{lemma}
+\begin{proof}
+Sei $a\in F = p^{-1}(\{b\})$ für ein $b\in B$. Sei $c\in F$ beliebig. Weil $E$ wegzusammenhängend ist, existiert ein Weg $\gamma'_c$ von $a$ nach $c$. Dann ist $[p\circ\gamma'_c]\in\pi_1(B,b)$ und $\psi_{p\circ\gamma'_c}(a) = \gamma_c'(1) = c$. Das heißt aber nur, dass $c$ in der Bahn von $a$ liegt.
+\end{proof}
+
+Sei $p\colon E\to B$ eine Überlagerung mit typischer Faser $F = p^{-1}(b)$ für ein $b\in B$ und $E$ wegzusammenhängend. Sei weiter $\op{\pi_1(B,b)}\times F\to F$ die zugehörige transitive Monodromieoperation. Dann ist der Stabilisator von $a\in F$ die Untergruppe $\op{\pi_1(B,b)}_a$ aus allen Elementen $g\in\op{\pi_1(B,b)}$ mit $g\cdot a = a$. Dieser Stabilisator ist auch eine Untergruppe $H$ von $\pi_1(B,b)$. Für jede Gruppe $G$, die auf einer Menge $X$ operiert, und $x\in X$ gilt
+\[
+[ G : G_x ] = |Gx|;
+\]
+der Index des Stabilisators $G_x$ in $G$ ist genau die Mächtigkeit der Bahn von $x\in X$. In unserem Fall ist die Gruppenoperation transitiv und wir erhalten, dass $[G : H] = |F|$ der Grad der Überlagerung $p$ ist. In unseren Beispielen sieht die Situation wie folgt aus.
+\begin{enumerate}
+\item Für $p_1\colon S^1\to S^1$ die Identitätsabbildung ist $H = \ZZ = \pi_1(S^1)$.
+\item Für $p_2\colon S^1\to S^1$ mit $p_2(z) = z^2$ ist $H = 2\ZZ\subset \ZZ$. Der Index $[\ZZ : 2\ZZ]$ ist wie erwartet $2$.
+\item Für $p_3\colon \RR\to S^1$ die Exponentialabbildung ist $H = \{0\}\subset \ZZ$ die triviale Untergruppe.
+\end{enumerate}
+
+Die Untergruppe $H$ kann auch auf einem direkteren Weg gefunden werden. Nämlich betrachtet man die induzierte Abbildung $p_*\colon \pi_1(E,a)\to\pi_1(B,b)$. Dann ist $p_*$ injektiv und $p_*(\pi_1(E,a))$ eine Untergruppe von $\pi_1(B,b)$ und es stellt sich heraus, dass sie genau der Stabilisator $H$ ist. Um das zu sehen, sei $\gamma'$ eine Schleife in $E$ bei $a$, so dass $p_*([\gamma']) = [p\circ\gamma'] = e\in\pi_1(B,b)$. Dann existiert eine Homotopie $H\colon I\times I\to B$ von $p\circ\gamma'$ nach $\varepsilon_b$ und ein Lift $H'$ von $H$. Dann ist aber $H'$ eine Homotopie von $\gamma'$ nach $\varepsilon_a$, also $[\gamma'] = e\in\pi_1(E,a)$. Also ist $p_*$ injektiv.
+
+Um zu sehen, dass $p_*(\pi_1(E,a))\subset H$, sei $[\gamma]\in p_*(\pi_1(E,a))$. Dann gibt es eine Schleife $\gamma'$ in $E$ bei $a$, so dass $[p\circ\gamma'] = [\gamma]$. Aber dann ist $\psi_\gamma(a) = \gamma'(1) = a$, also $[\gamma]\in H$. Ist andersherum $[\gamma]\in H$, sei $\gamma'$ ein Lift von $\gamma$ mit $\gamma'(0) = a$. Aber da $[\gamma]$ das Element $a$ fixiert, muss dann $\gamma'(1) = a$ gelten. Also ist $[\gamma']\in\pi_1(E,a)$ und $p_*([\gamma']) = [\gamma]\in p_*(\pi_1(E,a))$.
+
+Insgesamt haben wir gesehen, dass eine wegzusammenhängende Überlagerung mit typischer Faser $F$ eine transitive Monodromieoperation $\op{\pi_1(B,b)}\times F\to F$ induziert und jede solche transitive Operation liefert eine Untergruppe von $\pi_1(B,b)$. Wir werden zeigen, dass diese Zuordnungen in einem gewissen Sinn bijektiv sind.
+
+Tatsächlich werden wir Kategorien $\Cov{B}$ von Überlagerungen von $B$ und $\GSet{\op{\pi_1(B,b)}}$ von Mengen mit $\op{\pi_1(B,b)}$-Operation definieren und zeigen, dass diese beiden Kategorien äquivalent sind; zumindest für zusammenhängende $B$, die gewisse technische Voraussetzungen erfüllen. Wegzusammenhängende Überlagerungen entsprechen entlang dieser Äquivalenz genau transitiven $\op{\pi_1(B,b)}$-Operationen.
+
+Sei $G$ eine Gruppe und $M_1$ und $M_2$ zwei Mengen mit $G$-Operationen. Wir schreiben $G\acts M_1$ bzw.~$G\acts M_2$. Ein Morphismus von $G\acts M_1$ nach $G\acts M_2$ ist eine Abbildung $\Phi\colon M_1\to M_2$, die \emph{$G$-äquivariant} ist, \ddh~es gilt
+\[
+\Phi(g\cdot m_1) = g\cdot\Phi(m_1)
+\]
+für alle $g\in G$ und $m_1\in M_1$.
+
+Zum Beispiel haben wir Gruppenoperationen $\rho\colon \ZZ\times\{\pm 1\}\to \{\pm 1\}$ mit $\rho(n,\pm 1) = \pm(-1)^n$ und $\rho\colon \ZZ\times\ZZ\to\ZZ$ mit $\rho(n,m) = n+m$. Dann ist die Abbildung $\Phi\colon \ZZ\to \{\pm 1\}$ mit $\Phi(m) = (-1)^m$ $\ZZ$-äquivariant.
+
+\begin{definition}
+Sei $G$ eine Gruppe. Die Kategorie $\GSet{G}$ von \emph{$G$-Mengen} hat als Objekte Mengen $M$ mit einer $G$-Operation $G\acts M$ und als Morphismen $G$-äquivariante Abbildungen.
+\end{definition}
+
+\begin{definition}
+Sei $B$ ein topologischer Raum mit Überlagerungen $p\colon E\to B$ und $q\colon E'\to B$. Ein \emph{Morphismus von Überlagerungen} $E\to E'$ ist eine stetige Abbildung $\varphi\colon E\to E'$, so dass
+\[
+\begin{tikzcd}[column sep=tiny]
+E \ar[dr, "p"'] \ar[rr,"\varphi"] & & E' \ar[dl, "q"] \\
+& B
+\end{tikzcd}
+\]
+kommutiert.
+
+Die Kategorie $\Cov{B}$ von Überlagerungen von $B$ hat als Objekte Überlagerungen $E\to B$ von $B$ und Morphismen von Überlagerungen als Morphismen.
+\end{definition}
+
+Ein Morphismus $\varphi\colon E\to E'$ von Überlagerungen $p\colon E\to B$ und $q\colon E'\to B$ induziert, für jedes $b\in B$, eine Abbildung zwischen den Fasern $\varphi_\#\colon p^{-1}(\{b\})\to q^{-1}(\{b\})$, denn für $x\in p^{-1}(\{b\})$ ist $q(\varphi(x)) = p(x) = b$. Wir können Morphismen von Überlagerungen benutzen um die Monodromieoptionen zu vergleichen.
+
+\begin{lemma}
+Für einen Morphismus $\varphi\colon E\to E'$ von Überlagerungen $p\colon E\to B$ und $q\colon E'\to B$ ist die induzierte Abbildung $\varphi_\#\colon p^{-1}(\{b\})\to q^{-1}(\{b\})$ auf den Faser von $b\in B$ äquivariant bezüglich den Monodromieoperationen von $\pi_1(B,b)$.
+\end{lemma}
+\begin{proof}
+Sei $x\in p^{-1}(\{b\})$ und $[\gamma]\in\pi_1(B,b)$. Wähle einen Lift $\gamma'\colon [0,1]\to E$ entlang $p$ mit $\gamma'(0) = x$. Dann operiert $[\gamma]$ auf $x$ als $x\cdot [\gamma] = \gamma'(1)$. Außerdem ist $q\circ(\varphi\circ\gamma') = p\circ\gamma' = \gamma$. Das heißt, $\varphi\circ\gamma'$ ist ein Lift von $\gamma$ entlang $q$ und $[\gamma]$ operiert auf $\varphi(x)$ als $\varphi(x)\cdot[\gamma] = \varphi(\gamma'(1))$. Insgesamt ist also
+\[
+\varphi(x\cdot[\gamma]) = \varphi(\gamma'(1)) = \varphi(x)\cdot [\gamma].\qedhere
+\]
+\end{proof}
+
+\begin{definition}
+Sei $B$ ein topologischer Raum und $b\in B$. Wir definieren den \emph{Faserfunktor} bezüglich $b$ durch
+\[
+\fibre_b\colon \Cov{B} \to \GSet{\op{\pi_1(B,b)}},\quad
+\begin{tikzcd}[column sep=tiny, cramped]
+E \ar[dr, "p"'] \ar[rr,"\varphi"] & & E' \ar[dl, "q"] \\
+& B
+\end{tikzcd} \mapsto \big(\begin{tikzcd}[cramped]
+p^{-1}(\{b\}) \ar[r, "\varphi_\#"] & q^{-1}(\{b\})
+\end{tikzcd}\big).
+\]
+\end{definition}
+
+Sei $H$ eine Untergruppe von $G$. Dann operiert $G$ auf der Menge der Linksnebenklassen $G/H$ von $H$ und diese Operation ist transitiv.
+
+\begin{theorem}
+Sei $G$ eine Gruppe und $X$ eine Menge mit einer transitiven $G$-Operation. Dann gibt es für jedes $x\in X$ eine $G$-äquivariante Bijektion $G/G_x \to X$.
+\end{theorem}
+\begin{proof}
+Für $x\in X$ definiere $\varphi\colon G/G_x\to X$ durch $gG_x\mapsto g\cdot x$. Das ist wohldefiniert, denn für $h\in G_x$ ist $gh\cdot x = g\cdot(h\cdot x) = g\cdot x$. Die Abbildung $\varphi$ ist äquivariant, denn für $g,h\in G$ gilt
+\[
+\varphi(g\cdot hG_x) = \varphi(ghG_x) = gh\cdot x = g\cdot(h\cdot x) = g\cdot\varphi(hG_x).
+\]
+Sie ist surjektiv, da $G$ auf $X$ transitiv operiert. Außerdem ist $\varphi$ injektiv, denn falls $\varphi(gG_x) = \varphi(hG_x)$ gilt, haben wir $g\cdot x = h\cdot x$, also $h^{-1}g\cdot x = x$. Aber das heißt nur, dass $h^{-1}g\in G_x$, bzw.~$h^{-1}gG_x = G_x$, also $gG_x = hG_x$.
+\end{proof}
+
+\subsection{Universelle Überlagerungen}
+
+\begin{definition}
+Eine Überlagerung $p\colon E\to B$ heißt \emph{universell}, falls $E$ einfach zusammenhängend ist.
+\end{definition}
+
+Ein topologischer Raum $B$ heißt \emph{semilokal einfach zusammenhängend}, falls für jedes $b\in B$ eine Umgebung $U$ von $b$ existiert, so dass $\iota_*(\pi_1(U,b)) = \{e\}\subset \pi_1(B,b)$, wobei $\iota\colon U\into B$ die Inklusion bezeichnet. Eine universelle Überlagerung kann nur dann existieren, wenn der Basisraum $B$ semilokal einfach zusammenhängend ist. Falls $p\colon E\to B$ nämlich eine universelle Überlagerung ist, hat jedes $p\in B$ eine Umgebung $U$, so dass $p^{-1}(U) = \bigsqcup_{f\in F} U_f$ und $p|_{U_f}\colon U_f\iso U$. Eine Schleife $\gamma$ in $U$ bei $b$ gibt uns dann eine Schleife $\gamma_f = (p|_{U_f})^{-1}\circ\gamma$ in $U_f$ bei $b_f = (p|_{U_f})^{-1}(b)$. Da $E$ einfach zusammenhängend ist, gilt $[\gamma_f] = e\in\pi_1(E,b_f)$. Sei $H'$ eine Homotopie von $\gamma_f$ zur konstante Schleife $\varepsilon_{b_f}$. Dann ist $p\circ H'$ eine Homotopie von $\gamma$ nach $\varepsilon_b$, \ddh~$[\gamma] = e\in\pi_1(B,b)$.
+
+\begin{definition}
+Ein topologischer Raum $B$ ist \emph{lokal wegzusammenhängend}, falls für jedes $b\in B$ eine Umgebungsbasis $\cal U$ für $b$ existiert, so dass jedes $U\in\cal U$ wegzusammenhängend ist.
+\end{definition}
+TODO: cone on $\{0\}\cup\{\tfrac1n\}$ is not locally path connected
+
+Für eine universelle Überlagerung $p\colon E\to B$ mit $p(e_0) = b_0$ existiert für $e_1\in E$ genau eine Homotopieklasse $[\gamma]$ von Wegen von $e_0$ nach $e_1$. Dann ist $p\circ\gamma$ ein Weg in $B$ von $b_0$ nach $p(e_1)$ und $\gamma\simeq\gamma'$ genau dann, wenn $p\circ\gamma\simeq p\circ\gamma'$. Punkte in $E$ stehen also in Korrespondenz zu Homotopieklassen von Wegen in $B$ mit Startpunkt $b_0$. Diese Beobachtung können wir benutzen um für jeden hinreichend gutartigen Basisraum $B$ eine universelle Überlagerung zu konstruieren.
+
+Sei $B$ wegzusammenhängend, lokal wegzusammenhängend und semilokal einfach zusammenhängend. Wir definieren
+\[
+E \coloneqq \{ [\gamma] : \textnormal{$\gamma$ ein Weg in $B$ mit $\gamma(0) = b_0$}\}
+\]
+und eine Abbildung $p\colon E\to B$ durch $p([\gamma]) = \gamma(1)$. Sei
+\[
+\cal U\coloneqq \{ U\subset B : \textnormal{$U$ offen und wegzusammenhängend und $\pi_1(U)\to\pi_1(B)$ ist trivial} \}.
+\]
+Da $U\in\cal U$ wegzusammenhängend ist, ist die Trivialität $\pi_1(U)\to\pi_1(B)$ unabhängig von der Wahl des Basispunktes.
+
+\begin{lemma}
+Die Familie $\cal U$ ist eine Basis für die Topologie auf $B$.
+\end{lemma}
+\begin{proof}
+Zuerst ist $\bigcup\cal U = B$, denn jedes $b\in B$ besitzt eine Umgebung $V\subset B$, für die die von der Inklusion induzierte Abbildung $\pi_1(V)\to\pi_1(B)$ trivial ist. Da $B$ zusätzlich lokal wegzusammenhängend ist, existiert eine wegzusammenhängende Umgebung $W$ von $b$ mit $W\subset V$. Das kommutative Dreieck
+\[
+\begin{tikzcd}
+\pi_1(W)\ar[r]\ar[dr] & \pi_1(V) \ar[d] \\
+& \pi_1(B)
+\end{tikzcd}
+\]
+zeigt dann, dass $\pi_1(W)\to\pi_1(B)$ trivial ist, \ddh~$W\in\cal U$.
+
+Sind außerdem $U,V\in\cal U$ und $b\in U\cap V$, so existiert eine wegzusammenhängende Umgebung $W$ von $b$ mit $W\subset U\cap V$. Für dieses $W$ ist dann die Komposition
+\[
+\pi_1(W)\to\pi_1(U\cap V)\to \pi_1(U)\to\pi_1(B)
+\]
+trivial, da bereits $\pi_1(U)\to\pi_1(B)$ trivial ist.
+\end{proof}
+
+Sei $U\in\cal U$ und $\gamma$ eine Weg in $B$ mit $\gamma(0) = b_0$ und $\gamma(1)\in U$. Setze
+\[
+U_{[\gamma]} = \{[\gamma *\eta] : \textnormal{$\eta$ ein Weg in $U$ mit $\eta(0) = \gamma(1)$}\}.
+\]
+\begin{lemma}
+Für $[\gamma']\in U_{[\gamma]}$ ist $U_{[\gamma]} = U_{[\gamma']}$.
+\end{lemma}
+\begin{proof}
+Wir haben $\gamma'\simeq\gamma * \eta$ für einen Weg $\eta$ in $U$. Elemente von $U_{[\gamma']}$ sind also von der Form $[\gamma*\eta*\mu]$ für $\mu$ ein Weg in $U$. Also ist $U_{[\gamma']}\subset U_{[\gamma]}$. Andererseits ist $\gamma\simeq\gamma' * \eta^{-}$, also $[\gamma]\in U_{[\gamma']}$. Es folgt also analog, dass $U_{[\gamma]}\subset U_{[\gamma']}$.
+\end{proof}
+
+\begin{theorem}
+Die Familie $\{U_{[\gamma]}\}_{U, \gamma}$ bildet eine Basis für eine Topologie auf $E$.
+\end{theorem}
+\begin{proof}
+Natürlich ist $E = \bigcup_{U, \gamma} U_{[\gamma]}$, denn $[\gamma]\in U_{[\gamma]}$ für $U\in \cal U$ mit $\gamma(1)\in U$. Seien weiter $U,V\in\cal U$ und $[\gamma],[\gamma']\in E$ mit $\gamma(1)\in U$ und $\gamma'(1)\in V$. Für jedes $[\gamma'']\in U_{[\gamma]}\cap V_{[\gamma']}$ ist aber $U_{[\gamma'']} = U_{[\gamma]}$ und $V_{[\gamma'']} = V_{[\gamma']}$. Da $\cal U$ eine Basis für die Topologie auf $B$ ist, gibt es ein $W\in\cal U$ mit $\gamma''(1)\in W\subset U\cap V$. Dann ist $[\gamma'']\in W_{[\gamma'']}\subset U_{[\gamma'']}\cap V_{[\gamma'']}$.
+\end{proof}
+
+Mithilfe dieser Basis erhalten wir also einen topologischen Raum $E$.
+
+\begin{theorem}\label{thm:universal-covering}
+Mit $B$, $E$ und $p\colon E\to B$ wie oben gilt:
+\begin{enumerate}
+\item $p\colon E\to B$ ist stetig.
+\item $p\colon E \to B$ ist eine Überlagerung.
+\item $E$ ist einfach zusammenhängend.
+\end{enumerate}
+\end{theorem}
+\begin{proof}\leavevmode
+\begin{enumerate}
+\item Sei $U\in \cal U$. Wir wollen zeigen, dass $p^{-1}(U)$ offen in $E$ ist. Aber es gilt
+\begin{align*}
+p^{-1}(U) & = \{[\gamma] : \textnormal{$\gamma$ ein Weg in $B$ mit $\gamma(0) = b_0)$ und $\gamma(1)\in U$}\} \\
+& = \bigcup \{ U_[\gamma] : \textnormal{$\gamma$ ein Weg von $b_0$ nach $U$}\}.
+\end{align*}
+\item Weil $B$ wegzusammenhängend ist, ist $p$ surjektiv. Für $U\in\cal U$ zeigen wir, dass $p^{-1}(U)$ eine disjunkte Vereinigung offener Mengen in $E$ ist, die alle entlang $p$ homöomorph zu $U$ sind. Wir wissen bereits, dass $p^{-1}(U) = \bigcup_{\gamma} U_{[\gamma]}$. Sei $x_0\in U$. Dann gilt:
+\begin{enumerate}[label={\normalfont \rmfamily(\alph*)}, nosep]
+\item \label{thm:universal-covering.a} Jedes $[\delta]\in p^{-1}(U)$ liegt in einem $U_{[\gamma]}$ mit $\gamma$ ein Weg von $b_0$ nach $x_0$.
+\item \label{thm:universal-covering.b} Für Wege $\gamma$ und $\gamma'$ von $b_0$ nach $x_0$ und $\gamma\not\simeq \gamma'$ gilt $U_{[\gamma]}\cap U_{[\gamma']} = \emptyset$.
+\end{enumerate}
+Zuerst zu \ref{thm:universal-covering.a}. Da $U$ wegzusammenhängend ist, existiert ein Weg $\eta$ von $\delta(1)$ nach $x_0$. Wegen $\delta*\eta*\eta^{-}\simeq\delta$ ist $[\delta]\in U_{[\delta*\eta]}$.
+
+Nun zu \ref{thm:universal-covering.a}. Wäre $[\delta]\in U_{[\gamma]}\cap U_{[\gamma']}$, so wäre $U_{[\gamma]} = U_{[\delta]} = U_{[\gamma']}$. Also wäre $[\gamma']\in U_{[\gamma]}$, \ddh~$\gamma'\simeq \gamma*\eta$ für $\eta$ eine Schleife in $U$ bei $x_0$. Aber $[\eta] = e\in \pi_1(B,x_0)$ wegen $U\in\cal U$. Das würde aber bedeuten, dass $\gamma'\simeq \gamma$.
+
+Insgesamt folgt, dass $p^{-1}(U) = \bigsqcup_{[\gamma]} U_{[\gamma]}$, wobei die $[\gamma]$ Homotopieklassen von Wegen von $b_0$ nach $x_0$ sind. Es bleibt zu zeigen, dass $p|_{U_{[\gamma]}}$ ein Homöomorphismus $U_{[\gamma]} \isom U$ ist. Die Abbildung ist surjektiv, da $U$ wegzusammenhängend ist. Für Injektivität sei $p([\gamma*\eta]) = p([\gamma*\mu])$. Dann ist $\eta*\mu^{-}$ eine Schleife in $U$ bei $\gamma(1)$. Folglich ist $[\gamma*\eta^{-}]$ trivial in $\pi_1(B,\gamma(1))$. Das genügt um zu sehen, dass $\eta\simeq\eta$ als Wege in $B$. Damit gilt auch $\gamma*\eta\simeq\gamma*\mu$.
+
+Um zu sehen, dass $p|_{U_{[\gamma]}}$ offen ist, genügt es $V_{[\gamma]}\subset U_{[\gamma]}$ mit $V\in\cal U$ zu betrachten. Dann ist $p(V_{[\gamma]}) = V$ offen in $B$.
+\item Eine natürliche Wahl für eine Basispunkt in $E$ ist $[\varepsilon_{b_0}]$, die Homotopieklasse des konstanten Wegs bei $b_0$. Zuerst zeigen wir, dass $E$ wegzusammenhängend ist. Sei dafür $[\gamma]\in E$. Definiere $\Gamma\colon I\to E$ durch $\Gamma(t) = [\gamma_t]$, wobei $\gamma_t$ eine Reparametrisierung von $\gamma|_{[0,t]}$ ist. Dann ist $\Gamma(0) = [\varepsilon_{b_0}]$ und $\Gamma(1) = [\gamma]$.
+
+Sei $[\Gamma]\in\pi_1(E,[\varepsilon_{b_0}])$. Dann ist $\gamma = p\circ\Gamma$ eine Schleife in $B$ bei $b_0$. Sei $\gamma_t$ wieder eine Reparametrisierung von $\gamma|_{[0,t]}$ und $\gamma'\colon I\to E$ definiert durch $\gamma'(t) = [\gamma_t]$. Dann sind $\gamma'$ und $\Gamma$ beides Lifts von $\gamma$ mit $\Gamma(0) = \gamma'(0) = [\varepsilon_{b_0}]$. Also gilt bereits $\Gamma = \gamma'$. Folglich ist
+\[
+[\gamma] = [\gamma_1] = \gamma'(1) = \Gamma(1) = [\varepsilon_{b_0}] = e \in\pi_1(B,b_0).
+\]
+Jetzt ist aber $[\gamma] = p_*([\Gamma])$ und $p_*$ ist injektiv, da $p$ eine Überlagerung ist. Also ist bereits $[\Gamma]$ trivial.\qedhere
+\end{enumerate}
+\end{proof}
+
+TODO
+
+\begin{theorem}\label{thm:lifting-criterion}
+Sei $X$ wegzusammenhängend und lokal wegzusammenhängend mit $x_0\in X$ und $p\colon E\to B$ eine Überlagerung mit $b_0\in B$ und $e_0\in p^{-1}(\{b_0\})$. Außerdem sei $f\colon X\to B$ eine stetige Abbildung mit $f(x_0) = b_0$. Dann existiert genau dann ein Lift $f'\colon X\to E$ von $f$ entlang $p$ mit $f'(x_0) = e_0$, wenn die Inklusion $f_*(\pi_1(X,x_0))\subset p_*(\pi_1(E,e_0))$ gilt.
+\end{theorem}
+\begin{proof}
+Sei zuerst $f'\colon X\to E$ ein solcher Lift. Dann ist
+\[
+f_*([\gamma]) = (p\circ f')_*([\gamma]) = p_*(f'_*([\gamma])) \in p_*(\pi_1(E,e_0))
+\]
+für $[\gamma]\in\pi_1(X,x_0)$. Also ist $f_*(\pi_1(X,x_0))\subset p_*(\pi_1(E,e_0))$.
+
+Sei nun nur $f_*(\pi_1(X,x_0))\subset p_*(\pi_1(E,e_0))$ und $x\in X$. Wähle einen Weg $\tau_x\colon I\to X$ von $x_0$ nach $x$. Sei $\gamma_x\colon I\to E$ der eindeutige Lift von $f\circ \tau_x$ nach $E$ mit Startpunkt $e_0$. Wir wollen $f'(x) = \gamma_x(1)$ definieren. Das ist wohldefiniert, denn sei $\tau_x'\colon I\to X$ ein zweiter Weg von $x_0$ nach $x$. Dann ist $\tau_x * (\tau_x')^{-}$ eine Schleife bei $x_0$ und $[f\circ (\tau_x*(\tau_x')^{-}]\in f_*(\pi_1(X,x_0))\subset p_*(\pi_1(E,e_0))$. Also ist der Lift von $f\circ(\tau_x * (\tau_x')^{-})$ nach $E$ eine Schleife in $E$ bei $e_0$. Für $\gamma_x'$ der Lift von $f\circ\tau_x'$ nach $E$ mit Startpunkt $e_0$ gilt dann also $\gamma_x(1) = \gamma_x'(1)$.
+
+Es bleibt zu zeigen, dass $f'\colon X\to E$ stetig ist. Sei $V\subset B$ eine Umgebung von $f(x)$ mit einer lokalen Trivialisierung und $U\subset E$ homöomorph zu $V$ mit $f'(x)\in U$. Außerdem sei $W$ eine wegzusammenhängende Umgebung von $x$ in $X$, so dass $f(W)\subset V$. Wir zeigen, dass $f'(W)\subset U$. Sei dafür $y\in W$ und $\eta_y\colon I\to W$ ein Weg von $x$ nach $y$. Dann ist $\tau_x * \eta_y$ ein Weg von $x_0$ nach $y$. Für den Lift $\gamma_x$ von $f\circ\tau_x$ nach $E$ mit Startpunkt $e_0$ ist dann $\gamma_x * ((p|U)^{-1} \circ f\circ\eta_y)$ der Lift von $f\circ(\tau_x *\eta_y)$ nach $E$ mit Startpunkt $e_0$. Also ist $f'(y) \in U$. Da $y\in W$ beliebig war, folgt $f'(W)\subset U$. Das genügt um die Stetigkeit von $f'$ zu sehen.
+\end{proof}
+
+\begin{corollary}
+Sei $B$ lokal wegzusammenhängend mit universelle Überlagerungen $p\colon E\to B$ und $q\colon E'\to B$. Dann sind $p$ und $q$ isomorph, \ddh~es gibt einen Homöomorphismus $\Phi\colon E\to E'$, so dass
+\[
+\begin{tikzcd}[column sep=tiny]
+E \ar[rr, "\Phi"]\ar[rd,"p"'] & & E'\ar[dl, "q"] \\
+& B
+\end{tikzcd}
+\]
+kommutiert.
+\end{corollary}
+\begin{proof}
+Wähle Basispunkte $b_0\in B$, $e_0\in E$ und $e_0'\in E'$ mit $p(e_0) = b_0$ und $q(e_0') = b_0$. Dann existiert ein Lift $\Phi\colon E\to E'$ von $p$ entlang $q$ nach \autoref{thm:lifting-criterion}, da $\pi_1(E,e_0) = \{e\} = \pi_1(E',e_0')$. Ebenso existiert ein Lift $\Psi\colon E'\to E$ von $q$ entlang $p$. Dann ist $\Phi\circ\Psi = \id_{E'}$ und $\Psi\circ\Phi = \id_E$, denn $\id_{E'}$ und $\Phi\circ\Psi$ sind beides Lifts von $p$ entlang $p$.  Aber wegen \autoref{thm:lift-uniqueness} und $\id_{E'}(e_0') = e_0' = (\Phi\circ\Psi)(e_0')$ folgt bereits $\Phi\circ\Psi = \id_{E'}$. Die Identität $\id_E = \Psi\circ\Phi$ folgt analog.
+\end{proof}
+
+\begin{theorem}
+Sei $B$ wegzusammenhängend, lokal wegzusammenhängend und semilokal einfach zusammenhängend mit universeller Überlagerung $p\colon E\to B$. Dann existiert ein Isomorphismus $\aut(E|B)\isom\pi_1(B,b_0)$ für ein $b_0\in B$.
+\end{theorem}
+\begin{proof}
+Nach unserer Konstruktion der universellen Überlagerung können wir annehmen, dass Punkte von $E$ durch Homotopieklassen von Wegen $[\gamma]$ in $B$ mit $\gamma(0) = b_0$ gegeben sind. Die Abbildung
+\[
+\pi_1(B,b_0)\times E\to E,\quad ([\eta],[\gamma])\mapsto [\eta*\gamma]
+\]
+ist eine Gruppenoperation von $\pi_1(B,b_0)$ auf $E$. Dafür müssen wir zeigen, dass für jede Homotopieklasse $[\eta]\in\pi_1(B,b_0)$ die Abbildung $[\eta]\cdot\_\colon [\gamma]\cmapsto[\eta*\gamma]$ stetig ist. Sei $U_{[\gamma]}$ ein Basiselement, \ddh~$U$ ist eine offene Menge in $B$ und $\gamma\colon I\to B$ ein Weg mit $\gamma(0) = b_0$ und $\gamma(1)\in U$ und $U_{[\gamma]} = \{[\gamma*\mu] : \textnormal{$\mu$ ein Weg in $U$}\}$. Dann ist
+\[
+([\eta]\cdot\_)^{-1}(U_{[\gamma]}) = \{[\eta^{-}*\gamma*\mu] : \textnormal{$\mu$ ein Weg in $U$}\} = U_{[\eta^{-}*\gamma]}
+\]
+offen in $E$. Insgesamt definiert also jedes $[\eta]\in \pi_1(B,b_0)$ einen Homöomorphismus $[\eta]\cdot\_\colon E\to E$ mit $[\gamma]\cmapsto[\eta*\gamma]$ und
+\[
+\begin{tikzcd}[column sep=tiny]
+E \ar[rr, "{[\eta]\cdot\_}"]\ar[dr, "p"'] && E \ar[dl, "p"] \\
+& B
+\end{tikzcd}
+\]
+kommutiert. Also haben wir eine Abbildung $\pi_1(B,b_0)\to\aut(E|B)$ mit $[\eta]\cmapsto[\eta]\cdot\_$. Um zu sehen, dass diese Abbildung ein Isomorphismus ist, sei zuerst $[\eta]\in \pi_1(B,b_0)$ so, dass $[\eta]\cdot\_ = \id_E$. Dann ist für jedes $[\gamma]\in E$ bereits $e = [\gamma*\gamma^{-}] = [\eta * \gamma * \gamma^{-}] = [\eta]\in\pi_1(B,b_0)$. Für Surjektivität sei $\Psi\in\aut(E|B)$. Wähle $[\gamma]\in E$ und sei $[\delta] = \Psi([\gamma])$. Dann ist
+\[
+\gamma(1) = p([\gamma]) = (p\circ\Psi)([\gamma]) = p([\delta]) = \delta(1)
+\]
+und $[\delta * \gamma^{-}]\in\pi_1(B,b_0)$. Dann ist $[\delta*\gamma^{-}]\cdot([\gamma]) = [\delta]$ und $[\delta * \gamma]\cdot\_$ und $\Psi$ sind beides Lifts von $p$ entlang $p$. Wegen \autoref{thm:lift-uniqueness} folgt dann bereits $\Psi = [\delta*\gamma]\cdot\_$.
+\end{proof}
+
+Sei $B$ im Folgenden immer wegzusammenhängend, lokal wegzusammenhängend und semilokal einfach zusammenhängend mit universeller Überlagerung $p\colon E\to B$. Sei weiter $b_0\in B$ und $q\colon Y\to B$ eine beliebige Überlagerung. Wir schreiben $\hom_B(E,Y) = \Mor_{\Cov{B}}(p, q)$ für die Menge von Morphismen von Überlagerungen von $p\colon E\to B$ nach $q\colon Y\to B$.
+
+\begin{lemma}
+Es existiert eine Bijektion $\hom_B(E,Y)\isom q^{-1}(\{b_0\})$.
+\end{lemma}
+\begin{proof}
+Wir fassen wieder $E$ als die Menge $\{[\gamma] : \textnormal{$\gamma$ ein Weg in $B$ mit $\gamma(0) = b_0$}\}$ auf. Definiere eine Abbildung
+\[
+\ev_{[\varepsilon_{b_0}]}\colon \hom_B(E,Y) \to q^{-1}(\{b_0\}),\quad \Psi\mapsto\Psi([\varepsilon_{b_0}]).
+\]
+Sei $y\in q^{-1}(\{b_0\})$. Wir definieren $L_y\in\hom_B(E,Y)$ wie folgt. Für $[\gamma]\in E$ sei $\gamma_y'$ der eindeutige Lift von $\gamma$ entlang $q$ mit $\gamma'_y(0) = y$. Dann sei $L_y([\gamma]) = \gamma'_y(1)$. Wegen der Homotopieliftungseigenschaft ist das wohldefiniert. Außerdem ist
+\[
+q(L_y([\gamma])) = q(\gamma_y'(1)) = \gamma(1) = p([\gamma]),
+\]
+also $L_y\in\hom_B(E,Y)$. Insgesamt haben wir also eine Abbildung $L\colon y\cmapsto L_y$. Wir zeigen, dass $L$ und $\ev_{[\varepsilon_{b_0}]}$ invers zueinander sind. Zuerst haben wir
+\[
+L_y([\varepsilon_{b_0}]) = \varepsilon_y(1) = y
+\]
+für jedes $y\in q^{-1}(\{b_0\})$. Sei umgekehrt $\psi\in\hom_B(E,Y)$ und $[\gamma]\in E$. Sei $\Gamma\colon I\to E$ der Lift von $\gamma$ mit $\Gamma(0) = [\varepsilon_{b_0}]$. Wir haben bereits gesehen, dass $\Gamma(t)(1) = \gamma(t)$ und $\Gamma(1) = [\gamma]$ gilt. Außerdem ist $\psi\circ\Gamma\colon I\to Y$ ein Lift von $\gamma$ mit $(\psi\circ\Gamma) = \psi([\varepsilon_{b_0}])$. Dann ist
+\[
+L_{\psi([\varepsilon_{b_0}])}([\gamma]) = (\psi\circ\Gamma)(1) = \psi([\gamma]).\qedhere
+\]
+\end{proof}
+Außerdem ist die Bijektion $\ev_{[\varepsilon_{b_0}]}\colon \hom_B(E,Y)\to q^{-1}(\{b_0\})$ funktoriell: Sei $f\in \hom_B(Y,Y')$ ein Morphismus von Überlagerungen von $q\colon Y\to B$ nach $q'\colon Y'\to B$. Dann kommutiert
+\[
+\begin{tikzcd}
+\hom_B(E,Y) \ar[r, "{\varphi\cmapsto f\circ\varphi}"] \ar[d, "{\ev_{[\varepsilon_{b_0}]}}"'] & \hom_B(E,Y') \ar[d, "{\ev_{[\varepsilon_{b_0}]}}"] \\
+q^{-1}(\{b_0\}) \ar[r, "f|_{q^{-1}(\{b_0\})}"'] & (q')^{-1}(\{b_0\}).
+\end{tikzcd}
+\]
+
+Für $p\colon E\to B$ wieder die universelle Überlagerung operiert $\op{\aut(E|B)}$ auf $\hom_B(E,Y)$ durch
+\[
+\op{\aut(E|B)}\times\hom_B(E,Y) \to \hom_B(E,Y),\quad (\psi,\varphi)\mapsto \varphi\circ\psi.
+\]
+Es stellt sich heraus, dass diese Gruppenoperation entlang der Isomorphismen $\aut(E|B)\isom\pi_1(B,b_0)$ und $\hom_B(E,Y)\isom q^{-1}(\{b_0\})$ genau der Monodromieoperation entspricht. Es gilt nämlich
+\[
+\ev_{[\varepsilon_{b_0}]}(L_y\circ([\gamma]\cdot\_)) = L_y([\gamma * \varepsilon_{b_0}]) = L_y([\gamma]) = \gamma_y'(1)
+\]
+für $y\in q^{-1}(\{b_0\})$ und $\gamma_y'$ der Lift von $\gamma$ entlang $q$ mit Startpunkt $y$.
+
+TODO
 \end{document}

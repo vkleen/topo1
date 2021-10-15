@@ -40,9 +40,13 @@
 \newcommand{\BO}{\mathord{\textnormal{BO}}}
 \newcommand{\Unitary}{\mathord{\textnormal{U}}}
 
+\newcommand{\Mat}[1]{\ensuremath{\mathord{\textnormal{\sffamily Mat}}_{#1}}}
+\newcommand{\FinVect}[1]{\ensuremath{\mathord{\textnormal{\sffamily FinVect}}_{#1}}}
 \newcommand{\Set}{\ensuremath{\mathord{\textnormal{\sffamily Set}}}}
 \renewcommand{\Top}{\ensuremath{\mathord{\textnormal{\sffamily Top}}}}
 \newcommand{\hTop}{\ensuremath{\mathord{\textnormal{\sffamily hTop}}}}
+\newcommand{\Cov}[1]{\textnormal{\sffamily Cov}_{#1}}
+\newcommand{\GSet}[1]{\textnormal{\sffamily \ensuremath{#1}-Set}}
 
 \newcommand{\GL}{\mathord{\textnormal{GL}}}
 \newcommand{\Gr}[2][]{\ifthenelse{\isempty{#1}}{%
@@ -155,8 +159,6 @@
 \DeclareMathOperator{\Im}{\textnormal{Im}}
 \DeclareMathOperator{\Re}{\textnormal{Re}}
 
-\DeclareMathOperator{\Mat}{\textnormal{Mat}}
-
 \newcommand*{\Tone}{\ensuremath{\textnormal{T}_1}\xspace}
 
 \DeclareMathOperator{\diam}{\textnormal{diam}}
@@ -169,3 +171,6 @@
 \DeclareMathOperator{\pt}{\textnormal{pt}}
 
 \newcommand{\Rsf}{\RR_{\textnormal{sf}}}
+
+\newcommand{\acts}{\mathrel{\raisebox{0.8em}{\rotatebox{-90}{$\circlearrowright$}}}}
+\DeclareMathOperator{\fibre}{\textnormal{fib}}

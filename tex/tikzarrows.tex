@@ -13,10 +13,10 @@
   \mathrel{\tikz [#1,baseline=-.6ex]
     \draw (0,0) -- node[auto,inner sep=\@xratinnersep] {\box\@xrat} (\@xratlen,0) ;}}
 \newcommand*{\xrightarrowb}[2][-cm to]{%
-  \setbox\@xrat=\hbox{\ensuremath{\scriptstyle #2}}
-  \pgfmathsetlengthmacro{\@xratlen}{max(1.6em,\wd\@xrat+.6em)}
-  \pgfmathsetlengthmacro{\@xratinnersep}{.5ex}
-  \mathrel{\tikz [#1,baseline=-.6ex]
+  \setbox\@xrat=\hbox{\ensuremath{\scriptstyle #2}}%
+  \pgfmathsetlengthmacro{\@xratlen}{max(1.6em,\wd\@xrat+.6em)}%
+  \pgfmathsetlengthmacro{\@xratinnersep}{.5ex}%
+  \mathrel{\tikz [#1,baseline=-.6ex]%
     \draw (0,0) -- node[auto,inner sep=\@xratinnersep] {\box\@xrat} (\@xratlen,0) ;}}
 \newcommand*{\xleftarrowb}[2][cm to-]{%
   \setbox\@xrat=\hbox{\ensuremath{\scriptstyle #2}}
@@ -93,6 +93,10 @@
       \draw[mapsto,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (1.6em,.55ex);%
     \end{tikzpicture}}
 
+\newcommand*\@tikzcmapsto[2]{\begin{tikzpicture}[baseline]%
+      \draw[mapsto,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (0.8em,.55ex);%
+    \end{tikzpicture}}
+
 \newcommand*\@tikziso[4]{\mathrel{\begin{tikzpicture}[baseline]%
       \draw[to,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- node[iso,pos=0.47,inner sep=#4]{$#3\sim$} (1.6em,.55ex);%
     \end{tikzpicture}}}
@@ -110,6 +114,10 @@
 \newsavebox{\@mapstotext}
 \newsavebox{\@mapstoscript}
 \newsavebox{\@mapstoscriptscript}
+\newsavebox{\@cmapstodisplay}
+\newsavebox{\@cmapstotext}
+\newsavebox{\@cmapstoscript}
+\newsavebox{\@cmapstoscriptscript}
 \newsavebox{\@tikzadjunctiondisplay}
 \newcommand*{\@saveboxes}{%
   \savebox{\@todisplay}{\@tikzto{1.0}{1}}%
@@ -120,6 +128,10 @@
   \savebox{\@mapstotext}{\@tikzmapsto{1.0}{1}}%
   \savebox{\@mapstoscript}{\@tikzmapsto{0.8}{0.9}}%
   \savebox{\@mapstoscriptscript}{\@tikzmapsto{0.8}{0.75}}%
+  \savebox{\@cmapstodisplay}{\@tikzcmapsto{1.0}{1}}%
+  \savebox{\@cmapstotext}{\@tikzcmapsto{1.0}{1}}%
+  \savebox{\@cmapstoscript}{\@tikzcmapsto{0.8}{0.9}}%
+  \savebox{\@cmapstoscriptscript}{\@tikzcmapsto{0.8}{0.75}}%
   \savebox{\@tikzadjunctiondisplay}{\@tikzadjunction{1.0}{1}}%
 }
 \@saveboxes
@@ -133,6 +145,11 @@
   {\usebox{\@mapstotext}}%
   {\usebox{\@mapstoscript}}%
   {\usebox{\@mapstoscriptscript}}}}
+
+\newcommand*\tikzcmapsto{\mathrel{\mathchoice{\usebox{\@cmapstodisplay}}%
+  {\usebox{\@cmapstotext}}%
+  {\usebox{\@cmapstoscript}}%
+  {\usebox{\@cmapstoscriptscript}}}}
 
 \newcommand*{\tikzadjunction}{\mathrel{\usebox{\@tikzadjunctiondisplay}}}
 
@@ -151,11 +168,16 @@
 \renewcommand*{\color}[1]{\@color{#1}\@saveboxes}
 \makeatother
 
-\renewcommand*{\to}[1][]{\ifthenelse{\isempty{#1}}{\tikzto}{\xrightarrowb{#1}}}
-\newcommand*{\from}[1][]{\ifthenelse{\isempty{#1}}{\tikzfrom}{\xleftarrowb{#1}}}
+\renewcommand*{\to}{\tikzto}
+\newcommand*{\from}{\tikzfrom}
+% \renewcommand*{\to}[1][]{\ifthenelse{\isempty{#1}}{\tikzto}{\xrightarrowb{#1}}}
+% \newcommand*{\from}[1][]{\ifthenelse{\isempty{#1}}{\tikzfrom}{\xleftarrowb{#1}}}
 \newcommand*{\cto}{\ensuremath{\tikzcto}}
-\newcommand*{\into}[1][]{\ifthenelse{\isempty{#1}}{\tikzinto}{\xrightarrowb[into]{#1}}}
-\newcommand*{\onto}[1][]{\ifthenelse{\isempty{#1}}{\tikzonto}{\xrightarrowb[onto]{#1}}}
+\newcommand*{\cmapsto}{\ensuremath{\tikzcmapsto}}
+\newcommand*{\into}{\tikzinto}
+\newcommand*{\onto}{\tikzonto}
+% \newcommand*{\into}[1][]{\ifthenelse{\isempty{#1}}{\tikzinto}{\xrightarrowb[into]{#1}}}
+% \newcommand*{\onto}[1][]{\ifthenelse{\isempty{#1}}{\tikzonto}{\xrightarrowb[onto]{#1}}}
 \newcommand*{\clim}{\tikzclim}
 \newcommand*{\opim}{\tikzopim}
 
