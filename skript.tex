@@ -874,7 +874,7 @@ $X/{\sim_A}$ bezeichnen wir dann kurz als $X/A$.
 \end{definition}
 
 Letzere Definition haben wir bereits in einem Beispiel gesehen. Nämlich ist
-$X/\{0,1\}$ homöomorph zu $S^1$. Betrachten wir andererseits etwa $X/[0,1]$, so
+$[0,1]/\{0,1\}$ homöomorph zu $S^1$. Betrachten wir andererseits etwa $\RR/[0,1]$, so
 stellen wir fest, dass dieser Quotient wieder homöomorph zu $\RR$ ist. Wir haben
 nämlich eine stetige Abbildung
 \[
@@ -899,9 +899,7 @@ q^{-1}(U)$. Dann gibt es verschieden Fälle:
 \begin{enumerate}
 \item Ist $V\cap [0,1] = \emptyset$ so ist $f(V) = g(U)$ offen.
 \item Ist $[0,1]\subset V$, so ist $f(V) = g(U)$ ebenso offen.
-\item Ist $[0,1]\cap V\neq\emptyset$ aber $[0,1]\not\subset V$, so ist $V =
-([0,1]\cap V) \cup (V \setminus [0,1])$ und man sieht ebenso leicht, dass $f(V) =
-g(U)$ offen ist.
+\item Der Fall $[0,1]\cap V\neq\emptyset$ aber $[0,1]\not\subset V$ ist unmöglich. Das Urbild $q^{-1}(U)$ enthält immer entweder ganz $[0,1]$ oder ist disjunkt von $[0,1]$, da $[0,1]$ im Quotienten auf einen einzigen Punkt kollabiert wird.
 \end{enumerate}
 Im Gegensatz zu $\RR/[0,1]$ ist $\RR/(0,1)$ nicht homöomorph zu $\RR$: Sei
 $q\colon R\to\RR/(0,1)$ die Quotientenabbildung. Dann ist die einelementige Menge
@@ -953,7 +951,7 @@ Sei $X$ ein \Tone-Raum.
 \end{definition}
 Manche Autoren fordern nicht, dass reguläre bzw. normale Räume \Tone sind.
 
-\begin{lemma}\label{lem:pf-urysohn}\needspace{2\baselineskip}\leavevmode
+\begin{lemma}\needspace{2\baselineskip}\leavevmode
 \begin{enumerate}
 \item Für $X$ regulär ist jeder Teilraum $Y\subset X$ regulär.
 \item Für $X$ normal ist ein Teilraum $Y\subset X$ normal, sobald $Y\subset X$ abgeschlossen ist.\proofomitted
@@ -972,7 +970,7 @@ Ist außerdem $|f(x)| < C$ für alle $a\in A$ lásst sich $F$ so wählen, dass $
 \end{enumerate}
 Der Teil (i$\cto$ii) ist das Lemma von Urysohn und eine Funktion $f$ wie in (ii) heißt \emph{Urysohnfunktion}. Der Teil (i$\cto$iii) ist der Fortsetzungssatz von Tietze.
 \end{theorem}
-\begin{lemma}
+\begin{lemma}\label{lem:pf-urysohn}
 Sei $X$ normal. Für $A\subset U$ mit $A$ abgeschlossen und $U$ offen gibt es eine offene Menge $V\subset X$, so dass $A\subset V\subset\cl{V}\subset U$.
 \end{lemma}
 \begin{proof}
@@ -1017,15 +1015,15 @@ f(x) - \varepsilon < d_1 < f(x) < d_2 < f(x) + \varepsilon.
 \]
 Sei $U = O_{d_2}\setminus \cl{O_{d_1}}$. Dann ist $x\in U$ und $f(U)\subset B_\varepsilon(f(x))$: zuerst ist $x\in O_{d_2}$, da $f(x) < d_2$, und $x\not\in\cl{O_{d_1}}$, da $f(x) > d_1$. Für $y\in U$ gilt genauso $d_1 < f(y) < d_2$ und damit $f(y)\in B_\varepsilon(f(x))$. Insgesamt genügt das, um zu sehen, dass $f$ stetig ist.
 
-Für (ii$\cto$iii) sei $A$ abgeschlossen und $f\colon A\to\RR$ stetig. Wir nehmen zuerst an, dass $f$ beschränkt ist, etwa $|f(a)| < c$ für alle $a\in A$. Wir konstruieren induktiv für alle $n\in\NN_0$ und $0\leq m\leq n$ eine stetige Funktion $h_m\colon X\to\RR$ mit
+Für (ii$\cto$iii) sei $A$ abgeschlossen und $f\colon A\to\RR$ stetig. Wir nehmen zuerst an, dass $f$ beschränkt ist, etwa $|f(a)| \leq c$ für alle $a\in A$. Wir konstruieren induktiv für alle $n\in\NN_0$ eine stetige Funktion $h_n\colon X\to\RR$ mit
 \[
-|h_m(x)| \leq \tfrac{1}{3}\left(\tfrac{2}{3}\right)^m c\quad\textnormal{und}\quad\left|f(a) - \sum_{m=0}^n h_m(a)\right| \leq \left(\tfrac{2}{3}\right)^{n+1} c.
+|h_n(x)| \leq \tfrac{1}{3}\left(\tfrac{2}{3}\right)^n c\quad\textnormal{und}\quad\left|f(a) - \sum_{m=0}^n h_m(a)\right| \leq \left(\tfrac{2}{3}\right)^{n+1} c.
 \]
 für $x\in X$ und $a\in A$. Setze $h_0 = h$ für $h$ wie in \autoref{lem:claim23}. Für $n > 0$ wendet man \autoref{lem:claim23} auf $f - \sum_{m=0}^n h_m\colon A\to\RR$ an und erhält so
 \[
-h_{m+1}\colon X\to{} \left[-\tfrac{1}{3}\left(\tfrac{2}{3}\right)^{m+1}c, \tfrac{1}{3}\left(\tfrac{2}{3}\right)^{m+1}c\right].
+h_{n+1}\colon X\to{} \left[-\tfrac{1}{3}\left(\tfrac{2}{3}\right)^{n+1}c, \tfrac{1}{3}\left(\tfrac{2}{3}\right)^{n+1}c\right].
 \]
-Dann konvergiert $\sum_{m=0}^\infty h_m$ gleichmáßig auf $X$ gegen eine stetige Funktion $F\colon X\to\RR$ mit $F(a) = f(a)$ für $a\in A$ und
+Dann konvergiert $\sum_{m=0}^\infty h_m$ gleichmäßig auf $X$ gegen eine stetige Funktion $F\colon X\to\RR$ mit $F(a) = f(a)$ für $a\in A$ und
 \[
 |F(x)| \leq \frac{c}{3}\sum_{m=0}^\infty \left(\tfrac{2}{3}\right)^{m} = \tfrac{c}{3}\cdot 3 = c.
 \]

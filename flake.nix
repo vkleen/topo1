@@ -13,6 +13,7 @@
           name = "latex";
           buildInputs = with pkgs; [
             texlive.combined.scheme-full
+            texlab
             bibtool
             pandoc
             (hunspellWithDicts [ hunspellDicts.en-us
