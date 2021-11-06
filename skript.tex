@@ -1190,7 +1190,8 @@ f\colon X^\NN \to{} [0,1],\quad f(a_1,a_2,\dots) = \sum_{n\in \NN} \frac{a_n}{10
 \]
 Dann ist $f$ surjektiv und stetig(!). Wegen \autoref{lem2} ist dann $f(X^\NN) = [0,1]$ kompakt.
 \item Sei zuerst $A\subset\RR^m$ abgeschlossen und beschränkt. Insbesondere gibt es dann ein $n\in\NN$, so dass $A\subset [-n,n]^m$. Aber $[0,1]\isom [-n,n]$ ist kompakt und damit ist nach \autoref{thm:tychonoff} auch $[-n,n]^m$ kompakt. Nach \autoref{lem1} ist dann auch $A$ als abgeschlossene Teilmenge eines kompakten Raums selbst kompakt.
-\item Sei $K\subset \RR^m$ kompakt. Dann ist $K$ nach \autoref{lem1} abgeschlossen. Außerdem ist $K\subset \bigcup_{n\in\NN} B_n(0) = \RR^m$ eine offene Überdeckung. Folglich gibt es eine endliche Teilüberdeckung, \ddh~ein $N\in\NN$ mit $K\subset \bigcup_{n=1}^N B_n(0) = B_N(0)$. Anders gesagt muss $K$ beschränkt sein.
+
+  Sei umgekehrt $K\subset \RR^m$ kompakt. Dann ist $K$ nach \autoref{lem1} abgeschlossen. Außerdem ist $K\subset \bigcup_{n\in\NN} B_n(0) = \RR^m$ eine offene Überdeckung. Folglich gibt es eine endliche Teilüberdeckung, \ddh~ein $N\in\NN$ mit $K\subset \bigcup_{n=1}^N B_n(0) = B_N(0)$. Anders gesagt muss $K$ beschränkt sein.
 \end{enumerate}
 \end{proof}
 
@@ -1211,7 +1212,7 @@ Ein topologischer Raum $X$ heißt \emph{folgenkompakt}, wenn jede Folge in $X$ e
 \end{definition}
 Im Allgemeinen sind Folgenkompaktheit und Kompaktheit unabhängig voneinander. Es gibt folgenkompakte Räume, die nicht kompakt sind, und kompakte Räume, die nicht folgenkompakt sind.
 
-\begin{theorem}
+\begin{theorem}\label{thm:metric-space-compactness}
 Sei $(X,d)$ ein metrischer Raum. Dann sind die folgenden Aussagen äquivalent:
 \begin{enumerate}
 \item $X$ ist kompakt.
@@ -1254,11 +1255,26 @@ Der metrische Raum $(X,d)$ heißt \emph{vollständig}, wenn jede Cauchyfolge in 
 
 Eine totalbeschränkte Teilmenge eines metrischen Raums ist natürlich auch beschränkt. Die Umkehrung gilt aber nicht. Jede kompakte Teilmenge $A$ eines metrischen Raums $(X,d)$ ist totalbeschränkt: Für $\varepsilon>0$ hat die offene Überdeckung $A\subset \bigcup_{x\in A} B_\varepsilon(x)$ nämlich eine endliche Teilüberdeckung.
 
-Jede kompakte Teilmenge $A$ ist auch vollständig. Ist nämlich $\{x_n\}_{n\in\NN}$ eine Cauchyfolge in $A$, so existiert eine konvergente Teilfolge $\{x_{n_k}\}_{k\in\NN}$; etwa $x_{n_k}\cto x\in A$. Dann konvergiert auch $\{x_n\}$ gegen $x$, denn sei $\varepsilon>0$ und $N\in\NN$ so groß, dass $d(x_n, x_{n_N}) < \varepsilon/2$ für alle $n\geq N$ und $d(x, x_N) < \varepsilon/2$.  Dann ist $d(x,x_n) \leq d(x,x_{n_N}) + d(x_{n_N}, x_n) < \varepsilon$ für $n\geq N$. Ohne Beweis erwähnen wir das folgende Resultat.
+Jede kompakte Teilmenge $A$ ist auch vollständig. Ist nämlich $\{x_n\}_{n\in\NN}$ eine Cauchyfolge in $A$, so existiert eine konvergente Teilfolge $\{x_{n_k}\}_{k\in\NN}$; etwa $x_{n_k}\cto x\in A$. Dann konvergiert auch $\{x_n\}$ gegen $x$, denn sei $\varepsilon>0$ und $N\in\NN$ so groß, dass $d(x_n, x_{n_N}) < \varepsilon/2$ für alle $n\geq N$ und $d(x, x_N) < \varepsilon/2$.  Dann ist $d(x,x_n) \leq d(x,x_{n_N}) + d(x_{n_N}, x_n) < \varepsilon$ für $n\geq N$.
 
-\begin{theorem}
-Ein totalbeschränkter und vollständiger metrischer Raum ist kompakt.\proofomitted
+\begin{theorem}\label{thm:totally-bounded-complete-compact}
+Ein totalbeschränkter und vollständiger metrischer Raum ist kompakt.
 \end{theorem}
+\begin{proof}
+  Sei $X$ ein metrischer Raum. Wegen \autoref{thm:metric-space-compactness} brauchen wir nur zeigen, dass $X$ folgenkompakt ist. Sei dazu $(x_n)_{n\in \NN}$ eine Folge in $X$. Da $X$ vollständig ist, genügt es zu zeigen, dass $(x_n)_{n\in\NN}$ eine Cauchy Teilfolge besitzt. Wir machen zunächst folgende Beobachtung:
+  \begin{itemize}
+    \item\label{observation-1} Für jedes $\varepsilon>0$ und jede Folge $(y_n)_{n\in\NN}$ existiert ein $p\in X$ und eine unendliche Teilmenge $J\subset \NN$ mit $y_n \in B_\varepsilon(p)$ für $n\in J$.
+  \end{itemize}
+  Da $X$ totalbeschränkt ist, gibt es nämlich endlich viele $p_1,\dots,p_k\in X$ mit $X = \bigcup_{i=1}^k B_\varepsilon(p_i)$. Sei $K_i = \{n\in\NN : y_n\in B_\varepsilon(p_i)\}$. Dann ist $\bigcup_{i=1}^k K_i = \NN$ und es muss mindestens ein $i$ geben für das $K_i$ unendlich ist.
+
+  Wenden wir die \hyperref[observation-1]{Beobachtung} jetzt auf $(x_n)_{n\in\NN}$ und $\varepsilon = 1$ an, erhalten wir eine Teilfolge $(x^{(0)}_n)_{n\in\NN}$ von $(x_n)_n$ und einen Punkt $p_0\in X$, so dass $x^{(0)}_n\in B_1(p_0)$ für alle $n\in\NN$. Induktiv erhalten wir für jedes $k\geq 0$ eine Teilfolge $(x^{(k)}_n)_{n\in\NN}$ von $(x^{(k-1)})_{n\in\NN}$ und einen Punkt $p_k\in X$, so dass $x^{(k)}_n\in B_{2^{-k}}(p_k)$ für alle $n\in \NN$; wir können nämlich die \hyperref[observation-1]{Beobachtung} auf die Folge $(x^{(k-1)}_n)_{n\in\NN}$ und $\varepsilon = 2^{-k}$ anwenden.
+
+  Schließlich betrachten wir nun die Folge $(y_n)_{n\in\NN}$ mit $y_n = x^{(n)}_n$. Sie ist augenscheinlich eine Teilfolge von $(x_n)_{n\in\NN}$ und wir zeigen, dass $(y_n)_{n\in\NN}$ eine Cauchyfolge ist. Sei dafür $\varepsilon > 0$ und $N\in\NN$ groß genug, damit $2^{-N+1} < \varepsilon$ gilt. Dann folgt
+  \[
+    d(y_n,y_m) \leq d(y_n, p_N) + d(p_N, y_m) < 2^{-N} + 2^{-N} < \varepsilon
+  \]
+  für alle $n,m \geq N$, denn $y_k\in B_{2^{-N}}(p_N)$ für alle $k\geq N$.
+\end{proof}
 
 \subsection{Ultrafilter und der Satz von Tychonoff}
 TODO
