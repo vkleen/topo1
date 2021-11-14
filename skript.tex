@@ -2,7 +2,7 @@
 
 \title{Topologie}
 \author{\normalsize Viktor Kleen \\[-1ex] \texttt{\footnotesize viktor.kleen@uni-due.de} %
-   \and \normalsize Sabrina Pauli \\[-1ex] \texttt{\footnotesize sabrinp@math.uio.no}}
+   \and \normalsize Sabrina Pauli \\[-1ex] \texttt{\footnotesize sabrina.pauli@uni-due.de}}
 \date{}
 
 \begin{document}
@@ -1179,7 +1179,7 @@ Im Allgemeinen sind Teilräume kompakter Räume nicht selbst kompakt. Zum Beispi
 \begin{corollary}[Heine-Borel]\needspace{2\baselineskip}\leavevmode
 \begin{enumerate}
 \item Das Intervall $[0,1]$ ist kompakt.
-\item Eine Teilmenge von $\RR^m$ ist kompakt, genau dann, wenn sie abgeschlossen und beschränkt ist.
+\item Eine Teilmenge von $\RR^m$ ist genau dann kompakt, wenn sie abgeschlossen und beschränkt ist.
 \end{enumerate}
 \end{corollary}
 \begin{proof}\needspace{2\baselineskip}\leavevmode
@@ -1261,23 +1261,141 @@ Jede kompakte Teilmenge $A$ ist auch vollständig. Ist nämlich $\{x_n\}_{n\in\N
 Ein totalbeschränkter und vollständiger metrischer Raum ist kompakt.
 \end{theorem}
 \begin{proof}
-  Sei $X$ ein metrischer Raum. Wegen \autoref{thm:metric-space-compactness} brauchen wir nur zeigen, dass $X$ folgenkompakt ist. Sei dazu $(x_n)_{n\in \NN}$ eine Folge in $X$. Da $X$ vollständig ist, genügt es zu zeigen, dass $(x_n)_{n\in\NN}$ eine Cauchy Teilfolge besitzt. Wir machen zunächst folgende Beobachtung:
+  Sei $X$ ein metrischer Raum. Wegen \autoref{thm:metric-space-compactness} brauchen wir nur zeigen, jede unendliche Teilmenge von $X$ einen Häufungspunkt besitzt. Wir machen zunächst folgende Beobachtung:
+
   \begin{itemize}
-    \item\label{observation-1} Für jedes $\varepsilon>0$ und jede Folge $(y_n)_{n\in\NN}$ existiert ein $p\in X$ und eine unendliche Teilmenge $J\subset \NN$ mit $y_n \in B_\varepsilon(p)$ für $n\in J$.
+    \item\label{observation-1} Für jedes $\varepsilon>0$ und jede unendliche Teilmenge $A\subset X$ existiert ein $p\in X$, so dass $A \cap B_\varepsilon(p)$ unendlich ist.
   \end{itemize}
-  Da $X$ totalbeschränkt ist, gibt es nämlich endlich viele $p_1,\dots,p_k\in X$ mit $X = \bigcup_{i=1}^k B_\varepsilon(p_i)$. Sei $K_i = \{n\in\NN : y_n\in B_\varepsilon(p_i)\}$. Dann ist $\bigcup_{i=1}^k K_i = \NN$ und es muss mindestens ein $i$ geben für das $K_i$ unendlich ist.
+  Da $X$ totalbeschränkt ist, gibt es nämlich endlich viele $p_1,\dots,p_k\in X$ mit $X = \bigcup_{i=1}^k B_\varepsilon(p_i)$. Dann ist $A = \bigcup_{i=1}^k A\cap B_\varepsilon(p_i)$ und da $A$ unendlich ist muss für mindestens ein $i$ der Schnitt $A\cap B_\varepsilon(p_i)$ unendlich sein.
 
-  Wenden wir die \hyperref[observation-1]{Beobachtung} jetzt auf $(x_n)_{n\in\NN}$ und $\varepsilon = 1$ an, erhalten wir eine Teilfolge $(x^{(0)}_n)_{n\in\NN}$ von $(x_n)_n$ und einen Punkt $p_0\in X$, so dass $x^{(0)}_n\in B_1(p_0)$ für alle $n\in\NN$. Induktiv erhalten wir für jedes $k\geq 0$ eine Teilfolge $(x^{(k)}_n)_{n\in\NN}$ von $(x^{(k-1)})_{n\in\NN}$ und einen Punkt $p_k\in X$, so dass $x^{(k)}_n\in B_{2^{-k}}(p_k)$ für alle $n\in \NN$; wir können nämlich die \hyperref[observation-1]{Beobachtung} auf die Folge $(x^{(k-1)}_n)_{n\in\NN}$ und $\varepsilon = 2^{-k}$ anwenden.
+  Sei nun $A\subset X$ eine unendliche Teilmenge. Wir wenden die \hyperref[observation-1]{Beobachtung} auf $A$ und $\varepsilon = 1$ und erhalten eine unendliche Teilmenge $C_0\subset A$ und einen Punkt $p\in X$, so dass $C_0 \subset B_1(p)$. Induktiv erhalten wir für jedes $k\geq 0$ eine unendliche Teilmenge $C_k\subset C_{k-1}$ und einen Punkt $p_k\in X$, so dass $C_k\subset B_{2^{-k}}(p_k)$, indem wir die \hyperref[observation-1]{Beobachtung} auf $C_{k-1}$ und $\varepsilon = 2^{-k}$ anwenden.
 
-  Schließlich betrachten wir nun die Folge $(y_n)_{n\in\NN}$ mit $y_n = x^{(n)}_n$. Sie ist augenscheinlich eine Teilfolge von $(x_n)_{n\in\NN}$ und wir zeigen, dass $(y_n)_{n\in\NN}$ eine Cauchyfolge ist. Sei dafür $\varepsilon > 0$ und $N\in\NN$ groß genug, damit $2^{-N+1} < \varepsilon$ gilt. Dann folgt
+  Sei nun $x_k\in C_k$ für jedes $k\in\NN$ ein beliebiger Punkt. Dann ist $\{x_k\}_{k\in\NN}$ eine Cauchyfolge. Ist nämlich $\varepsilon > 0$, wähle $N\in\NN$ so groß, dass $2^{-N+1}<\varepsilon$ gilt. Damit ist
   \[
-    d(y_n,y_m) \leq d(y_n, p_N) + d(p_N, y_m) < 2^{-N} + 2^{-N} < \varepsilon
+    d(x_n, x_m) \leq d(x_n, p_N) + d(p_N, x_m) < 2^{-N} + 2^{-N} < \varepsilon
   \]
-  für alle $n,m \geq N$, denn $y_k\in B_{2^{-N}}(p_N)$ für alle $k\geq N$.
+  für alle $n,m\geq N$, da $x_k\in C_k\subset C_N\subset B_{2^{-N}}(p_N)$ für alle $k\geq N$ gilt.
+
+  Da $X$ vollständig ist, konvergiert die Folge $\{x_k\}_{k\in\NN}$ also gegen ein $x\in X$. Dieses $x$ ist dann ein Häufungspunkt von $A$. Sei nämlich $\varepsilon > 0$ und betrachte $B_{\varepsilon}(x)\cap A$. Wähle zuerst $N_1\in\NN$ groß genug, damit $d(x_k,x) < \varepsilon/3$ für alle $k\geq N_1$ gilt. Anschließend wähle $N \geq N_1$ so groß, dass $2^{-N} < \varepsilon/3$. Dann ist $C_N\subset B_{\varepsilon/3}(p_N)$ und
+  \[
+    d(y,x) \leq d(y, p_N) + d(p_N, x_N) + d(x_N, x) < \varepsilon
+  \]
+  für alle $y\in C_N\subset A$. Insbesondere ist $B_{\varepsilon}(x)\cap A\supset C_N$ unendlich und $(B_{\varepsilon}\cap A)\setminus\{x\}\neq\emptyset$. Das heißt, da $\varepsilon > 0$ beliebig gewählt war, dass $x$ ein Häufungspunkt von $A$ ist.
 \end{proof}
 
 \subsection{Ultrafilter und der Satz von Tychonoff}
-TODO
+
+Um die Konvergenz einer Folge $\{x_n\}_{n\in\NN}$ in einem topologischen Raum zu verstehen, betrachtet man Mengen der Form $\{x_j : j\neq N\}$ für verschiedene $N\in\NN$. Genauer betrachtet man Mengen, die diese \emph{Enden} der Folge $\{x_n\}_n$ enthalten. Die Familie dieser Mengen bildet das erste Beispiel eines \emph{Filters}
+
+\begin{definition}
+  Der \emph{Endenfilter} einer Folge $\{x_n\}_{n\in\NN}$ in einem topologischen Raum $X$ ist die Familie
+  \[
+    \cal E(\{x_n\}_n) = \{M\subset X : \text{$\{x_j : j\geq N\}\subset M$ für ein $N\in\NN$}\}
+  \]
+  von Teilmengen von $X$.
+\end{definition}
+
+Wir bemerken einige Eigenschaften des Endenfilters. Man sieht sofort, dass $X\in\cal E(\{x_n\}_n)$, aber $\emptyset\not\in \cal E(\{x_n\}_n)$. Außerdem gilt für zwei Mengen $A,B\in\cal E(\{x_n\}_n)$, etwa $A\supset \{x_j : j\geq N\}$ und $B\supset\{x_j : j\geq N\}$, dass $A\cap B\supset \{x_j : j\geq\max\{N,M\}\}$. Also $A\cap B\in \cal E(\{x_n\}_n)$. Ist weiter $C\subset X$ beliebig mit $C\supset A$, dann ist auch $C\in \cal E(\{x_n\}_n)$, denn $C\supset A\supset \{x_j : j \geq N\}$. Wir fassen diese Eigenschaft in der Definition eines \emph{Filters} zusammen.
+\begin{definition}
+  Ein \emph{Filter} $\cal F$ auf einer Menge $X$ ist eine Familie von Teilmenge von $X$, so dass
+  \begin{enumerate}
+    \item $X\in \cal F$ und $\emptyset\not\in\cal F$.
+    \item für $A,B\in\cal F$ ist $A\cap B\in\cal F$.
+    \item für $A\in\cal F$ und $C\supset A$ ist auch $C\in\cal F$.
+  \end{enumerate}
+  Ein \emph{Ultrafilter} ist ein Filter $\cal F$, so dass für jede Teilmenge $A\subset X$ entweder $A\in\cal F$ oder $X\setminus A\in\cal F$ gilt.
+\end{definition}
+
+Gegeben eine Menge $X$ und $x\in X$ gibt es immer den \emph{prinzipalen Ultrafilter} $\cal F(x)$ mit
+\[
+  \cal F(x) = \{U : x\in U\subset X\}.
+\]
+Er ist tatsächlich ein Ultrafilter wie man leicht überprüft.
+
+Wir hatten schon gesehen, dass jede Folge $\{x_n\}_n$ in einem Topologischen Raum einen Filter auf $X$ induziert, nämlich den Endenfilter $\cal E(\{x_n\}_n)$.
+
+Gegeben eine unendliche Menge $X$ ist
+\[
+  \{U\subset X : \text{$X\setminus U$ endlich}\}
+\]
+ein Filter auf $X$, aber kein Ultrafilter.
+
+Für einen topologischen Raum $X$ und $x\in X$ gibt es den \emph{Umgebungsfilter} $\cal N(x)$ von $x$:
+\[
+  \cal N(x) = \{M\subset X : \text{es existiert eine offene Menge $U\subset X$ mit $x\in U\subset M$}\}.
+\]
+
+Ähnlich wie für Folgen kann man in einem topologischen Raum $X$ definieren, wann ein Filter \emph{konvergiert}. Um die Definition zu motivieren, betrachten wir den Endenfilter $\cal E(\{x_n\}_n)$ einer Folge $\{x_n\}_n$. Die Folge konvergiert dann gegen ein $x\in X$, wenn für jede offene Menge $U\subset X$ mit $x\in U$ ein $N\in\NN$ existiert mit $\{x_j : j\geq N\}\subset U$. Aber das heißt nur, dass für jede offene Menge $U\subset X$ mit $x\in U$ bereits $U\in \cal E(\{x_n\}_n)$ gilt.
+\begin{definition}
+  Ein Filter $\cal F$ auf einem topologischen Raum $X$ \emph{konvergiert} gegen $x\in X$, falls für jede offene Menge $U\subset X$ mit $x\in U$ bereits $U\in\cal F$ gilt.
+\end{definition}
+Die Definition bedeutet natürlich, dass eine Folge $\{x_n\}_n$ genau dann gegen $x\in X$ konvergiert, wenn der Endenfilter $\cal E(\{x_n\}_n)$ gegen $x$ konvergiert. In allgemeinen topologischen Räumen, besonders wenn sie nicht das erste Abzählbarkeitsaxiom erfüllen, ist Konvergenz von Filtern aber besser geeignet um topologische Eigenschaften zu charakterisieren als Konvergenz von Folgen. Unser nächstes Ziel wird sein, Kompaktheit von topologischen Räumen durch Konvergenz von Ultrafiltern zu charakterisieren.
+
+\begin{lemma}\label{lem:ultrafilters-maximal}
+  Ultrafilter sind genau die maximalen Filter. Das heißt, für einen Filter $\cal F$ sind äquivalent:
+  \begin{enumerate}
+    \item $\cal F$ ist ein Ultrafilter.
+    \item für jeden Filter $\cal F'$ mit $\cal F'\supset\cal F$ ist bereits $\cal F' = \cal F$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}\leavevmode
+  \begin{enumerate}
+    \item[(i$\cto$ii)] Sei $\cal F'\supset\cal F$ ein Filter und $M\in\cal F'$. Dann ist entweder $M\in\cal F$, oder $X\setminus M\in\cal F$. Im ersten Fall sind wir fertig. Im zweiten Fall wäre aber auch $X\setminus M\in\cal F'$ und $\emptyset = M\cap(X\setminus M)\in \cal F'$. Das ist aber unmöglich, da $\cal F'$ ein Filter ist.
+    \item[(ii$\cto$i)] Sei umgekehrt $\cal F$ ein maximaler Filter und $\emptyset\neq M\subset X$. Setze $S = \{M\}\cup\cal F$. Wenn $X\setminus M\not\in\cal F$, gibt es einen Filter $\<S>$ mit $S\subset\<S>$; nämlich
+      \[
+        \<S> = \{U\subset X : \text{es existieren $M_1,\dots, M_n\in S$ mit $M_1\cap\dots\cap M_n\subset U$}\},
+      \]
+      der von $S$ erzeugte Filter. Man überprüft leicht, dass unter unseren Annahmen an $S$ die Familie $\<S>$ tatsächlich ein Filter ist. Aber $M\in\<S>$ und $\cal F\subset\<S>$. Wenn $\cal F$ maximal ist, bedeutet das $\cal F = \<S>$ und deswegen $M\in\cal F$.\qedhere
+  \end{enumerate}
+\end{proof}
+
+Es stellt sich heraus, dass das folgende \autoref{ultrafilter-lemma} in der Zermelo-Fränkel Standardmengenlehre äquivalent zum Auswahlaxiom ist. Wir zeigen, dass es aus dem Lemma von Zorn folgt, das selbst äquivalent zum Auswahlaxiom ist.
+
+Eine \emph{Halbordnung} auf einer Menge $X$ ist eine Relation ${\preccurlyeq}$ auf $X$ mit
+\begin{enumerate}
+  \item $x\preccurlyeq x$ für alle $x\in X$.
+  \item für $x,y\in X$ mit $x\preccurlyeq y$ und $y\preccurlyeq x$ gilt schon $x = x$.
+  \item für $x,y,z\in X$ mit $x\preccurlyeq y$ und $y\preccurlyeq z$ gilt schon $x\preccurlyeq z$.
+\end{enumerate}
+Eine Halbordnung ist eine \emph{Totalordnung}, falls zusätzlich für alle $x,y\in X$ schon $x\preccurlyeq y$ oder $y\preccurlyeq x$ gilt.
+
+\begin{axiom}[Lemma von Zorn]\label{axm:zorn}
+  Sei $X$ eine Menge mit einer Halbordnung ${\preccurlyeq}$. Angenommen für jede bezüglich ${\preccurlyeq}$ \emph{totalgeordnete} Teilmenge $M\subset X$ gibt es eine obere Schranke $x\in X$, das heißt ein $y\preccurlyeq x$ für alle $y\in M$. Dann existiert ein maximales Element in $X$, nämlich ein $x\in X$, sodass für jedes $x'\in X$ mit $x\preccurlyeq x$ bereits $x = x'$ gilt.
+\end{axiom}
+
+\begin{lemma}[Ultrafilterlemma]\label{ultrafilter-lemma}
+  Jeder Filter $\cal F$ ist einem Ultrafilter enthalten.
+\end{lemma}
+\begin{proof}
+  Sei $\cal F$ ein Filter und betrachte die Menge
+  \[
+    \cal X = \{\cal F' : \text{$\cal F'$ ist ein Filter mit $\cal F'\supset \cal F$}\}
+  \]
+  mit der Halbordnung ${\subset}$. Sei $M$ eine totalgeordnete Teilmenge. Dann ist $\bigcup_{\cal F'\in M}\cal F'$ ein Filter. Für $A,B\in \bigcup_{\cal F'\in M} \cal F'$ ist zum Beispiel $A\in\cal F'$ und $B\in\cal F''$ für Filter $\cal F',\cal F''\in M$. Wir können dann ohne Einschränkung annehmen, dass $\cal F'\subset\cal F''$ und es folgt $A\cap B\in\cal F''\subset\bigcup_{\cal F'\in M}\cal F'$, da $\cal F''$ ein Filter ist. Die anderen Eigenschaften eines Filters zeigt man ähnlich. Dieser Filter $\bigcup_{\cal F'\in M}\cal F'$ ist dann eine obere Schranke für $M$.
+
+  Nach \autoref{axm:zorn} existiert ein maximales Element $\cal G$ in  $\cal X$. Ist dann $\cal F'$ ein beliebiger Filter mit $\cal F'\supset \cal G$, so ist $\cal F\subset\cal F'$ und wegen der Maximalität von $\cal G$ bereits $\cal G = \cal F'$. Aber das heißt $\cal G$ ist ein maximaler Filter, der $\cal F$ enthält. Nach \autoref{lem:ultrafilters-maximal} ist $\cal G$ ein Ultrafilter.
+\end{proof}
+
+\begin{theorem}\label{thm:ultrafilter-compactness}
+  Ein topologischer Raum $X$ ist genau dann kompakt, wenn jedes Ultrafilter auf $X$ konvergiert.
+\end{theorem}
+\begin{proof}
+  Sei zuerst $X$ kompakt und $\cal F$ ein Ultrafilter auf $X$. Angenommen $\cal F$ konvergiert nicht. Dann gibt es für jedes $x\in X$ eine offene Umgebung $U_x$ von $x$ mit $U_x\not\in \cal F$ und $X = \bigcup_{x\in X} U_x$ ist eine offene Überdeckung von $X$. Also existieren endlich viele $x_1,\dots,x_n\in X$ mit $X = U_{x_1}\cup\dots\cup U_{x_n}$. Wegen $U_{x_i}\not\in F$ muss dann aber $X\setminus U_{x_i}\in\cal F$ gelten, da $\cal F$ ein Ultrafilter ist. Aber das würde bedeuten, dass
+  \[
+    \emptyset = (X\setminus U_{x_1})\cap \dots\cap (X\setminus U_{x_n})\in\cal F,
+  \]
+  was unmöglich ist. Also muss $\cal F$ konvergieren.
+
+  Nehmen wir umgekehrt an, dass jeder Ultrafilter auf $X$ konvergiert, und sei $X = \bigcup_{i\in I} U_i$ eine offene Überdeckung von $X$. Sei $S = \{X\setminus U_i : i\in I\}$. Gäbe es keine endliche Teilüberdeckung von $X = \bigcup_{i\in I} U_i$, so wären endliche Schnitte von Mengen in $S$ nie leer. Es ist dann nämlich
+  \[
+    (X\setminus U_{i_1})\cap\dots\cap(X\setminus U_{i_n}) = X\setminus\bigcup_{j=1}^n U_{i_j}\neq\emptyset.
+  \]
+  Wir können damit einen von $S$ erzeugten Filter $\<S>$ als
+  \[
+    \<S> = \{ U\subset X : \text{es existieren $S_1,\dots,S_n\in S$ mit $S_1\cap\dots\cap S_n\subset U$}\}
+  \]
+  konstruieren. Man sieht wieder leicht, dass $\<S>$ in diesem Fall tatsächlich ein Filter ist. Sei $\cal F\supset\<S>$ ein Ultrafilter, der gegen ein $x\in X$ konvergiert. Dann gibt es ein $i\in I$ mit $x\in U_i$. Aber dann wäre $U_i\in\cal F$ und gleichzeitig $X\setminus U_i\in S\subset\<S>\subset \cal F$, also auch $\emptyset = U_i\cap(X\setminus U_i)\in\cal F$. Da das aber unmöglich ist, muss bereits eine endliche Teilüberdeckung von $X = \bigcup_{i\in I} U_i$ existiert haben.
+\end{proof}
 
 \begin{definition}
 Für $f\colon X\to Y$ eine Abbildung zwischen zwei Mengen $X$ und $Y$ und $\cal F$ ein Filter auf $X$, definieren wir
@@ -1291,7 +1409,7 @@ den \emph{Pushforward-Filter}.
 Sei $f\colon X\to Y$ eine Abbildung zwischen zwei Mengen $X$ und $Y$ und $\cal F$ ein Filter auf $X$.
 \begin{enumerate}
 \item Der Pushforward-Filter $f_*\cal F$ ist tatsächlich ein Filter auf $Y$.
-\item Wenn $\cal F$ ein Ultrafilter ist, so ist auch $f_*\cal F$ ein Filter.
+\item Wenn $\cal F$ ein Ultrafilter ist, so ist auch $f_*\cal F$ ein Ultrafilter.
 \end{enumerate}
 \end{lemma}
 \begin{proof}\needspace{2\baselineskip}\leavevmode
@@ -1319,6 +1437,36 @@ Also konvergiert $\cal F$ tatsächlich gegen $(x_i)_{i\in I}$.
 \end{proof}
 
 Der Beweis funktioniert nicht, wenn man die Produkttopologie durch die Boxtopologie ersetzt. Ist zum Beispiel $X$ ein endlicher diskreter topologischer Raum, so ist $\prod_{n\in\NN} X$ mit der Produkttopologie wie eben gezeigt kompakt. Aber die Boxtopologie auf $\prod_{n\in\NN} X$ ist diskret!
+
+\begin{theorem}\label{thm:compactness-properness}
+  Ein topologischer Raum $X$ ist genau dann kompakt, wenn für jeden topologischen Raum $Y$ die Projektion $\pi\colon Y\times X\to Y$ eine abgeschlossene Abbildung ist.
+\end{theorem}
+\begin{proof}
+  Sei zuerst $X$ kompakt und $C\subset Y\times X$ abgeschlossen. Sei $y\in Y\setminus\pi(C)$ und betrachte die Familie
+  \[
+    \cal M = \{ \text{$U\subset X$ offen} : \text{es existiert eine offene Umgebung $W\subset Y$ von $y$ mit $(W\times U)\cap C = \emptyset$}\}.
+  \]
+  Dann ist $X = \bigcup\cal M$, denn für jedes $x\in X$ ist $(y, x)\not\in C$ und, da $C$ abgeschlossen ist, existiert eine offene Umgebung von $(y,x)$ von der Form $W\times U$ mit $W\subset Y$ und $U\subset X$ offen, so dass $W\times U\cap C=\emptyset$. Da $X$ kompakt ist, gibt es also endlich viele $U_1,\dots, U_n$ und $W_1,\dots, W_n$ mit $(W_i\times U_i)\cap C = \emptyset$ für alle $i$ und $U_1\cup\dots\cup U_n = X$. Setze $V = \bigcap_{i=1}^n W_i$. Dann ist $V\times U_i\subset W_i\times U_i\subset (Y\times X)\setminus C$ für alle $i$ und damit auch
+  \[
+    V\times X = V\times\bigcup_{i=1}^n U_i = \bigcup_{i=1}^n V\times U_i\subset (Y\times X)\setminus C.
+  \]
+  Aber das heißt, dass $V\subset Y\setminus\pi(C)$ eine offene Umgebung von $y$ ist. Da $y\in Y\setminus\pi(C)$ beliebig war, genügt das um zu sehen, dass $\pi(C)$ abgeschlossen ist.
+
+  Sei nun umgekehrt $X$ ein topologischer Raum, für den jede Projektion $Y\times X\to Y$ abgeschlossen ist. Wir zeigen, dass jeder Ultrafilter auf $X$ konvergiert. Sei also $\cal F$ ein solcher Ultrafilter. Wir definieren wie folgt eine Topologie auf $X\sqcup\{\infty\}$:
+  \begin{itemize}
+    \item Eine Teilmenge $U\subset X\sqcup\{\infty\}$ mit $\infty \not\in U$ ist offen.
+    \item Eine Teilmenge $U\subset X\sqcup\{\infty\}$ mit $\infty\in U$ ist offen, falls $U\setminus\{\infty\}\in\cal F$.
+  \end{itemize}
+  Man überprüft leicht, dass diese Mengen eine Topologie auf $Y\coloneqq X\sqcup\{\infty\}$ bilden. Wir bezeichnen mit $\cal F_x$ für $x\in X$ den prinzipalen Ultrafilter an $x$ und schreiben $\cal F_\infty \coloneqq \cal F$. Wir bemerken, dass $\cal F_y$ sowohl für $y\in X$ und $y = \infty$ ein Ultrafilter auf $X$ ist. Betrachte die Teilmenge
+  \[
+    K = \{ (y,x)\in Y\times X : \text{$\cal F_y$ konvergiert gegen $x\in X$} \} \subset Y\times X.
+  \]
+  Dann ist $K$ abgeschlossen. Sei nämlich $(y,x)\not\in K$. Dann konvergiert $\cal F_y$ nicht gegen $x$ und es existiert deshalb eine offene Umgebung $U\subset X$ von $x$ mit $U\not\in\cal F_y$. Da $\cal F_y$ ein Ultrafilter ist, muss dann $V = X\setminus U\in\cal F_y$ gelten. Also ist $V\times U\subset Y\times X$ offen und für alle $(y', x')\in V\times U$ konvergiert $\cal F_{y'}$ nicht gegen $x'$. Andernfalls wäre nämlich $U\in\cal F_{y'}$ und $V\in\cal F_{y'}$ und damit $\emptyset = U\cap V\in\cal F_{y'}$. Aber das ist unmöglich, da $\cal F_{y'}$ ein Filter ist. Also ist $V\times U$ eine offene Umgebung von $(y,x)$ mit $(V\times U)\cap K = \emptyset$.
+
+  Wir folgern also aus unserer Annahme an $X$, dass $\pi(K)\subset Y$ abgeschlossen sein muss. Außerdem ist $X\subset\pi(K)$, denn für jedes $x\in X$ konvergiert der prinzipale Ultrafilter $\cal F_x$ gegen $x$. Jetzt ist aber $X\subset Y = X\sqcup\{\infty\}$ dicht, denn jede nichtleere offene Teilmenge $U\subset Y$ schneidet $X$. Die Menge $\{\infty\}$ ist nämlich nicht offen, da sonst $\emptyset\in\cal F$ wäre.
+
+  Das Bild $\pi(K)\subset Y$ ist also eine abgeschlossene Teilmenge von $Y$, die die dichte Teilmenge $X$ enthält. Aber damit muss bereits $\pi(K) = Y$ gelten. Insbesondere ist $\infty\in\pi(K)$; das heißt, $\cal F_\infty = \cal F$ konvergiert gegen ein $x\in X$.
+\end{proof}
 
 \subsection{Einpunktkompaktifizierung}
 Das offene Intervall $(0,1)$ mit der euklidischen Topologie ist nicht kompakt. Aber es gibt eine stetige Funktion $(0,1)\to S^1$ deren Bild nur einen Punkt in $S^1$ nicht enthält und $S^1$ ist kompakt. Das ist ein erstes Beispiel für eine Einpunktkompaktifizierung.
