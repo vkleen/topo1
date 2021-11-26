@@ -1,4 +1,5 @@
 exercises/assignment[0-9]*.tex filter=git-crypt diff=git-crypt
 exercises/ex[0-9]*.tex filter=git-crypt diff=git-crypt
+exercises/ex*soln.pdf filter=git-crypt diff=git-crypt
 exercises/build/** filter=git-crypt diff=git-crypt
 exercises/images/** filter=git-crypt diff=git-crypt
